@@ -1,0 +1,189 @@
+/* CSS Document */
+
+* {
+margin:0;
+padding:0;
+outline:none;
+}
+
+body {
+background:url(../images/body.jpg) top repeat-x #050507;
+font:70% Verdana;
+color:#ACACB0;
+}
+
+a {
+color:#99FF00;
+}
+
+a:hover {
+text-decoration:none;
+}
+
+#header {
+height:248px;
+display:block;
+background:url(../images/header.jpg) top center no-repeat;
+}
+
+h1.main_title {
+font:170% Century Gothic;
+color:#fff;
+font-weight:bold;
+margin:20px auto 0;
+text-align:center;
+}
+
+h1.main_title a {
+color:#fff;
+text-decoration:none;
+}
+
+#container {
+width:760px;
+margin:0 auto;
+background:#151521;
+padding:5px;
+}
+
+#navigation {
+background:#181825;
+width:600px;
+border-top:1px solid #2E2E47;
+padding:12px 0;
+margin:35px auto 1px;
+font:100% Georgia;
+color:#fff;
+letter-spacing:2px;
+text-transform:uppercase;
+}
+
+#nav li {
+list-style:none;
+display:inline;
+margin-right:0px;
+}
+
+#nav a {
+padding:12px;
+color:#ACACB0;
+text-decoration:none;
+margin-right:0px;
+}
+
+#nav a:hover {
+background:url(../images/nav_link_active.jpg) top repeat-x;
+color:#fff;
+}
+
+#nav a.active {
+background:url(../images/nav_link_active.jpg) top repeat-x;
+color:#fff;
+font-weight:bold;
+}
+
+#inner_container {
+background:url(../images/inner_container.jpg) top repeat-x #181824;
+padding:10px 10px 10px 25px;
+}
+
+#sidebar {
+width:200px;
+padding:10px;
+float:right;
+background:#232436;
+color:#bdbdc1;
+}
+
+#container #sidebar h2 {
+font-size:90%;
+margin:10px 0;
+}
+
+#container #sidebar p {
+text-indent:0;
+font-size:90%;
+line-height:17px;
+}
+
+#content {
+margin-right:240px;
+}
+
+blockquote {
+background:url(../images/quote.gif) bottom right no-repeat #292935;
+padding:2px 17px;
+}
+
+p {
+margin:10px 0;
+padding:5px;
+line-height:20px;
+text-indent:25px;
+}
+
+p.note {
+padding:20px;
+background:#2D2D44;
+color:#fff;
+}
+
+#container h1 {
+font:170% Arial;
+color:#fff;
+margin:15px 0;
+}
+
+#container h2 {
+font:110% Verdana;
+color:#fff;
+font-weight:bold;
+margin:25px 0 15px;
+}
+
+#container ul {
+margin:10px 15px;
+}
+
+#container ul li {
+margin:10px 0;
+}
+
+#container img {
+background:#070713;
+padding:5px;
+}
+
+#footer {
+width:750px;
+background:#151521;
+padding:10px;
+margin:0 auto;
+clear:both;
+}
+
+#content table {
+width:475px;
+background:#1E1E2D;
+margin:25px 0;
+}
+
+td {
+padding:8px;
+text-align:center;
+background:url(../images/td.jpg) top left no-repeat #1E1E2D;
+font:100% Georgia;
+}
+
+th {
+color:#fff;
+padding:10px;
+}
+
+#footer p {
+text-indent:0;
+}
+
+#footer p.validate {
+float:right;
+}
