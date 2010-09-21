@@ -28,6 +28,24 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <scope>test</scope>
         </dependency>
 
+		<dependency>
+		  <groupId>org.apache.tapestry</groupId>
+		  <artifactId>tapestry-hibernate</artifactId>
+		  <version>${tapestry-release-version}</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>hsqldb</groupId>
+		  <artifactId>hsqldb</artifactId>
+		  <version>1.8.0.7</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>org.apache.tapestry</groupId>
+		  <artifactId>tapestry-beanvalidator</artifactId>
+		  <version>${tapestry-release-version}</version>
+		</dependency>
+		
         <!-- tapestry-test will conflict with RunJettyRun inside Eclipse. tapestry-test brings in Selenium, which
              is based on Jetty 5.1; RunJettyRun uses Jetty 6.
         <dependency>
