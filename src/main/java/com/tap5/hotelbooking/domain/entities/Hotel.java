@@ -1,4 +1,4 @@
-package com.tap5.hotelbooking.entities;
+package com.tap5.hotelbooking.domain.entities;
 
 import java.math.BigDecimal;
 
