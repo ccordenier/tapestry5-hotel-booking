@@ -6,7 +6,10 @@
 
 	<form t:type="form" t:zone="result">
 		<fieldset>
-			<label t:type="label" t:for="query">Search</label> <input type="text" t:type="textfield" t:id="query" />
+			<label t:type="label" t:for="query">Search</label>
+			<input type="text" t:type="textfield" t:id="query" />
+			<label t:type="label" t:for="rowsPerPage">Results</label>
+			<select t:type="select" t:id="rowsPerPage" t:value="rowsPerPage" t:model="literal:5,10,15"></select>
 		</fieldset>
 	</form>
 
@@ -16,11 +19,9 @@
 	</div>
 
 	<p:sidebar>
-
         <p>
             Search hotels
         </p>
-
 	</p:sidebar>    
 
 </html>
