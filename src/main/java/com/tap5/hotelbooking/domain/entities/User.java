@@ -5,34 +5,53 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- * Wooki basic user. Can post comment, write book etc.
+ * Hotel Booking User
+ * 
+ * @author karesti
  */
 @Entity
-@Table(name = "Users")
+@NamedQueries(
+{ @NamedQuery(name = User.ALL, query = "Select u from User u") })
+@Table(name = "users")
 public class User
 {
+
+    public static final String ALL = "User.all";
 
     private static final long serialVersionUID = 4060967693790504175L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id", nullable = false)
     private Long id;
 
-    @Column(name = "username", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(name = "fullname", nullable = false)
+    @Column(nullable = false)
     private String fullname;
 
-    @Column(name = "email", nullable = false)
+    @Column(nullable = false)
     private String email;
 
-    @Column(name = "password")
+    @Column(nullable = false)
     private String password;
+
+    @Override
+    public String toString()
+    {
+        StringBuilder builder = new StringBuilder();
+        builder.append("id ");
+        builder.append(id);
+        builder.append(",");
+        builder.append("username ");
+        builder.append(username);
+        return builder.toString();
+    }
 
     public Long getId()
     {
@@ -83,25 +102,4 @@ public class User
     {
         this.password = password;
     }
-
-    public boolean isAccountNonExpired()
-    {
-        return true;
-    }
-
-    public boolean isAccountNonLocked()
-    {
-        return true;
-    }
-
-    public boolean isCredentialsNonExpired()
-    {
-        return true;
-    }
-
-    public boolean isEnabled()
-    {
-        return true;
-    }
-
 }
