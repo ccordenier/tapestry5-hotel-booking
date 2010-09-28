@@ -16,12 +16,16 @@ import javax.persistence.Table;
  */
 @Entity
 @NamedQueries(
-{ @NamedQuery(name = User.ALL, query = "Select u from User u") })
+{
+        @NamedQuery(name = User.ALL, query = "Select u from User u"),
+        @NamedQuery(name = User.BY_CREDENTIALS, query = "Select u from User u where u.username = :username and u.password = password") })
 @Table(name = "users")
 public class User
 {
 
     public static final String ALL = "User.all";
+
+    public static final String BY_CREDENTIALS = "User.byCredentials";
 
     private static final long serialVersionUID = 4060967693790504175L;
 

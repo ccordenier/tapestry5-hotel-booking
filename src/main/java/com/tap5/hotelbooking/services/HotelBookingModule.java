@@ -15,40 +15,29 @@ import org.apache.tapestry5.services.Response;
 import org.slf4j.Logger;
 
 import com.tap5.hotelbooking.domain.HibernateModule;
+import com.tap5.hotelbooking.security.SecurityModule;
 
 /**
  * This module is automatically included as part of the Tapestry IoC Registry, it's a good place to
  * configure and extend Tapestry, or to place your own service definitions.
  */
-@SubModule(HibernateModule.class)
+@SubModule(
+{ HibernateModule.class, SecurityModule.class })
 public class HotelBookingModule
 {
     public static void bind(ServiceBinder binder)
     {
-        // binder.bind(MyServiceInterface.class, MyServiceImpl.class);
-
-        // Make bind() calls on the binder object to define most IoC services.
-        // Use service builder methods (example below) when the implementation
-        // is provided inline, or requires more initialization than simply
-        // invoking the constructor.
+        binder.bind(DataSetLoader.class, DemoDataLoader.class);
     }
 
     public static void contributeApplicationDefaults(
             MappedConfiguration<String, String> configuration)
     {
-        // Contributions to ApplicationDefaults will override any contributions to
-        // FactoryDefaults (with the same key). Here we're restricting the supported
-        // locales to just "en" (English). As you add localised message catalogs and other assets,
-        // you can extend this list of locales (it's a comma separated series of locale names;
-        // the first locale name is the default when there's no reasonable match).
 
         configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
-
-        // The application version number is incorprated into URLs for some
-        // assets. Web browsers will cache assets because of the far future expires
-        // header. If existing assets are changed, the version number should also
-        // change, to force the browser to download new versions.
         configuration.add(SymbolConstants.APPLICATION_VERSION, "1.0-SNAPSHOT");
+        // configuration.add(SecuritySymbols.SHOULD_LOAD_INI_FROM_CONFIG_PATH, "true");
+
     }
 
     /**
