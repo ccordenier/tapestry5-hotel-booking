@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.tapestry5.hibernate.annotations.CommitAfter;
+
 /**
  * CrudServiceDAO interface.
  * 
@@ -16,7 +18,25 @@ public interface CrudServiceDAO
      * @param t
      * @return
      */
+    @CommitAfter
     <T> T create(T t);
+
+    /**
+     * @param <T>
+     * @param t
+     * @return
+     */
+    @CommitAfter
+    <T> T update(T t);
+
+    /**
+     * @param <T>
+     * @param <PK>
+     * @param type
+     * @param id
+     */
+    @CommitAfter
+    <T, PK extends Serializable> void delete(Class<T> type, PK id);
 
     /**
      * @param <T>
@@ -26,21 +46,6 @@ public interface CrudServiceDAO
      * @return
      */
     <T, PK extends Serializable> T find(Class<T> type, PK id);
-
-    /**
-     * @param <T>
-     * @param t
-     * @return
-     */
-    <T> T update(T t);
-
-    /**
-     * @param <T>
-     * @param <PK>
-     * @param type
-     * @param id
-     */
-    <T, PK extends Serializable> void delete(Class<T> type, PK id);
 
     /**
      * @param <T>

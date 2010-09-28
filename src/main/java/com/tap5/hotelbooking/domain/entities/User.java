@@ -45,6 +45,23 @@ public class User
     @Column(nullable = false)
     private String password;
 
+    public User()
+    {
+    }
+
+    public User(final String name, final String username, final String email)
+    {
+        this.fullname = name;
+        this.username = username;
+        this.email = email;
+    }
+
+    public User(final String name, final String username, final String email, final String password)
+    {
+        this(name, username, email);
+        this.password = password;
+    }
+
     @Override
     public String toString()
     {

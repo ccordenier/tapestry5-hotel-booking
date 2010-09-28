@@ -1,9 +1,12 @@
 package com.tap5.hotelbooking.domain;
 
 import org.apache.tapestry5.beanvalidator.BeanValidatorConfigurer;
+import org.apache.tapestry5.hibernate.HibernateTransactionAdvisor;
 import org.apache.tapestry5.ioc.Configuration;
+import org.apache.tapestry5.ioc.MethodAdviceReceiver;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
+import org.apache.tapestry5.ioc.annotations.Match;
 
 /**
  * This class should contain contribution to data stuff (hibernate configuration, beanvalidators...)
@@ -30,6 +33,13 @@ public class HibernateModule
                 configuration.ignoreXmlConfiguration();
             }
         });
+    }
+
+    @Match("*DAO")
+    public static void adviseTransactions(HibernateTransactionAdvisor advisor,
+            MethodAdviceReceiver receiver)
+    {
+        advisor.addTransactionCommitAdvice(receiver);
     }
 
 }

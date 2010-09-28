@@ -1,0 +1,26 @@
+<html t:type="layout" title="tapestry5-hotel-booking Search"
+      t:sidebarTitle="Current Time"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:p="tapestry:parameter">
+        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+
+	<form t:type="form" t:zone="result">
+		<fieldset>
+			<label t:type="label" t:for="query">Search</label> <input type="text" t:type="textfield" t:id="query" />
+		</fieldset>
+	</form>
+
+	<div t:type="zone" t:id="result" id="result" class="section result">
+		<table t:type="grid" t:source="source" t:inPlace="true" t:rowsPerPage="rowsPerPage">
+		</table>
+	</div>
+
+	<p:sidebar>
+
+        <p>
+            Search hotels
+        </p>
+
+	</p:sidebar>    
+
+</html>
