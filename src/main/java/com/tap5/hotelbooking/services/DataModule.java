@@ -2,7 +2,7 @@ package com.tap5.hotelbooking.services;
 
 import java.util.List;
 
-import org.apache.tapestry5.ioc.annotations.EagerLoad;
+import org.apache.tapestry5.ioc.annotations.Startup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,13 +14,13 @@ import com.tap5.hotelbooking.domain.entities.User;
  * 
  * @author karesti
  */
-@EagerLoad
-public class DemoDataLoader implements DataSetLoader
+public class DataModule
 {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DataSetLoader.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DataModule.class);
 
-    public DemoDataLoader(CrudServiceDAO dao)
+    @Startup
+    public void initialize(CrudServiceDAO dao)
     {
         LOGGER.info("-- Loading initial demo data");
         User user = new User();

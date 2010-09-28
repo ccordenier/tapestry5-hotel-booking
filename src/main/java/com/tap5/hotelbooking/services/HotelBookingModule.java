@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
-import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Local;
 import org.apache.tapestry5.ioc.annotations.SubModule;
 import org.apache.tapestry5.services.Request;
@@ -22,13 +21,9 @@ import com.tap5.hotelbooking.security.SecurityModule;
  * configure and extend Tapestry, or to place your own service definitions.
  */
 @SubModule(
-{ HibernateModule.class, SecurityModule.class })
+{ HibernateModule.class, SecurityModule.class, DataModule.class })
 public class HotelBookingModule
 {
-    public static void bind(ServiceBinder binder)
-    {
-        binder.bind(DataSetLoader.class, DemoDataLoader.class);
-    }
 
     public static void contributeApplicationDefaults(
             MappedConfiguration<String, String> configuration)
@@ -37,7 +32,6 @@ public class HotelBookingModule
         configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
         configuration.add(SymbolConstants.APPLICATION_VERSION, "1.0-SNAPSHOT");
         // configuration.add(SecuritySymbols.SHOULD_LOAD_INI_FROM_CONFIG_PATH, "true");
-
     }
 
     /**
