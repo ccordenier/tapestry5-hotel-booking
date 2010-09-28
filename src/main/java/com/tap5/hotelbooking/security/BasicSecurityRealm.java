@@ -19,7 +19,7 @@ import com.tap5.hotelbooking.domain.QueryParameters;
 import com.tap5.hotelbooking.domain.entities.User;
 
 /**
- * CustomSe
+ * Custom Shiro Security Realm implementation
  * 
  * @author karesti
  */
@@ -44,13 +44,18 @@ public class BasicSecurityRealm extends AuthorizingRealm implements SecurityReal
     {
 
         UsernamePasswordToken userToken = (UsernamePasswordToken) token;
-        List<User> users = crudService.findWithNamedQuery(User.BY_CREDENTIALS, QueryParameters
-                .with("userName", userToken.getUsername()).and("password", userToken.getPassword())
-                .parameters());
+        List<User> users = crudService.findWithNamedQuery(
+                User.BY_CREDENTIALS,
+                QueryParameters.with("username", userToken.getUsername())
+                        .and("password", String.copyValueOf(userToken.getPassword())).parameters());
 
         AuthenticationInfo authInfo = null;
 
-        if (!users.isEmpty())
+        if (users.isEmpty())
+        {
+            throw new AuthenticationException("The user doesn't exist");
+        }
+        else
         {
             authInfo = new SimpleAuthenticationInfo();
         }
