@@ -13,6 +13,13 @@
 			<artifactId>tapestry-core</artifactId>
 			<version>${tapestry-release-version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.tynamo</groupId>
+			<artifactId>tapestry-security</artifactId>
+			<version>0.2.0</version>	
+		</dependency>
+	
 		<!--
 			A dependency on either JUnit or TestNG is required, or the surefire
 			plugin (which runs the tests) will fail, preventing Maven from
@@ -23,7 +30,7 @@
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>5.12.1</version>
+			<version>5.13.1</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -49,7 +56,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>4.0.0.GA</version>
+			<version>4.0.2.GA</version>
 			<type>jar</type>
 		</dependency>
 
@@ -62,12 +69,14 @@
 		<!--
 			tapestry-test will conflict with RunJettyRun inside Eclipse.
 			tapestry-test brings in Selenium, which is based on Jetty 5.1;
-			RunJettyRun uses Jetty 6. <dependency>
+			RunJettyRun uses Jetty 6. 
+		-->	
+		<dependency>
 			<groupId>org.apache.tapestry</groupId>
 			<artifactId>tapestry-test</artifactId>
 			<version>${tapestry-release-version}</version> <scope>test</scope>
-			</dependency>
-		-->
+		</dependency>
+		
 
 		<!--
 			Provided by the servlet container, but sometimes referenced in the
@@ -164,7 +173,12 @@
 			<id>tapestry-snapshots</id>
 			<url>http://repository.apache.org/snapshots/</url>
 		</pluginRepository>
-
+		
+		<pluginRepository>
+			<id>ci-snapshots</id>
+			<url>http://ci.repository.codehaus.org/</url>
+		</pluginRepository>
+		
 	</pluginRepositories>
 
 	<properties>
