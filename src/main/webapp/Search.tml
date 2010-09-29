@@ -7,14 +7,14 @@
 	<form t:type="form" t:zone="result">
 		<fieldset>
 			<label t:type="label" t:for="query">Search</label>
-			<input type="text" t:type="textfield" t:id="query" />
+			<input type="text" t:type="textfield" t:id="query" t:value="criteria.query" />
 			<label t:type="label" t:for="rowsPerPage">Results</label>
-			<select t:type="select" t:id="rowsPerPage" t:value="rowsPerPage" t:model="literal:5,10,15"></select>
+			<select t:type="select" t:id="rowsPerPage" t:value="criteria.rowsPerPage" t:model="literal:5,10,15"></select>
 		</fieldset>
 	</form>
 
 	<div t:type="zone" t:id="result" id="result" class="section result">
-		<table t:type="grid" t:source="source" t:inPlace="true" t:rowsPerPage="rowsPerPage">
+		<table t:type="grid" t:source="source" t:inPlace="true" t:rowsPerPage="criteria.rowsPerPage">
 		</table>
 	</div>
 
