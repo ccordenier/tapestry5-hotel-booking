@@ -1,58 +1,99 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
-      xmlns:p="tapestry:parameter">
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-        <title>${title}</title>
-    </head>
-    <body>
-    
-        <!-- start header -->
-        <div id="header">
-        </div>
-        <h1 class="main_title"><a href="#">Tapestry 5 Hotel Booking :  Feel at Home !</a></h1>
-		
-		<div id="navigation">
-			<ul id="nav">
-				<li t:type="loop" source="pageNames" value="pageName" class="prop:classForPageName">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Tapestry 5 Hotel Booking - ${title}</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+	<div id="header">
+    	<a href="#"><img src="images/logo.png" title="Affiliate Promo logo" id="logo" alt="Logo" /></a>
+        <ul id="navBar">
+        	<li t:type="loop" t:source="pageNames" t:value="pageName" class="prop:classForPageName">
 					<a href="#" t:type="pagelink" t:page="prop:pageName">${pageName}</a>
-				</li>
-			</ul>
-		</div>
-		<!-- end header -->
-        
-        
-        <!-- start page -->
-		<div id="container">
-			<div id="inner_container">
-				<div id="sidebar">
-					<h2>Sidebar</h2>
-					<p>
-						Add application purpose description text here !
-					</p>
-				</div>
-			
-				<div id="content">
-					<h1>Welcome !</h1>
-					<p class="note">
-						${message:greetings}
-					</p>
-					
-					<t:body />
-				</div>
-			</div>
-		</div>
-		
-		<!-- end page -->
-
-        <!-- start footer -->
-        <div id="footer">
-			<!-- If you wish to delete this line of code please purchase our commercial license http://www.sixshootermedia.com/shop/commercial-license/ -->
-			<p>Template design by <a href="http://www.sixshootermedia.com">Six Shooter Media</a>.<br />
-			<!-- you can delete below here -->
-			</p>
-		</div>
-        <!-- end footer -->
-    </body>
+			</li>  
+        </ul>
+    </div>
+    <div id="welcomeMessage">
+    	<h1>Welcome to Your Business</h1>
+    	<p><span>Yourbusiness.com</span> is a leading virtual corporate business that will help you monetize your work to the most level you could reach.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adip, <span>Yourbusiness.com</span> will give you a new way to look at your business and lead it to all new horizons.</p>
+    </div>
+    <div id="wrapper">
+    	<div id="secWrapper">
+        	<div id="container" class="clearfix">
+            	<div id="mainCol" class="clearfix">
+                	<div id="services">
+                    <h3>Our Services</h3>
+                    <ul>
+                    <li>
+                    <h4>Service title</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </li>
+                     <li>
+                    <h4>Service title</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </li>
+                     <li>
+                    <h4>Service title</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </li>
+                    </ul>
+                    </div>
+                    <h3 id="why">Why Choose Your Business ?</h3>
+                    <t:body />
+                </div>
+                <div id="secCol">
+              		<fieldset id="login">
+                    	<h4>Members login</h4>
+               			<form action="#">
+                        	<p class="clearfix"><label for="username">Username</label>
+                            <input name="username" id="username" type="text" value="" /></p>
+                            <p class="clearfix"><label for="password">Password</label>
+							<input name="password" id="password" type="text" value="" /></p>
+                            <p class="clearfix check"><input type="checkbox" id="remember" name="remember" />
+                            <label for="remember" id="remlabel">Remember me</label>
+                        <input name="submit" id="submit" type="submit" value="" /></p>
+                    	</form>
+                        <p class="member"><a href="#">Lost your Password?</a><br />Not a member yet? <a href="#">Register now!</a></p>
+                    </fieldset>
+                    <h3 id="news">Latest News</h3>
+                    <ul>
+                    	<li class="clearfix">
+                        <h4><a href="#">News title goes here</a></h4>
+                        <span>19 November, 2008</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipis elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim niam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <a href="#" class="more">Read more</a>
+                        </li>
+                        <li class="clearfix">
+                        <h4><a href="#">News title goes here</a></h4>
+                        <span>19 November, 2008</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipis elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim niam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <a href="#" class="more">Read more</a>
+                        </li>
+                    </ul>
+                    <h3 id="test">Testimonials</h3>
+                    <ul>
+                    <li class="clearfix">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipis elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim niam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="test"><span>Lorem ipsum</span>, <a href="#">dolorsit.com</a></p>
+                    </li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+    	<ul>
+	        <li><a href="#">Home</a>&nbsp;&nbsp;-&nbsp;&nbsp;</li>
+  	        <li><a href="#">Terms and Conditions</a>&nbsp;&nbsp;-&nbsp;&nbsp;</li>
+			<li><a href="#">Privacy Policy</a>&nbsp;&nbsp;-&nbsp;&nbsp;</li>
+ 			<li><a href="#">Sitemap</a>&nbsp;&nbsp;-&nbsp;&nbsp;</li>
+  	        <li><a href="#">Support</a>&nbsp;&nbsp;-&nbsp;&nbsp;</li>
+			<li><a href="#">Contact Us</a></li>
+        </ul>
+        <p>Copyrights &copy; 2008 yourbusiness.com, All Rights Reserved</p>
+    </div>
+</body>
 </html>

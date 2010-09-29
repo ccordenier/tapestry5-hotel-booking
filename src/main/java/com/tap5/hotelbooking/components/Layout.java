@@ -12,7 +12,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
  * Layout component for pages of application tapestry5-hotel-booking.
  */
 @Import(stylesheet =
-{ "context:/static/css/1.css" })
+{ "context:/static/style.css" })
 public class Layout
 {
     /** The page title, for the <title> element and the <h1>element. */
