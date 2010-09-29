@@ -5,12 +5,14 @@ import java.io.IOException;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
+import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.Local;
 import org.apache.tapestry5.ioc.annotations.SubModule;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.RequestFilter;
 import org.apache.tapestry5.services.RequestHandler;
 import org.apache.tapestry5.services.Response;
+import org.apache.tapestry5.validator.ValidatorMacro;
 import org.slf4j.Logger;
 
 import com.tap5.hotelbooking.domain.HibernateModule;
@@ -92,6 +94,12 @@ public class HotelBookingModule
         // within the pipeline.
 
         configuration.add("Timing", filter);
+    }
+
+    @Contribute(ValidatorMacro.class)
+    public static void combineValidators(MappedConfiguration<String, String> configuration)
+    {
+        configuration.add("password", "required,minlength=6,maxlength=12");
     }
 
 }

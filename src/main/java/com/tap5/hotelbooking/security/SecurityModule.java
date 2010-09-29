@@ -36,7 +36,7 @@ public class SecurityModule
     {
 
         configuration.override(SecuritySymbols.LOGIN_URL, "/signin");
-        configuration.override(SecuritySymbols.SUCCESS_URL, "/default");
+        configuration.override(SecuritySymbols.SUCCESS_URL, "/index");
         // configuration.add(SecuritySymbols.UNAUTHORIZED_URL, "/unauthorized");
         // configuration.add(SecuritySymbols.DEFAULTSIGNINPAGE, "/defaultSignInP");
     }

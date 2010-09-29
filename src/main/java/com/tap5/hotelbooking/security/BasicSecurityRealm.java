@@ -57,7 +57,8 @@ public class BasicSecurityRealm extends AuthorizingRealm implements SecurityReal
         }
         else
         {
-            authInfo = new SimpleAuthenticationInfo();
+            User user = users.iterator().next();
+            authInfo = new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), "basic");
         }
 
         return authInfo;

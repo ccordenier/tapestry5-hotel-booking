@@ -40,24 +40,11 @@
                     </li>
                     </ul>
                     </div>
-                    <h3 id="why">Why Choose Your Business ?</h3>
+                    <h3 id="why">${pageTitle}</h3>
                     <t:body />
                 </div>
                 <div id="secCol">
-              		<fieldset id="login">
-                    	<h4>Members login</h4>
-               			<form action="#">
-                        	<p class="clearfix"><label for="username">Username</label>
-                            <input name="username" id="username" type="text" value="" /></p>
-                            <p class="clearfix"><label for="password">Password</label>
-							<input name="password" id="password" type="text" value="" /></p>
-                            <p class="clearfix check"><input type="checkbox" id="remember" name="remember" />
-                            <label for="remember" id="remlabel">Remember me</label>
-                        <input name="submit" id="submit" type="submit" value="" /></p>
-                    	</form>
-                        <p class="member"><a href="#">Lost your Password?</a><br />Not a member yet? <a href="#">Register now!</a></p>
-                    </fieldset>
-                    <h3 id="news">Latest News</h3>
+              		<h3 id="news">Latest News</h3>
                     <ul>
                     	<li class="clearfix">
                         <h4><a href="#">News title goes here</a></h4>

@@ -33,12 +33,10 @@ public class DataModule
     {
         List<Hotel> hotels = new ArrayList<Hotel>();
         List<User> users = new ArrayList<User>();
-        users.add(new User("Dan Allen", "dan", "dan@example.com", "laurel"));
-        users.add(new User("Pete Muir", "pete", "pete@example.com", "edinburgh"));
-        users.add(new User("Lincoln Baxter III", "lincoln", "lincoln@example.com", "charlotte"));
-        users.add(new User("Shane Bryzak", "shane", "shane@example.com", "brisbane"));
-        users.add(new User("Gavin King", "gavin", "gavin@example.com", "mexico"));
-        users.add(new User("Katia Aresti", "karesti", "katiaarest@example.com", "123456"));
+
+        users.add(new User("Christophe Cordenier", "cordenier", "ccordenier@example.com",
+                "cordenier"));
+        users.add(new User("Katia Aresti", "karesti", "karesti@example.com", "karesti"));
 
         hotels.add(new Hotel(129, 3, "Marriott Courtyard", "Tower Place, Buckhead", "Atlanta",
                 "GA", "30305", "USA"));

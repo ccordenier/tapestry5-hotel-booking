@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
 
 /**
  * Hotel Booking User
@@ -34,15 +38,23 @@ public class User
     private Long id;
 
     @Column(nullable = false, unique = true)
+    @NotNull
+    @Size(min = 3, max = 15)
     private String username;
 
     @Column(nullable = false)
+    @NotNull
+    @Size(min = 3, max = 50)
     private String fullname;
 
     @Column(nullable = false)
+    @NotNull
+    @Email
     private String email;
 
     @Column(nullable = false)
+    @Size(min = 3, max = 6)
+    @NotNull
     private String password;
 
     public User()
@@ -59,6 +71,16 @@ public class User
     public User(final String name, final String username, final String email, final String password)
     {
         this(name, username, email);
+        this.password = password;
+    }
+
+    public User(Long id, String username, String fullname, String email, String password)
+    {
+        super();
+        this.id = id;
+        this.username = username;
+        this.fullname = fullname;
+        this.email = email;
         this.password = password;
     }
 

@@ -1,9 +1,32 @@
 <html t:type="layout" title="Tapestry5-hotel-booking Sign In"
       t:sidebarTitle="Current Time"
+      t:pageTitle="Members login"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
       xmlns:p="tapestry:parameter">
-        
 
-<t:security.loginform />      
-        
+
+<fieldset id ="login">
+	<form t:id="loginForm" >
+		<t:errors/>
+		<p class="clearfix">
+			<t:label for="username">login:</t:label>
+			<t:textfield t:id="username" validate="required, minlength=3, maxlength=10"/>			
+		</p>
+		
+		<p class="clearfix">
+			<t:label for="password">password:</t:label>
+			<t:passwordfield t:id="password" validate="password"/>
+		</p>
+		
+		<p class="clearfix check">
+			<t:checkbox t:id="rememberMe" />
+			<t:label for="rememberMe">Remember Me</t:label>
+			<input type="submit" value="Login" />
+		</p>
+		
+		<p class="member">Not a member yet? <t:pagelink page="SignUp">Register now!</t:pagelink></p>
+	 
+	</form>
+</fieldset>
+  
 </html>

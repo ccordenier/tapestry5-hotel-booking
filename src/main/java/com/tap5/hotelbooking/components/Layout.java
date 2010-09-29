@@ -16,6 +16,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 public class Layout
 {
     /** The page title, for the <title> element and the <h1>element. */
+    @SuppressWarnings("unused")
     @Property
     @Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
     private String title;
@@ -23,10 +24,17 @@ public class Layout
     @Property
     private String pageName;
 
+    @SuppressWarnings("unused")
+    @Property
+    @Parameter(defaultPrefix = BindingConstants.LITERAL)
+    private String pageTitle;
+
+    @SuppressWarnings("unused")
     @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
     private String sidebarTitle;
 
+    @SuppressWarnings("unused")
     @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
     private Block sidebar;
