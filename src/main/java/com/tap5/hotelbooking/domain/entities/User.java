@@ -53,7 +53,7 @@ public class User
     private String email;
 
     @Column(nullable = false)
-    @Size(min = 3, max = 6)
+    @Size(min = 3, max = 50)
     @NotNull
     private String password;
 

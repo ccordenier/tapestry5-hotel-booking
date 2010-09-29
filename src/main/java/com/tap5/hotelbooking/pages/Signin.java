@@ -50,7 +50,7 @@ public class Signin
     private Form loginForm;
 
     @Log
-    public Object onActionFromLogin()
+    public Object onActionFromLoginForm()
     {
 
         Subject currentUser = securityService.getSubject();
