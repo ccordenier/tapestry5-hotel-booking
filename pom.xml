@@ -19,6 +19,12 @@
 			<artifactId>tapestry-security</artifactId>
 			<version>0.2.1-SNAPSHOT</version>	
 		</dependency>
+		
+		<dependency>
+			<groupId>org.tynamo</groupId>
+			<artifactId>tapestry-hibernate-seedentity</artifactId>
+			<version>0.1.0</version>
+		</dependency>
 	
 		<!--
 			A dependency on either JUnit or TestNG is required, or the surefire
@@ -48,9 +54,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-			<version>1.8.0.7</version>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.2.142</version>
 		</dependency>
 
 		<dependency>
@@ -74,7 +80,8 @@
 		<dependency>
 			<groupId>org.apache.tapestry</groupId>
 			<artifactId>tapestry-test</artifactId>
-			<version>${tapestry-release-version}</version> <scope>test</scope>
+			<version>${tapestry-release-version}</version> 
+			<scope>test</scope>
 		</dependency>
 		
 
@@ -147,41 +154,14 @@
 	</reporting>
 
 	<repositories>
-
-		<!--
-			This repository is only needed when the tapestry-release-version is a
-			snapshot release.
-		-->
-		<repository>
-			<id>tapestry-snapshots</id>
-			<url>http://repository.apache.org/snapshots/</url>
-		</repository>
-
 		<repository>
 			<id>codehaus.snapshots</id>
-			<url>http://snapshots.repository.codehaus.org</url>
+			<url>http://ci.repository.codehaus.org</url>
 		</repository>
 	</repositories>
 
-	<pluginRepositories>
-
-		<!--
-			As above, this can be commented out when access to the snapshot
-			version of a Tapestry Maven plugin is not required.
-		-->
-		<pluginRepository>
-			<id>tapestry-snapshots</id>
-			<url>http://repository.apache.org/snapshots/</url>
-		</pluginRepository>
-		
-		<pluginRepository>
-			<id>ci-snapshots</id>
-			<url>http://ci.repository.codehaus.org/</url>
-		</pluginRepository>
-		
-	</pluginRepositories>
-
 	<properties>
 		<tapestry-release-version>5.2.0</tapestry-release-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 </project>
