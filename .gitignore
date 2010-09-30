@@ -4,6 +4,7 @@ test-output/
 .settings/
 .project
 .classpath
+.externalToolBuilders
 temp-testng-customsuite.xml
 target/
 *.tmp_*

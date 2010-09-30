@@ -2,6 +2,7 @@ package com.tap5.hotelbooking.services;
 
 import java.io.IOException;
 
+import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.realm.Realm;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.Configuration;
@@ -26,7 +27,6 @@ import com.tap5.hotelbooking.domain.HibernateModule;
 import com.tap5.hotelbooking.domain.entities.Hotel;
 import com.tap5.hotelbooking.domain.entities.User;
 import com.tap5.hotelbooking.security.BasicSecurityRealm;
-import com.tap5.hotelbooking.security.SecurityRealm;
 
 /**
  * This module is automatically included as part of the Tapestry IoC Registry, it's a good place to
@@ -39,7 +39,7 @@ public class HotelBookingModule
     public static void bind(ServiceBinder binder)
     {
 
-        binder.bind(SecurityRealm.class, BasicSecurityRealm.class);
+        binder.bind(AuthorizingRealm.class, BasicSecurityRealm.class);
     }
 
     public static void contributeFactoryDefaults(MappedConfiguration<String, String> configuration)
@@ -126,7 +126,7 @@ public class HotelBookingModule
         configuration.add("password", "required,minlength=6,maxlength=12");
     }
     
-	public static void contributeWebSecurityManager(Configuration<Realm> configuration, @Inject SecurityRealm realm)
+	public static void contributeWebSecurityManager(Configuration<Realm> configuration, @Inject AuthorizingRealm realm)
     {
 
         configuration.add(realm);

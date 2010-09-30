@@ -23,7 +23,7 @@ import com.tap5.hotelbooking.domain.entities.User;
  * 
  * @author karesti
  */
-public class BasicSecurityRealm extends AuthorizingRealm implements SecurityRealm
+public class BasicSecurityRealm extends AuthorizingRealm
 {
 
     @Inject
