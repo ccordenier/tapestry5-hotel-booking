@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.Email;
 
 /**
@@ -37,6 +38,7 @@ public class User
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NaturalId
     @Column(nullable = false, unique = true)
     @NotNull
     @Size(min = 3, max = 15)

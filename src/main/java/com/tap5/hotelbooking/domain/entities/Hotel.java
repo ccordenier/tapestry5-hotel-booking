@@ -14,6 +14,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.NaturalId;
+
 /**
  * <p>
  * <strong>Hotel</strong> is the model/entity class that represents a hotel.
@@ -28,6 +30,8 @@ public class Hotel implements Serializable
 {
     private Long id;
 
+    @NaturalId
+    @Column(unique = true)
     private String name;
 
     private String address;
