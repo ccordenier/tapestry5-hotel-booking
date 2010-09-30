@@ -3,6 +3,7 @@
 <head>
 <title>Tapestry website - redesign</title>
 
+<link rel="stylesheet" type="text/css" href="default.css" />
 <link rel="stylesheet" type="text/css" href="reset.css" />
 <link rel="stylesheet" type="text/css" href="style.css" />
 
@@ -27,66 +28,157 @@
 
 		</div>
 
-		<div id="features">
-			<ul>
-				<li>
-					<h3>Java power</h3>
-					<div class="feature radied relief">
-						First key feature. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat imperdiet consequat. Quisque rutrum ultricies dolor nec imperdiet. Integer sem lectus, lobortis in cursus sed, consequat vitae turpis.
-					</div>
-				</li>
-				<li>
-					<h3>Script ease</h3>
-					<div class="feature radied relief">
-						Second key feature. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat imperdiet consequat. Quisque rutrum ultricies dolor nec imperdiet. Integer sem lectus, lobortis in cursus sed, consequat vitae turpis.
-					</div>
-				</li>
-				<li>
-					<h3>Highly Productive</h3>
-					<div class="feature radied relief">
-						Lastest key feature. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat imperdiet consequat. Quisque rutrum ultricies dolor nec imperdiet. Integer sem lectus, lobortis in cursus sed, consequat vitae turpis.
-					</div>
-				</li>
-			</ul>
-
-			<div class="clearer"></div>
-		</div>
-		
 		<div id="bar">
 			<strong>We think you will love Tapestry.</strong> Give us 20 minuts and <a href="#">follow our tutorial</a>.
 		</div>
 		
-	
 		<div class="col">
-			<h2 class="first">Tapestry 5 tweets <a href="#" class="light">follow</a></h2>
-			<ul id="tweets">
-				<li>Speak from @hlship on #Clojure from Devoxx 2K9 is the most viewed one</li>
-				<li>RT @spreadthesource : New T5 contribution! Rails like migrations</li>
-				<li>Tapestry 5.2.0 is released!</li>
-				<li>Igor D. will give a talk about "JavaServer Faces 2.0 vs. Tapestry 5" at #jazoon2010</li>
-				<li>Igor's Tapestry 5 book is now being translated in English</li>
-			</ul>
+			<h2 class="first">Tapestry Hotel Booking</h2>
 		</div>
-		
+	
 		<div id="content" class="big-col">
 
+			<h2>Create your account</h2>
 			
-			<h2 class="first">Tapestry in details</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat, fringilla quis pharetra a, suscipit et mauris. Donec dignissim, mi ac dignissim mollis, enim nibh dictum dui, ut ultrices ligula velit eget ante. Aliquam pharetra ultricies dui, at tempor neque mattis fermentum. Suspendisse pretium elit a nunc ultricies viverra. Etiam euismod euismod justo bibendum porttitor. Duis pulvinar laoreet mauris, nec dapibus augue tristique sit amet. Mauris tincidunt massa eu lacus ultricies a luctus dui sagittis. Integer sit amet quam vel justo ullamcorper sollicitudin. Quisque eget nunc sit amet tellus pharetra varius vel id purus. Aliquam ultricies adipiscing luctus. Integer ultrices luctus mi, sed rutrum lacus eleifend id. Aliquam erat volutpat. Maecenas rutrum augue eros.
-			</p>
-			
-			<h2>Who uses it?</h2>
-			<ul id="references">
-				<li><img src="thumbs/wooki.png" class="" />
-					<a href="#">Wooki</a> : Opensource collaboration app</li>
-				<li><img src="thumbs/seesaw.png" class="" />
-					<a href="#">Seesaw</a> : Video streaming</li>
-				<li><img src="thumbs/wooki.png" class="" />
-					<a href="#">Wooki</a> : Opensource collaboration app</li>
-				<li><img src="thumbs/seesaw.png" class="" />
-					<a href="#">Seesaw</a> : Video streaming</li>
-			</ul>
-			<div class="clearer"></div>			
+			<form class="full-form">
+				<table>
+					<tr>
+						<th>
+							<label>Username</label>
+						</th>
+						<td><input type="text" id="field1" /></td>
+					</tr>
+					<tr>
+						<th><label>Fullname</label></th>
+						<td><input type="text" id="field2" /></td>
+					</tr>
+					<tr>
+						<th>
+							<label>Password</label>
+						</th>
+						<td><input type="password" id="field3" /></td>
+					</tr>
+					<tr>
+						<th><label>Email</label></th>
+						<td><input type="text" id="field4" /></td>
+					</tr>
+				</table>
+				<div class="form-submit">
+					<input type="submit" class="btn-active" value="signup" /> or <a href="#">cancel</a>
+				</div>
+			</form>
+				
+			<div id="result" class="section result t-zone">
+				<div id="grid">
+				<div class="t-data-grid">
+				<div class="t-data-grid-pager"><span class="current">1</span><a
+					href="#" title="Go to page 2" id="pager">2</a><a href="#"
+					title="Go to page 3" id="pager_0">3</a></div>
+				<table class="t-data-grid">
+					<thead>
+						<tr>
+							<th class="name t-first"><a
+								href="./search.grid.columns:sort/name/grid"
+								onclick="javascript:return Tapestry.waitForPage(event);" id="sort">Name</a><a
+								href="./search.grid.columns:sort/name/grid"
+								onclick="javascript:return Tapestry.waitForPage(event);" id="sort2"><img
+								src="/tapestry5-hotel-booking/assets/1.0-SNAPSHOT/core/components/sortable.png"
+								class="t-sort-icon" alt="[Sortable]" /></a></th>
+							<th class="address"><a
+								href="./search.grid.columns:sort/address/grid"
+								onclick="javascript:return Tapestry.waitForPage(event);" id="sort_0">Address</a><a
+								href="./search.grid.columns:sort/address/grid"
+								onclick="javascript:return Tapestry.waitForPage(event);"
+								id="sort2_0"><img
+								src="/tapestry5-hotel-booking/assets/1.0-SNAPSHOT/core/components/sortable.png"
+								class="t-sort-icon" alt="[Sortable]" /></a></th>
+							<th class="zip"><a href="./search.grid.columns:sort/zip/grid"
+								onclick="javascript:return Tapestry.waitForPage(event);" id="sort_1">Zip</a><a
+								href="./search.grid.columns:sort/zip/grid"
+								onclick="javascript:return Tapestry.waitForPage(event);"
+								id="sort2_1"><img
+								src="/tapestry5-hotel-booking/assets/1.0-SNAPSHOT/core/components/sortable.png"
+								class="t-sort-icon" alt="[Sortable]" /></a></th>
+							<th class="cityState">City State</th>
+							<th class="action t-last">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="t-first">
+							<td class="name">Marriott Courtyard</td>
+							<td class="address">Tower Place, Buckhead</td>
+							<td class="zip">30305</td>
+							<td class="cityState">Atlanta, GA</td>
+							<td class="action"><a href="#">Details</a></td>
+						</tr>
+						<tr>
+							<td class="name">Doubletree Atlanta-Buckhead</td>
+							<td class="address">3342 Peachtree Road NE</td>
+							<td class="zip">30326</td>
+							<td class="cityState">Atlanta, GA</td>
+							<td class="action"><a href="#">Details</a></td>
+						</tr>
+						<tr>
+							<td class="name">W New York - Union Square</td>
+							<td class="address">201 Park Avenue South</td>
+							<td class="zip">10003</td>
+							<td class="cityState">New York, NY</td>
+							<td class="action"><a href="#">Details</a></td>
+						</tr>
+						<tr>
+							<td class="name">W New York</td>
+							<td class="address">541 Lexington Avenue</td>
+							<td class="zip">10022</td>
+							<td class="cityState">New York, NY</td>
+							<td class="action"><a href="#">Details</a></td>
+						</tr>
+						<tr>
+							<td class="name">Hotel Rouge</td>
+							<td class="address">1315 16th Street NW</td>
+							<td class="zip">20036</td>
+							<td class="cityState">Washington, DC</td>
+							<td class="action"><a href="#">Details</a></td>
+						</tr>
+						<tr>
+							<td class="name">70 Park Avenue Hotel</td>
+							<td class="address">70 Park Avenue, 38th St</td>
+							<td class="zip">10016</td>
+							<td class="cityState">New York, NY</td>
+							<td class="action"><a href="#">Details</a></td>
+						</tr>
+						<tr>
+							<td class="name">Parc 55</td>
+							<td class="address">55 Cyril Magnin Street</td>
+							<td class="zip">94102</td>
+							<td class="cityState">San Francisco, CA</td>
+							<td class="action"><a href="#">Details</a></td>
+						</tr>
+						<tr>
+							<td class="name">Conrad Miami</td>
+							<td class="address">1395 Brickell Ave</td>
+							<td class="zip">33131</td>
+							<td class="cityState">Miami, FL</td>
+							<td class="action"><a href="#">Details</a></td>
+						</tr>
+						<tr>
+							<td class="name">Grand Hyatt</td>
+							<td class="address">345 Stockton Street</td>
+							<td class="zip">94108</td>
+							<td class="cityState">San Francisco, CA</td>
+							<td class="action"><a href="#">Details</a></td>
+						</tr>
+						<tr class="t-last">
+							<td class="name">Super 8 Eau Claire Campus Area</td>
+							<td class="address">1151 W MacArthur Ave</td>
+							<td class="zip">54701</td>
+							<td class="cityState">Eau Claire, WI</td>
+							<td class="action"><a href="#">Details</a></td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+				</div>
+			</div>
 
 		</div>		
 		

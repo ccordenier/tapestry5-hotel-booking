@@ -14,7 +14,9 @@
 	</form>
 
 	<div t:type="zone" t:id="result" id="result" class="section result">
-		<table t:type="grid" t:source="source" t:inPlace="true" t:rowsPerPage="criteria.rowsPerPage">
+		<table t:type="grid" t:source="source" t:inPlace="true" t:rowsPerPage="criteria.rowsPerPage" t:include="name,address,zip" t:add="cityState,action" t:row="currentHotel">
+			<p:actionCell><a href="#">Details</a></p:actionCell>
+			<p:cityStateCell>${currentHotel.city}, ${currentHotel.state}</p:cityStateCell>
 		</table>
 	</div>
 

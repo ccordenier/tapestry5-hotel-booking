@@ -85,3 +85,21 @@ p { margin-bottom:10px; line-height:1.3em; }
 #toc ul a { color:#333333; }
 #toc ul { list-style: circle; margin-left:10px; padding-left:10px; }
 #breadcrumb {}
+
+/* forms */
+.form-footer { background:#C9BB9B;  border:0px; border-top:1px solid #6E6D65; padding:10px; color:#6E6D65; text-align:center; margin:0px -10px -10px -10px; border-bottom-left-radius: 10px; -moz-border-radius-bottomleft: 10px; -webkit-border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; -moz-border-radius-bottomright: 10px; -webkit-border-bottom-right-radius: 10px; }
+
+.full-form, .small-form { padding:10px 0px;}
+.full-form table th, .full-form table td { padding: 5px 5px;}
+.full-form table th { width: 180px; text-align:right; font-weight:normal; color: #6E6D65; }
+.full-form table th h3 { text-align:left;}
+.full-form table label {  display:block; color: #2F2F32; font-size:18px;}
+.full-form input { font-size:18px;  }
+.full-form table td input { width:250px; }
+.full-form .form-submit {text-align:center; padding:10px 0px}
+
+.small-form label { display:block; color: #2F2F32;}
+.small-form table { width:100%;  }
+.small-form td { padding: 5px 10px 5px 0px; }
+.small-form table tr td input { width:100%; margin-right:-10px;}
+.small-form table tr td textarea { width:100%; margin-right:-10px;}

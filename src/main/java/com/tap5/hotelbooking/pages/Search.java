@@ -36,6 +36,9 @@ public class Search
 
     @Property
     private GridDataSource source;
+    
+    @Property
+    private Hotel currentHotel;
 
     /**
      * This datasource is used by Tapestry 5 Grid to search and paginate
