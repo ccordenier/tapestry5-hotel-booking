@@ -17,13 +17,13 @@ public class SearchCriteria implements Serializable
 
     private static final char HUMAN_WILDCARD_CHAR = '*';
 
-    private String query = "";
+    private String query = null;
 
     private int rowsPerPage = 10;
     
     public String getSearchPattern()
     {
-        if (query == null || query.length() == 0) { return SQL_WILDCARD_STR; }
+        if (query == null || query.length() == 0) { return null; }
 
         StringBuilder pattern = new StringBuilder();
         pattern.append(query.toLowerCase().replace(HUMAN_WILDCARD_CHAR, SQL_WILDCARD_CHAR)

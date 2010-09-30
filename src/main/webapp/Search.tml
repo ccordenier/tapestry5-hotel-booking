@@ -4,19 +4,34 @@
       xmlns:p="tapestry:parameter">
         <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
-	<form t:type="form" t:zone="result">
-		<fieldset>
-			<label t:type="label" t:for="query">Search</label>
-			<input type="text" t:type="textfield" t:id="query" t:value="criteria.query" />
-			<label t:type="label" t:for="rowsPerPage">Results</label>
-			<select t:type="select" t:id="rowsPerPage" t:value="criteria.rowsPerPage" t:model="literal:5,10,15"></select>
-		</fieldset>
+	<h2>Search an Hotel</h2>
+			
+	<form class="full-form" t:type="form" t:zone="result" t:id="searchForm">
+		<table>
+			<tr>
+				<th>
+					<label t:type="label" t:for="query">Search</label>
+				</th>
+				<td><input type="text" t:type="textfield" t:id="query" t:value="criteria.query" /></td>
+			</tr>
+			<tr>
+				<th><label t:type="label" t:for="rowsPerPage">Results</label></th>
+				<td><select t:type="select" t:id="rowsPerPage" t:value="criteria.rowsPerPage" t:model="literal:5,10,15"></select></td>
+			</tr>
+		</table>
+		<div class="form-submit">
+			<input type="submit" class="btn-active" value="Search" /> or <a href="#">cancel</a>
+			<span t:type="ajaxloader" t:trigger="searchForm" t:zone="result"/>
+		</div>
 	</form>
 
 	<div t:type="zone" t:id="result" id="result" class="section result">
 		<table t:type="grid" t:source="source" t:inPlace="true" t:rowsPerPage="criteria.rowsPerPage" t:include="name,address,zip" t:add="cityState,action" t:row="currentHotel">
 			<p:actionCell><a href="#">Details</a></p:actionCell>
 			<p:cityStateCell>${currentHotel.city}, ${currentHotel.state}</p:cityStateCell>
+			<p:empty>
+				<p class="empty-result">${message:no-result}</p>
+			</p:empty>
 		</table>
 	</div>
 

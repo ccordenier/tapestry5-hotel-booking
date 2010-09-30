@@ -36,7 +36,7 @@ public class Search
 
     @Property
     private GridDataSource source;
-    
+
     @Property
     private Hotel currentHotel;
 
@@ -62,7 +62,10 @@ public class Search
     @OnEvent(value = EventConstants.ACTIVATE)
     void prepareDataSource()
     {
-        source = new HotelDataSource(session, Hotel.class);
+        if (criteria.getSearchPattern() != null)
+        {
+            source = new HotelDataSource(session, Hotel.class);
+        }
     }
 
     /**

@@ -93,13 +93,78 @@ p { margin-bottom:10px; line-height:1.3em; }
 .full-form table th, .full-form table td { padding: 5px 5px;}
 .full-form table th { width: 180px; text-align:right; font-weight:normal; color: #6E6D65; }
 .full-form table th h3 { text-align:left;}
-.full-form table label {  display:block; color: #2F2F32; font-size:18px;}
-.full-form input { font-size:18px;  }
+.full-form table label {  display:block; color: #2F2F32; font-size:16px;}
+.full-form input { font-size:16px;  }
 .full-form table td input { width:250px; }
 .full-form .form-submit {text-align:center; padding:10px 0px}
 
-.small-form label { display:block; color: #2F2F32;}
-.small-form table { width:100%;  }
-.small-form td { padding: 5px 10px 5px 0px; }
-.small-form table tr td input { width:100%; margin-right:-10px;}
-.small-form table tr td textarea { width:100%; margin-right:-10px;}
+/* Ajax loading features */
+.loading {
+    display: inline;
+    width: auto;
+    font-weight: bold;
+    padding-right: 20px;
+    background: transparent url(ajax-loader.gif) no-repeat right top;
+}
+
+/* Tapestry overrides */
+TABLE.t-data-grid THEAD TR {
+    color: white;
+    background-color: #569D2F;
+}
+
+TABLE.t-data-grid THEAD TR TH {
+    padding: 3px;
+    white-space: nowrap;
+    border: none;
+}
+
+TABLE.t-data-grid TH a {
+	text-decoration: none;
+}
+
+
+TABLE.t-data-grid {
+	border: none;
+}
+
+TABLE.t-data-grid TBODY TR TD {
+	border: none;
+	border-top: solid 1px;
+    padding: 5px;
+}
+
+DIV.t-data-grid {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+DIV.t-data-grid-pager {
+    margin: 8px 0px;
+}
+
+DIV.t-data-grid-pager A, DIV.t-data-grid-pager SPAN.current {
+    text-decoration: none;
+    color: black;
+    padding: 2px 5px;
+    font-size: medium;
+    border: 1px solid silver;
+    margin-right: 5px;
+}
+
+DIV.t-data-grid-pager A:hover {
+    border: none;
+}
+
+DIV.t-data-grid-pager SPAN.current {
+    color: white;
+    background-color: #569D2F;
+}
+
+TABLE.t-data-grid TR TH A {
+    color: white;
+}
+
+IMG.t-sort-icon {
+	background-color: #569D2F;
+    margin-left: 4px;
+}
