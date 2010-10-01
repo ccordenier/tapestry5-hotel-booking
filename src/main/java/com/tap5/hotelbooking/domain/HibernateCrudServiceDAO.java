@@ -72,4 +72,24 @@ public class HibernateCrudServiceDAO implements CrudServiceDAO
         }
         return query.list();
     }
+
+    @SuppressWarnings("unchecked")
+    public <T> T findUniqueWithNamedQuery(String queryName)
+    {
+        return (T) session.getNamedQuery(queryName).uniqueResult();
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> T findUniqueWithNamedQuery(String queryName, Map<String, Object> params)
+    {
+        Set<Entry<String, Object>> rawParameters = params.entrySet();
+        Query query = session.getNamedQuery(queryName);
+
+        for (Entry<String, Object> entry : rawParameters)
+        {
+            query.setParameter(entry.getKey(), entry.getValue());
+
+        }
+        return (T) query.uniqueResult();
+    }
 }

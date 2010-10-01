@@ -1,7 +1,5 @@
 package com.tap5.hotelbooking.security;
 
-import java.util.List;
-
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -44,20 +42,19 @@ public class BasicSecurityRealm extends AuthorizingRealm
     {
 
         UsernamePasswordToken userToken = (UsernamePasswordToken) token;
-        List<User> users = crudService.findWithNamedQuery(
+        User user = crudService.findUniqueWithNamedQuery(
                 User.BY_CREDENTIALS,
                 QueryParameters.with("username", userToken.getUsername())
                         .and("password", String.copyValueOf(userToken.getPassword())).parameters());
 
         AuthenticationInfo authInfo = null;
 
-        if (users.isEmpty())
+        if (user == null)
         {
             throw new AuthenticationException("The user doesn't exist");
         }
         else
         {
-            User user = users.iterator().next();
             authInfo = new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), "basic");
         }
 
