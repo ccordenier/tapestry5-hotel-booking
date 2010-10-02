@@ -4,18 +4,6 @@
       xmlns:p="tapestry:parameter">
         <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
-    <p:sidebar>
-
-        <p>
-            Just to prove this is live:
-        </p>
-
-        <p>The current time is: ${currentTime}.</p>
-
-
-        <p>
-            [<t:pagelink page="Index">refresh</t:pagelink>]
-        </p>
-    </p:sidebar>
+    
 
 </html>
