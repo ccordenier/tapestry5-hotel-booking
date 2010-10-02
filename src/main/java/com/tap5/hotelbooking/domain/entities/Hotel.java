@@ -28,6 +28,11 @@ import org.hibernate.annotations.NaturalId;
 @Table(name = "hotel")
 public class Hotel implements Serializable
 {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -9200804524025548138L;
+
     private Long id;
 
     @NaturalId
