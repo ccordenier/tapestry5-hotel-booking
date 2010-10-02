@@ -34,9 +34,11 @@ public class Search
     @Property
     private SearchCriteria criteria;
 
+    @SuppressWarnings("unused")
     @Property
     private GridDataSource source;
 
+    @SuppressWarnings("unused")
     @Property
     private Hotel currentHotel;
 
@@ -47,7 +49,7 @@ public class Search
      */
     private final class HotelDataSource extends HibernateGridDataSource
     {
-        private HotelDataSource(Session session, Class entityType)
+        private HotelDataSource(Session session, @SuppressWarnings("rawtypes") Class entityType)
         {
             super(session, entityType);
         }
