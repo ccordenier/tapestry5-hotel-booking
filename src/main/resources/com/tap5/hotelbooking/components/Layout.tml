@@ -6,9 +6,17 @@
 <body id="homepage">
 	<div class="wrapper bs">
 		<ul class="nav">
-			<li t:type="loop" t:source="pageNames" t:value="pageName" class="prop:classForPageName">
-				<a href="#" t:type="pagelink" t:page="prop:pageName">${pageName}</a>
-			</li>  
+			<t:security.authenticated>
+				<li>
+					<a href="#" t:type="pageLink" t:page="Search">Search</a>
+				</li>
+				<li>
+					<a href="#" t:type="pageLink" t:page="Settings">Settings</a>
+				</li>
+				<li>
+					<a href="#" t:type="actionlink" t:id="logout">Log out</a>
+				</li>
+			</t:security.authenticated>
 		</ul>
 
 		<div id="top">
