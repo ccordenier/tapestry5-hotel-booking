@@ -6,25 +6,34 @@
 
 
 <fieldset id ="login">
-	<form t:id="loginForm" >
+	<form class="full-form" t:id="loginForm">
 		<t:errors/>
-		<p class="clearfix">
-			<t:label for="username">login:</t:label>
-			<t:textfield t:id="username" validate="required, minlength=3, maxlength=10"/>			
-		</p>
+		<table>
+			<tr>
+				<th>
+					<label t:type="label" t:for="username">username:</label>
+				</th>
+				<td>
+					<input t:type="textfield" t:id="username" t:validate="username"/>
+				</td>	
+			</tr>
+			<tr>
+				<th><label t:type="label" t:for="password">password:</label></th>
+				<td><input type="password" t:type="passwordfield" t:id="password" t:validate="password"/></td>
+			</tr>
+			<tr>
+				<th><input type="checkbox" t:type="checkbox" t:id="rememberMe" /></th>
+				<td>
+					<label t:type="label" t:for="rememberMe">Remember Me</label>
+				</td>
+			</tr>
+		</table>
 		
-		<p class="clearfix">
-			<t:label for="password">password:</t:label>
-			<t:passwordfield t:id="password" validate="password"/>
-		</p>
-		
-		<p class="clearfix check">
-			<t:checkbox t:id="rememberMe" />
-			<t:label for="rememberMe">Remember Me</t:label>
+		<div class="form-submit">
 			<input type="submit" value="Login" />
-		</p>
+		</div>
 		
-		<p class="member">Not a member yet? <t:pagelink page="SignUp">Register now!</t:pagelink></p>
+		<div class="member">Not a member yet? <t:pagelink page="SignUp">Register now!</t:pagelink></div>
 	 
 	</form>
 </fieldset>

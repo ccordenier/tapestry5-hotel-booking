@@ -121,20 +121,20 @@ public class HotelBookingModule
     @Contribute(ValidatorMacro.class)
     public static void combineValidators(MappedConfiguration<String, String> configuration)
     {
-        configuration.add("password", "required,minlength=6,maxlength=12");
+        configuration.add("username", "required, minlength=3, maxlength=15");
+        configuration.add("password", "required, minlength=6, maxlength=12");
     }
 
     public static void contributeWebSecurityManager(Configuration<Realm> configuration,
             @Inject AuthorizingRealm realm)
     {
-
         configuration.add(realm);
     }
 
     public static void contributeSecurityRequestFilter(
             OrderedConfiguration<FilterChainDefinition> configuration)
     {
-
+        // configuration.add("assets-anon", new FilterChainDefinition("/**/assets**", "anon"));
         configuration.add("index-anon", new FilterChainDefinition("/index**", "anon"));
         configuration.add("signup-anon", new FilterChainDefinition("/signup**", "anon"));
         configuration.add("signin-anon", new FilterChainDefinition("/signin**", "anon"));

@@ -1,19 +1,16 @@
 package com.tap5.hotelbooking.pages;
 
-import java.io.IOException;
-
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.apache.shiro.web.util.SavedRequest;
-import org.apache.shiro.web.util.WebUtils;
+import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Log;
+import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.apache.tapestry5.services.RequestGlobals;
-import org.apache.tapestry5.services.Response;
 import org.tynamo.security.services.PageService;
 import org.tynamo.security.services.SecurityService;
 
@@ -26,6 +23,7 @@ public class Signin
 {
 
     @Property
+    @Persist(PersistenceConstants.FLASH)
     private String username;
 
     @Property
@@ -33,12 +31,6 @@ public class Signin
 
     @Property
     private boolean rememberMe;
-
-    @Inject
-    private Response response;
-
-    @Inject
-    private RequestGlobals requestGlobals;
 
     @Inject
     private SecurityService securityService;
@@ -49,46 +41,31 @@ public class Signin
     @Component
     private Form loginForm;
 
+    @Inject
+    private Messages messages;
+
     @Log
-    public Object onActionFromLoginForm()
+    public Object onSubmitFromLoginForm()
     {
-
-        Subject currentUser = securityService.getSubject();
-
-        if (currentUser == null) { throw new IllegalStateException("Subject can`t be null"); }
-
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-        token.setRememberMe(rememberMe);
-
         try
         {
+            Subject currentUser = securityService.getSubject();
+
+            if (currentUser == null) { throw new IllegalStateException("Subject can`t be null"); }
+
+            UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+
+            token.setRememberMe(rememberMe);
+
             currentUser.login(token);
+
         }
-        catch (AuthenticationException e)
+        catch (AuthenticationException ex)
         {
-            loginForm.recordError("Authentication Error");
+            loginForm.recordError(messages.get("error.login"));
             return null;
         }
 
-        SavedRequest savedRequest = WebUtils.getAndClearSavedRequest(requestGlobals
-                .getHTTPServletRequest());
-
-        if (savedRequest != null && savedRequest.getMethod().equalsIgnoreCase("GET"))
-        {
-            try
-            {
-                response.sendRedirect(savedRequest.getRequestUrl());
-                return null;
-            }
-            catch (IOException e)
-            {
-                return pageService.getSuccessPage();
-            }
-        }
-        else
-        {
-            return pageService.getSuccessPage();
-        }
-
+        return pageService.getSuccessPage();
     }
 }
