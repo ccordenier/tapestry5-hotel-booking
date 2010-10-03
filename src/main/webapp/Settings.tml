@@ -1,0 +1,7 @@
+<html t:type="layout" title="Contact com.tap5.hotelbooking"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <p>Settings com.tap5.hotelbooking ...</p>
+
+</html>
