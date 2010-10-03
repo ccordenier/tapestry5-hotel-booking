@@ -134,7 +134,7 @@ public class HotelBookingModule
     public static void contributeSecurityRequestFilter(
             OrderedConfiguration<FilterChainDefinition> configuration)
     {
-        // configuration.add("assets-anon", new FilterChainDefinition("/**/assets**", "anon"));
+        configuration.add("assets-anon", new FilterChainDefinition("/assets**", "anon"));
         configuration.add("index-anon", new FilterChainDefinition("/index**", "anon"));
         configuration.add("signup-anon", new FilterChainDefinition("/signup**", "anon"));
         configuration.add("signin-anon", new FilterChainDefinition("/signin**", "anon"));
