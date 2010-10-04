@@ -6,7 +6,7 @@
 
 	<h2>Search an Hotel</h2>
 			
-	<form class="full-form" t:type="form" t:zone="result" t:id="searchForm">
+	<form class="full-form" t:type="form" t:id="searchForm">
 		<table>
 			<tr>
 				<th>
@@ -16,7 +16,7 @@
 			</tr>
 			<tr>
 				<th><label t:type="label" t:for="rowsPerPage">Results</label></th>
-				<td><select t:type="select" t:id="rowsPerPage" t:value="criteria.rowsPerPage" t:model="literal:5,10,15"></select></td>
+				<td><select t:type="select" t:id="rowsPerPage" t:value="criteria.rowsPerPage" t:model="literal:5,10,15,20"></select></td>
 			</tr>
 		</table>
 		<div class="form-submit">
@@ -27,7 +27,7 @@
 
 	<div t:type="zone" t:id="result" id="result" class="section result">
 		<table t:type="grid" t:source="source" t:inPlace="true" t:rowsPerPage="criteria.rowsPerPage" t:include="name,address,zip" t:add="cityState,action" t:row="currentHotel">
-			<p:actionCell><a href="#">Details</a></p:actionCell>
+			<p:actionCell><a href="#" t:type="pagelink" t:context="currentHotel" t:page="view">Details</a></p:actionCell>
 			<p:cityStateCell>${currentHotel.city}, ${currentHotel.state}</p:cityStateCell>
 			<p:empty>
 				<p class="empty-result">${message:no-result}</p>
