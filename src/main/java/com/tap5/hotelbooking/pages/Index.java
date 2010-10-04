@@ -4,6 +4,8 @@ import org.apache.shiro.subject.Subject;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.tynamo.security.services.SecurityService;
 
+import com.tap5.hotelbooking.pages.booking.Search;
+
 /**
  * Start page of application tapestry5-hotel-booking.
  */

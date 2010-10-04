@@ -44,7 +44,7 @@ public class HotelBookingModule
     {
 
         configuration.override(SecuritySymbols.LOGIN_URL, "/signin");
-        configuration.override(SecuritySymbols.SUCCESS_URL, "/search");
+        configuration.override(SecuritySymbols.SUCCESS_URL, "/booking/search");
         configuration.override(SecuritySymbols.DEFAULTSIGNINPAGE, "/signin");
         configuration.override(SecuritySymbols.SHOULD_LOAD_INI_FROM_CONFIG_PATH, "false");
     }
@@ -134,10 +134,8 @@ public class HotelBookingModule
     public static void contributeSecurityRequestFilter(
             OrderedConfiguration<FilterChainDefinition> configuration)
     {
-        configuration.add("assets-anon", new FilterChainDefinition("/assets**", "anon"));
-        configuration.add("index-anon", new FilterChainDefinition("/index**", "anon"));
-        configuration.add("signup-anon", new FilterChainDefinition("/signup**", "anon"));
-        configuration.add("signin-anon", new FilterChainDefinition("/signin**", "anon"));
-        configuration.add("user-booking", new FilterChainDefinition("/**", "authc"));
+        configuration.add("user-admin", new FilterChainDefinition("/user/**", "authc"));
+        configuration.add("booking-hotel", new FilterChainDefinition("/booking/**", "authc"));
+        configuration.add("hotelbooking", new FilterChainDefinition("/**", "anon"));
     }
 }
