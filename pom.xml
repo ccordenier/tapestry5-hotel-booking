@@ -13,19 +13,19 @@
 			<artifactId>tapestry-core</artifactId>
 			<version>${tapestry-release-version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.tynamo</groupId>
 			<artifactId>tapestry-security</artifactId>
-			<version>0.2.1-SNAPSHOT</version>	
+			<version>0.2.1-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.tynamo</groupId>
 			<artifactId>tapestry-hibernate-seedentity</artifactId>
 			<version>0.1.0</version>
 		</dependency>
-	
+
 		<!--
 			A dependency on either JUnit or TestNG is required, or the surefire
 			plugin (which runs the tests) will fail, preventing Maven from
@@ -75,15 +75,15 @@
 		<!--
 			tapestry-test will conflict with RunJettyRun inside Eclipse.
 			tapestry-test brings in Selenium, which is based on Jetty 5.1;
-			RunJettyRun uses Jetty 6. 
-		-->	
+			RunJettyRun uses Jetty 6.
+		-->
 		<dependency>
 			<groupId>org.apache.tapestry</groupId>
 			<artifactId>tapestry-test</artifactId>
-			<version>${tapestry-release-version}</version> 
+			<version>${tapestry-release-version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 
 		<!--
 			Provided by the servlet container, but sometimes referenced in the
@@ -95,15 +95,15 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- 
 			Tapx Core : include kaptcha component
 		-->
-	    <dependency>
-	      <groupId>com.howardlewisship</groupId>
-	      <artifactId>tapx-core</artifactId>
-	      <version>${tapx-release-version}</version>
-	    </dependency>
+		<dependency>
+			<groupId>com.howardlewisship</groupId>
+			<artifactId>tapx-core</artifactId>
+			<version>${tapx-release-version}</version>
+		</dependency>
 
 	</dependencies>
 	<build>
@@ -168,7 +168,11 @@
 			<url>http://ci.repository.codehaus.org</url>
 		</repository>
 		<repository>
-			<id>formos.tapx.snapshots</id>
+			<id>tapestry360-stable</id>
+			<url>http://tapestry.formos.com/maven-repository</url>
+		</repository>
+		<repository>
+			<id>tapestry360-snapshot</id>
 			<url>http://tapestry.formos.com/maven-snapshot-repository</url>
 		</repository>
 	</repositories>

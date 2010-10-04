@@ -11,6 +11,7 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.tynamo.security.services.SecurityService;
 
+import com.tap5.hotelbooking.domain.entities.User;
 import com.tap5.hotelbooking.pages.Index;
 
 /**
@@ -54,6 +55,15 @@ public class Layout
     public String getClassForPageName()
     {
         return resources.getPageName().equalsIgnoreCase(pageName) ? "current_page_item" : null;
+    }
+
+    public User getUser()
+    {
+        Subject subject = securityService.getSubject();
+
+        // subject.getPrincipal();
+
+        return null;
     }
 
     @Log

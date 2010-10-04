@@ -8,10 +8,13 @@
 		<ul class="nav">
 			<t:security.authenticated>
 				<li>
-					<a href="#" t:type="pageLink" t:page="Search">Search</a>
+					Welcome ${user?.fullname}
 				</li>
 				<li>
-					<a href="#" t:type="pageLink" t:page="Settings">Settings</a>
+					<a href="#" t:type="pageLink" t:page="booking/search">Search</a>
+				</li>
+				<li>
+					<a href="#" t:type="pageLink" t:page="user/settings">Settings</a>
 				</li>
 				<li>
 					<a href="#" t:type="actionlink" t:id="logout">Log out</a>
