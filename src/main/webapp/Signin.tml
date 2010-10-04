@@ -1,12 +1,9 @@
-<html t:type="layout" title="Tapestry5-hotel-booking Sign In"
-      t:sidebarTitle="Current Time"
+<html t:type="layout" t:title="Tapestry5-hotel-booking Sign In"
       t:pageTitle="Members login"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
       xmlns:p="tapestry:parameter">
 
-
-<fieldset id ="login">
-	<form class="full-form" t:id="loginForm">
+	<form t:type="form" class="full-form" t:id="loginForm">
 		<t:errors/>
 		<table>
 			<tr>
@@ -36,6 +33,5 @@
 		<div class="member">Not a member yet? <t:pagelink page="SignUp">Register now!</t:pagelink></div>
 	 
 	</form>
-</fieldset>
   
 </html>

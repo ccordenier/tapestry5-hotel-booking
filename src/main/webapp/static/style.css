@@ -25,7 +25,7 @@ p { margin-bottom:10px; line-height:1.3em; }
 .wrapper { width: 1000px; margin: 0 auto; padding:0px 0px; border-left:1px solid #cccccc; border-right:1px solid #cccccc; }
 .clearer { clear:both; }
 
-.nav { list-style: none; margin: 0 auto; text-align:center; height:30px; background:#1B181C url('top-bg.png') repeat-x top right; border-bottom:1px solid #999999;}
+.nav { list-style: none; margin: 0 auto; padding-right:5px; text-align:right; height:30px; background:#1B181C url('top-bg.png') repeat-x top right; border-bottom:1px solid #999999;}
 .nav li { display:inline; padding:0px 5px; margin:0px; white-space: nowrap; border-right: 1px solid #ccc;  line-height:30px; }
 .nav li.last { border-right:0px;  }
 .nav a { color: #ffffff; text-decoration: none;}

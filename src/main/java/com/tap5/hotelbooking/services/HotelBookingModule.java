@@ -3,6 +3,7 @@ package com.tap5.hotelbooking.services;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.realm.Realm;
 import org.apache.tapestry5.SymbolConstants;
+import org.apache.tapestry5.internal.services.RequestConstants;
 import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
@@ -36,7 +37,7 @@ public class HotelBookingModule
     {
 
         configuration.override(SecuritySymbols.LOGIN_URL, "/signin");
-        configuration.override(SecuritySymbols.SUCCESS_URL, "/booking/search");
+        configuration.override(SecuritySymbols.SUCCESS_URL, "/search");
         configuration.override(SecuritySymbols.DEFAULTSIGNINPAGE, "/signin");
         configuration.override(SecuritySymbols.SHOULD_LOAD_INI_FROM_CONFIG_PATH, "false");
     }
@@ -66,8 +67,10 @@ public class HotelBookingModule
     public static void contributeSecurityRequestFilter(
             OrderedConfiguration<FilterChainDefinition> configuration)
     {
-        configuration.add("user-admin", new FilterChainDefinition("/user/**", "authc"));
-        configuration.add("booking-hotel", new FilterChainDefinition("/booking/**", "authc"));
-        configuration.add("hotel-anon", new FilterChainDefinition("/**", "anon"));
+        configuration.add("assets", new FilterChainDefinition(RequestConstants.ASSET_PATH_PREFIX
+                + "**", "anon"));
+        configuration.add("signin", new FilterChainDefinition("/signin**", "anon"), "after:assets");
+        configuration.add("signup", new FilterChainDefinition("/signup**", "anon"), "after:signin");
+        configuration.add("secured", new FilterChainDefinition("/**", "authc"), "after:signup");
     }
 }

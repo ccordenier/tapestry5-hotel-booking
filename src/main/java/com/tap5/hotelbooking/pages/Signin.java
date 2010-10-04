@@ -51,7 +51,7 @@ public class Signin
         {
             Subject currentUser = securityService.getSubject();
 
-            if (currentUser == null) { throw new IllegalStateException("Subject can`t be null"); }
+            if (currentUser == null) { throw new IllegalStateException("Subject can't be null"); }
 
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 
