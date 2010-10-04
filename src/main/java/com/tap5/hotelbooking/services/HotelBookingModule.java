@@ -68,6 +68,6 @@ public class HotelBookingModule
     {
         configuration.add("user-admin", new FilterChainDefinition("/user/**", "authc"));
         configuration.add("booking-hotel", new FilterChainDefinition("/booking/**", "authc"));
-        configuration.add("hotelbooking", new FilterChainDefinition("/**", "anon"));
+        configuration.add("hotel-anon", new FilterChainDefinition("/**", "anon"));
     }
 }
