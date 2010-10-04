@@ -24,4 +24,4 @@ Tapestry.Initializer.initAjaxLoader = function(params) {
 					$(params.loader).show();
 		});
 	}
-}
+};
