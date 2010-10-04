@@ -167,6 +167,10 @@
 			<id>codehaus.snapshots</id>
 			<url>http://ci.repository.codehaus.org</url>
 		</repository>
+		<repository>
+			<id>formos.tapx.snapshots</id>
+			<url>http://tapestry.formos.com/maven-snapshot-repository</url>
+		</repository>
 	</repositories>
 
 	<properties>
