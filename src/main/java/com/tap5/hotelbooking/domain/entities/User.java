@@ -23,12 +23,15 @@ import org.hibernate.validator.constraints.Email;
 @NamedQueries(
 {
         @NamedQuery(name = User.ALL, query = "Select u from User u"),
+        @NamedQuery(name = User.BY_USERNAME_OR_EMAIL, query = "Select u from User u where u.username = :username or u.email = :email"),
         @NamedQuery(name = User.BY_CREDENTIALS, query = "Select u from User u where u.username = :username and u.password = :password") })
 @Table(name = "users")
 public class User
 {
 
     public static final String ALL = "User.all";
+
+    public static final String BY_USERNAME_OR_EMAIL = "User.byUserNameOrEmail";
 
     public static final String BY_CREDENTIALS = "User.byCredentials";
 
@@ -55,7 +58,7 @@ public class User
     private String email;
 
     @Column(nullable = false)
-    @Size(min = 3, max = 50)
+    @Size(min = 3, max = 12)
     @NotNull
     private String password;
 
@@ -63,16 +66,17 @@ public class User
     {
     }
 
-    public User(final String name, final String username, final String email)
+    public User(final String fullname, final String username, final String email)
     {
-        this.fullname = name;
+        this.fullname = fullname;
         this.username = username;
         this.email = email;
     }
 
-    public User(final String name, final String username, final String email, final String password)
+    public User(final String fullname, final String username, final String email,
+            final String password)
     {
-        this(name, username, email);
+        this(fullname, username, email);
         this.password = password;
     }
 

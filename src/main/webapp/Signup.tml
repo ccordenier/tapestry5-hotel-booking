@@ -1,10 +1,71 @@
-<html t:type="layout" title="tapestry5-hotel-booking Index"
+<html t:type="layout" title="Tapestry5-hotel-booking Sign In"
       t:sidebarTitle="Current Time"
+      t:pageTitle="Register"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
       xmlns:p="tapestry:parameter">
-        
 
-        
-        
-        
+<fieldset id ="register">
+	<form class="full-form" t:id="registerForm" >
+		<t:errors/>
+		<table>
+			<tr>
+				<th>
+					<label t:type="label" t:for="username">User name:</label>
+				</th>
+				<td>
+					<input t:type="textfield" t:id="username"/>
+				</td>	
+			</tr>
+			<tr>
+				<th>
+					<label t:type="label" t:for="fullname">Full name:</label>
+				</th>
+				<td>
+					<input t:type="textfield" t:id="fullname"/>
+				</td>	
+			</tr>
+			<tr>
+				<th>
+					<label t:type="label" t:for="email">Email:</label>
+				</th>
+				<td>
+					<input t:type="textfield" t:id="email"/>
+				</td>	
+			</tr>
+			<tr>
+				<th>
+					<label t:type="label" t:for="password">Password:</label>
+				</th>
+				<td>
+					<input t:type="passwordField" t:id="password" t:validate="password"/>
+				</td>	
+			</tr>
+			<tr>
+				<th>
+					<label t:type="label" t:for="verifyPassword">Verify password:</label>
+				</th>
+				<td>
+					<input t:type="passwordField" t:id="verifyPassword" t:validate="password"/>
+				</td>	
+			</tr>
+			<tr>
+    			<th><label t:type="label" t:for="fcaptcha"></label></th>
+    			<td>
+    				<t:tapx.kaptchafield image="kaptcha" t:id="fcaptcha" />
+    			</td>  			
+    		</tr>
+    		<tr>
+    			<th></th>
+    			<td>
+    				<t:tapx.kaptchaimage t:id="kaptcha" style="float:left;"/>
+    			</td>  			
+    		</tr>
+		</table>
+    	
+		<div class="form-submit">
+			<input type="submit" value="Register" />
+		</div>
+		<div class="member">Already member ? <t:pagelink page="SignIn">Login now!</t:pagelink></div>
+	</form>
+</fieldset>
 </html>

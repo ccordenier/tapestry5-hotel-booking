@@ -63,4 +63,19 @@ public interface CrudServiceDAO
      * @return resulting list
      */
     <T> List<T> findWithNamedQuery(String queryName, Map<String, Object> params);
+
+    /**
+     * @param <T>
+     * @param queryName
+     * @return
+     */
+    <T> T findUniqueWithNamedQuery(String queryName);
+
+    /**
+     * @param <T>
+     * @param queryName
+     * @param params
+     * @return
+     */
+    <T> T findUniqueWithNamedQuery(String queryName, Map<String, Object> params);
 }

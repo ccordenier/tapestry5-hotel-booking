@@ -1,12 +1,17 @@
 package com.tap5.hotelbooking.components;
 
+import org.apache.shiro.subject.Subject;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.Block;
 import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.annotations.Import;
+import org.apache.tapestry5.annotations.Log;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.tynamo.security.services.SecurityService;
+
+import com.tap5.hotelbooking.pages.Index;
 
 /**
  * Layout component for pages of application tapestry5-hotel-booking.
@@ -43,14 +48,23 @@ public class Layout
     @Inject
     private ComponentResources resources;
 
+    @Inject
+    private SecurityService securityService;
+
     public String getClassForPageName()
     {
         return resources.getPageName().equalsIgnoreCase(pageName) ? "current_page_item" : null;
     }
 
-    public String[] getPageNames()
+    @Log
+    public Object onActionFromLogout()
     {
-        return new String[]
-        { "Index", "About", "Contact" };
+        Subject currentUser = securityService.getSubject();
+
+        if (currentUser == null) { throw new IllegalStateException("Subject can`t be null"); }
+
+        currentUser.logout();
+
+        return Index.class;
     }
 }
