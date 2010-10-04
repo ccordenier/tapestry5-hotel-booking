@@ -65,7 +65,7 @@
 		<div class="form-submit">
 			<input type="submit" value="Register" />
 		</div>
-		<div class="member">Already member ? <t:pagelink page="SignIn">Login now!</t:pagelink></div>
+		<div class="member">Already a member ? <t:pagelink page="SignIn">Login now!</t:pagelink></div>
 	</form>
 </fieldset>
 </html>
