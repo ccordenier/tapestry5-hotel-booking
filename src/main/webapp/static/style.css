@@ -44,10 +44,10 @@ p { margin-bottom:10px; line-height:1.3em; }
 
 #top { background: #ffffff url('bg.png') repeat-x top right; }
 #content { padding:0px 15px;  margin:0px 15px; }
-#footer { font-size:10px; color:#999999; text-align:right; padding:10px 15px;}
+#footer { font-size:12px; color:#999999; text-align: left; padding:10px 15px;}
 
 /* homepage */
-#homepage #aside { float:right; width: 280px; padding:70px 30px 0px 0px; font-family: Georgia, serif; font-size:18px; font-style:italic; line-height:1.3em;}
+#homepage #aside { float:right; width: 280px; padding:70px 30px 0px 0px; font-family: Georgia, serif; font-size:18px; font-style:italic; line-height:1.3em; vertical-align: text-top;}
 
 #homepage h2 { margin-bottom:10px; margin-top:20px;  }
 #homepage h2.first { margin-top: 0px; }
@@ -128,6 +128,7 @@ TABLE.t-data-grid TH a {
 
 TABLE.t-data-grid {
 	border: none;
+	width: 100%;
 }
 
 TABLE.t-data-grid TBODY TR TD {
@@ -218,4 +219,31 @@ INPUT.t-error, TEXTAREA.t-error, SELECT.t-error {
     border-color: #E93D00;
     font-style: italic;
     color: #E93D00;
+}
+
+DL.t-beandisplay {
+    display: block;
+    padding: 15px 15px;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 16px;
+    background: white;
+    border: none;
+    width: auto;
+    color: #2F2F32;
+}
+
+DL.t-beandisplay DT {
+    width: 250px;
+    display: inline;
+    float: left;
+    clear: left;
+    padding-right: 10px;
+    vertical-align: middle;
+    text-align: right;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+DL.t-beandisplay DT:after {
+    content: ":";
 }

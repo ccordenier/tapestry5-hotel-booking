@@ -6,7 +6,7 @@
 
 	<h2>Hotel details</h2>
 
-	<div class="hotel-details" t:type="beandisplay" t:object="hotel" t:exclude="id">
+	<div class="hotel-details" t:type="beandisplay" t:object="hotel" t:exclude="id" t:include="name,address,city,state,zip,country,stars">
 	</div>
 
 </html>

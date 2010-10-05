@@ -34,8 +34,10 @@
 		</div>
 		
 		<div class="col">
-			<h3 class="first">Why you should chose Tapestry 5 ?</h3>
-			<p></p>
+			<h3 class="first">Why you should choose Tapestry 5 ?</h3>
+			<p>
+				<t:delegate to="sidebar" />
+			</p>
 		</div>
 		
 		<div id="content" class="big-col">
@@ -47,7 +49,7 @@
 		
 		<div class="clearer"></div>
 
-		<div id="footer">&copy; 2006-2010 Apache Software Foundation</div>
+		<div id="footer">Created with Apache Tapestry 5, Hibernate 3, Tynamo Security and Tapx components</div>
 
 	</div>
 </body>
