@@ -1,3 +1,5 @@
+@IMPORT url("reset.css");
+
 /* 
 #569D2F
 #ffffff
@@ -167,4 +169,53 @@ TABLE.t-data-grid TR TH A {
 IMG.t-sort-icon {
 	background-color: #569D2F;
     margin-left: 4px;
+}
+
+DIV.t-error {
+    border: none;
+    padding: 0px;
+    margin: 10px 0px;
+}
+
+DIV.t-error DIV {
+    padding: 10px;
+    display: block;
+    margin: 0px;
+    background-color: #E93D00;
+    color: white;
+    font-weight: bold;
+}
+
+DIV.t-error UL {
+    margin: 10px 0px;
+    background-color: white;
+    color: #E93D00;
+}
+
+
+DIV.t-error-single {
+    padding: 10px;
+    display: block;
+    margin: 0px;
+    background-color: red;
+    color: white;
+}
+
+HTML>BODY DIV.t-error LI {
+    margin-left: 30px;
+}
+
+DIV.t-error LI {
+    margin-left: 30px;
+    list-style: square;
+}
+
+LABEL.t-error {
+    color: #E93D00;
+}
+
+INPUT.t-error, TEXTAREA.t-error, SELECT.t-error {
+    border-color: #E93D00;
+    font-style: italic;
+    color: #E93D00;
 }

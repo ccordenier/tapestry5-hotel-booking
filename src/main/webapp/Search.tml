@@ -6,7 +6,7 @@
 
 	<h2>Search an Hotel</h2>
 			
-	<form class="full-form" t:type="form" t:id="searchForm">
+	<form t:type="form" t:zone="result" t:id="searchForm" class="full-form" >
 		<table>
 			<tr>
 				<th>

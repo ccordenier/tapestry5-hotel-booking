@@ -21,7 +21,7 @@
 
 		<div id="top">
 
-			<h1><img src="${context:/static/tapestry.png}" alt="Tapestry" id="tapestry" /></h1>
+			<h1><img src="${context:/static/tapestry_s.png}" alt="Tapestry" id="tapestry" /></h1>
 
 			<div id="aside">Welcome to Tapestry 5 Hotel Booking demonstration application !</div>
 			

@@ -4,7 +4,6 @@
 <title>Tapestry website - redesign</title>
 
 <link rel="stylesheet" type="text/css" href="default.css" />
-<link rel="stylesheet" type="text/css" href="reset.css" />
 <link rel="stylesheet" type="text/css" href="style.css" />
 
 </head>
@@ -41,6 +40,14 @@
 			<h2>Create your account</h2>
 			
 			<form class="full-form">
+
+				<div class="t-error">
+					<div>You must correct the following errors before you may continue.</div>
+					<ul>
+						<li>Wrong username and password combination</li>
+					</ul>
+				</div>
+
 				<table>
 					<tr>
 						<th>
@@ -181,6 +188,8 @@
 			</div>
 
 		</div>		
+		
+		
 		
 		<div class="clearer"></div>
 		<div id="footer">&copy; 2006-2010 Apache Software Foundation</div>
