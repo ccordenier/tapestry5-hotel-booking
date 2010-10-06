@@ -6,14 +6,14 @@ import org.apache.tapestry5.annotations.Property;
 import com.tap5.hotelbooking.domain.entities.Hotel;
 
 /**
- * This page displays hotel details, and provide access to booking.
+ * This page implements booking process for a give hotel.
  * 
  * @author ccordenier
  */
-public class View
+public class Book
 {
+
     @Property
     @PageActivationContext
     private Hotel hotel;
-
 }

@@ -1,5 +1,6 @@
 package com.tap5.hotelbooking.components;
 
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.Block;
@@ -11,7 +12,6 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.tynamo.security.services.SecurityService;
 
-import com.tap5.hotelbooking.domain.entities.User;
 import com.tap5.hotelbooking.pages.Index;
 
 /**
@@ -23,7 +23,6 @@ import com.tap5.hotelbooking.pages.Index;
 public class Layout
 {
     /** The page title, for the <title> element and the <h1>element. */
-    @SuppressWarnings("unused")
     @Property
     @Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
     private String title;
@@ -31,17 +30,14 @@ public class Layout
     @Property
     private String pageName;
 
-    @SuppressWarnings("unused")
     @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
     private String pageTitle;
 
-    @SuppressWarnings("unused")
     @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
     private String sidebarTitle;
 
-    @SuppressWarnings("unused")
     @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
     private Block sidebar;
@@ -57,13 +53,10 @@ public class Layout
         return resources.getPageName().equalsIgnoreCase(pageName) ? "current_page_item" : null;
     }
 
-    public User getUser()
+    public Object getUsername()
     {
         Subject subject = securityService.getSubject();
-
-        // subject.getPrincipal();
-
-        return null;
+        return subject.getPrincipal();
     }
 
     @Log

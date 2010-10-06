@@ -7,6 +7,7 @@
 	<div class="wrapper bs">
 		<ul class="nav">
 			<t:security.authenticated>
+				<li><span>Welcome ${username}</span></li>
 				<li>
 					<a href="#" t:type="pageLink" t:page="search">Search</a>
 				</li>
