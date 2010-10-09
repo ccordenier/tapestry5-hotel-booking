@@ -21,12 +21,6 @@
 				<th><label t:type="label" t:for="password">password:</label></th>
 				<td><input type="password" t:type="passwordfield" t:id="password" t:validate="password"/></td>
 			</tr>
-			<tr>
-				<th><input type="checkbox" t:type="checkbox" t:id="rememberMe" /></th>
-				<td>
-					<label t:type="label" t:for="rememberMe">Remember Me</label>
-				</td>
-			</tr>
 		</table>
 		
 		<div class="form-submit">

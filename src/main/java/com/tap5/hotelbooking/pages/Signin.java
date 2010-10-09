@@ -9,7 +9,6 @@ import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import com.tap5.hotelbooking.pages.booking.Search;
 import com.tap5.hotelbooking.security.AuthenticationException;
 import com.tap5.hotelbooking.services.Authenticator;
 
@@ -28,9 +27,6 @@ public class Signin
 
     @Property
     private String password;
-
-    @Property
-    private boolean rememberMe;
 
     @Inject
     private Authenticator authenticator;
@@ -55,6 +51,6 @@ public class Signin
             return null;
         }
 
-        return Search.class;
+        return Index.class;
     }
 }
