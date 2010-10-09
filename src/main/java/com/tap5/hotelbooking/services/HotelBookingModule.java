@@ -16,6 +16,7 @@ import org.tynamo.security.FilterChainDefinition;
 import org.tynamo.security.SecuritySymbols;
 import org.tynamo.security.services.SecurityModule;
 
+import com.tap5.conversation.services.ConversationModule;
 import com.tap5.hotelbooking.domain.HibernateModule;
 import com.tap5.hotelbooking.security.BasicSecurityRealm;
 
@@ -24,7 +25,7 @@ import com.tap5.hotelbooking.security.BasicSecurityRealm;
  * configure and extend Tapestry, or to place your own service definitions.
  */
 @SubModule(
-{ HibernateModule.class, SecurityModule.class })
+{ HibernateModule.class, SecurityModule.class, ConversationModule.class })
 public class HotelBookingModule
 {
     public static void bind(ServiceBinder binder)

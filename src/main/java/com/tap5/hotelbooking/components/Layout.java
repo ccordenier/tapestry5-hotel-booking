@@ -1,6 +1,5 @@
 package com.tap5.hotelbooking.components;
 
-import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.Block;

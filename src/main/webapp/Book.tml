@@ -6,4 +6,23 @@
 
 	<h2>Book hotel room</h2>
 
+	<div class="hotel-details" t:type="beandisplay" t:object="booking.hotel" t:exclude="id" t:include="name,address,city,state,zip,country,price,stars">
+		<p:stars>
+			<t:hotelclass stars="hotel?.stars" />
+		</p:stars>
+	</div>
+
+	<t:delegate to="step" />
+	
+	<t:block t:id="bookBlock">
+		<form t:type="beaneditform" t:id="bookingForm" t:object="booking" t:exclude="id">
+		</form>
+	</t:block>
+	
+	<t:block t:id="confirmBlock">
+		<div class="action-bar">
+			<a href="#" t:type="eventlink" t:event="confirm">Confirm</a> or <a href="#" t:type="eventlink" t:event="cancel">Cancel</a> 
+		</div>	
+	</t:block>
+
 </html>

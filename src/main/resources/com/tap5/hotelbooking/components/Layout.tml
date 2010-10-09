@@ -50,7 +50,7 @@
 		
 		<div class="clearer"></div>
 
-		<div id="footer">Created with Apache Tapestry 5, Hibernate 3, Tynamo Security and Tapx components</div>
+		<div id="footer">Created with Apache Tapestry 5, Hibernate 3 and Tapx components</div>
 
 	</div>
 </body>
