@@ -17,7 +17,9 @@ import com.tap5.hotelbooking.services.Authenticator;
 
 /**
  * Intercepts the current page to redirect through the requested page or to the authentication page
- * if login is required.
+ * if login is required. For more understanding read the following tutorial <a
+ * href="http://tapestryjava.blogspot.com/2009/12/securing-tapestry-pages-with.html"> Securing
+ * Tapestry Pages with annotations </a>
  * 
  * @author karesti
  * @version 1.0
