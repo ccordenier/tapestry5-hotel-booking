@@ -50,10 +50,13 @@ public class ConversationPersistentFieldStrategy implements PersistentFieldStrat
         boolean forConversation = manager.isConversational(pageName);
         if (forConversation)
         {
-            fullPrefix += request.getParameter(ConversationConstants.CID) + ":";
+            fullPrefix += manager.getConversationName(pageName) + ":"
+                    + request.getParameter(ConversationConstants.CID) + ":";
         }
-
-        fullPrefix += pageName + ":";
+        else
+        {
+            fullPrefix += pageName + ":";
+        }
 
         for (String name : session.getAttributeNames(fullPrefix))
         {
@@ -82,10 +85,13 @@ public class ConversationPersistentFieldStrategy implements PersistentFieldStrat
 
         if (manager.isConversational(pageName))
         {
-            fullPrefix += request.getParameter(ConversationConstants.CID);
+            fullPrefix += manager.getConversationName(pageName) + ":"
+                    + request.getParameter(ConversationConstants.CID);
         }
-
-        fullPrefix += pageName + ":";
+        else
+        {
+            fullPrefix += pageName + ":";
+        }
 
         for (String name : session.getAttributeNames(fullPrefix))
         {
@@ -135,12 +141,16 @@ public class ConversationPersistentFieldStrategy implements PersistentFieldStrat
 
         if (manager.isConversational(pageName))
         {
+            builder.append(manager.getConversationName(pageName));
+            builder.append(':');
             builder.append(request.getParameter(ConversationConstants.CID));
             builder.append(':');
         }
-
-        builder.append(pageName);
-        builder.append(':');
+        else
+        {
+            builder.append(pageName);
+            builder.append(':');
+        }
 
         if (componentId != null) builder.append(componentId);
 
@@ -160,8 +170,9 @@ public class ConversationPersistentFieldStrategy implements PersistentFieldStrat
 
     public void createdComponentEventLink(Link link, ComponentEventRequestParameters parameters)
     {
+        // Link should be decorated once the conversation id has been set
         if (manager.isConversational(parameters.getActivePageName())
-                && request.getParameter(ConversationConstants.CID) != null)
+                && manager.getActiveConversation() != null)
         {
             link.addParameter(ConversationConstants.CID, request
                     .getParameter(ConversationConstants.CID));
@@ -170,8 +181,9 @@ public class ConversationPersistentFieldStrategy implements PersistentFieldStrat
 
     public void createdPageRenderLink(Link link, PageRenderRequestParameters parameters)
     {
+        // Link should be decorated once the conversation id has been set
         if (manager.isConversational(parameters.getLogicalPageName())
-                && request.getParameter(ConversationConstants.CID) != null)
+                && manager.getActiveConversation() != null)
         {
             link.addParameter(ConversationConstants.CID, request
                     .getParameter(ConversationConstants.CID));

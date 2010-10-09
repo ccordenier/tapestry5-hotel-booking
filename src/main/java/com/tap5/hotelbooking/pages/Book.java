@@ -28,7 +28,7 @@ import com.tap5.hotelbooking.domain.entities.User;
  * 
  * @author ccordenier
  */
-@Conversation
+@Conversation("book")
 public class Book
 {
     @Property

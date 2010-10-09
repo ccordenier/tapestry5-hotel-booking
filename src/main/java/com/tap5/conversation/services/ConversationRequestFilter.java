@@ -8,20 +8,17 @@ import org.apache.tapestry5.services.ComponentRequestFilter;
 import org.apache.tapestry5.services.ComponentRequestHandler;
 import org.apache.tapestry5.services.PageRenderLinkSource;
 import org.apache.tapestry5.services.PageRenderRequestParameters;
-import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.Response;
 
 import com.tap5.conversation.ConversationConstants;
 
 /**
- * Check conversation or prepare it if needed
+ * Check conversation or prepare it if needed.
  * 
  * @author ccordenier
  */
 public class ConversationRequestFilter implements ComponentRequestFilter
 {
-
-    private final Request request;
 
     private final Response response;
 
@@ -29,11 +26,10 @@ public class ConversationRequestFilter implements ComponentRequestFilter
 
     private final ConversationManager conversationManager;
 
-    public ConversationRequestFilter(Request request, Response response,
-            PageRenderLinkSource linkSource, ConversationManager conversationManager)
+    public ConversationRequestFilter(Response response, PageRenderLinkSource linkSource,
+            ConversationManager conversationManager)
     {
         super();
-        this.request = request;
         this.response = response;
         this.linkSource = linkSource;
         this.conversationManager = conversationManager;
@@ -48,7 +44,7 @@ public class ConversationRequestFilter implements ComponentRequestFilter
     {
         boolean conversation = conversationManager.isConversational(parameters.getActivePageName());
 
-        if (conversation && request.getParameter(ConversationConstants.CID) == null)
+        if (conversation && conversationManager.getActiveConversation() == null)
         {
             response.sendError(400, "Conversation id is missing");
             return;
@@ -67,7 +63,8 @@ public class ConversationRequestFilter implements ComponentRequestFilter
         boolean conversation = conversationManager
                 .isConversational(parameters.getLogicalPageName());
 
-        if (conversation && request.getParameter(ConversationConstants.CID) == null)
+        // Check if the request is associated to a conversation
+        if (conversation && conversationManager.getActiveConversation() == null)
         {
             Link redirect = linkSource.createPageRenderLinkWithContext(parameters
                     .getLogicalPageName(), parameters.getActivationContext());
@@ -75,6 +72,12 @@ public class ConversationRequestFilter implements ComponentRequestFilter
                     .createConversation().toString());
             response.sendRedirect(redirect);
             return;
+        }
+
+        // Check validity
+        if (conversation && !conversationManager.isValid())
+        {
+            response.sendError(400, "Conversation is not valid anymore");
         }
 
         handler.handlePageRender(parameters);

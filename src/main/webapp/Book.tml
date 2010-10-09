@@ -24,5 +24,7 @@
 			<a href="#" t:type="eventlink" t:event="confirm">Confirm</a> or <a href="#" t:type="eventlink" t:event="cancel">Cancel</a> 
 		</div>	
 	</t:block>
+	
+	<t:workspace />
 
 </html>

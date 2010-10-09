@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.tapestry5.SymbolConstants;
+import org.apache.tapestry5.ioc.internal.util.InternalUtils;
 import org.apache.tapestry5.services.MetaDataLocator;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.Session;
 
 import com.tap5.conversation.ConversationConstants;
+import com.tap5.conversation.ConversationalObject;
 
 public class ConversationManagerImpl implements ConversationManager
 {
@@ -35,9 +37,9 @@ public class ConversationManagerImpl implements ConversationManager
         return cid;
     }
 
-    public void end(Long cid)
+    public void end(String conversationName, Long cid)
     {
-        String fullPrefix = ConversationConstants.PREFIX + cid + ":";
+        String fullPrefix = ConversationConstants.PREFIX + conversationName + ":" + cid + ":";
 
         Session session = request.getSession(true);
 
@@ -49,17 +51,15 @@ public class ConversationManagerImpl implements ConversationManager
         ended.add(cid);
     }
 
-    public boolean isValid(Long cid)
+    public boolean isValid()
     {
-        return created.contains(cid);
+        return created.contains(getActiveConversation())
+                && !ended.contains(getActiveConversation());
     }
 
-    public boolean isConversational(String pageName)
+    public String getConversationName(String pageName)
     {
-        return ConversationConstants.CONVERSATION.equals(locator.findMeta(
-                SymbolConstants.PERSISTENCE_STRATEGY,
-                pageName,
-                String.class));
+        return locator.findMeta(ConversationConstants.CONVERSATION_NAME, pageName, String.class);
     }
 
     private AtomicLong getIncrement()
@@ -74,4 +74,47 @@ public class ConversationManagerImpl implements ConversationManager
         return increment;
     }
 
+    public boolean isConversational(String pageName)
+    {
+        return ConversationConstants.CONVERSATION.equals(locator.findMeta(
+                SymbolConstants.PERSISTENCE_STRATEGY,
+                pageName,
+                String.class));
+    }
+
+    public Long getActiveConversation()
+    {
+        try
+        {
+            String cid = request.getParameter(ConversationConstants.CID);
+            return InternalUtils.isBlank(cid) ? null : new Long(cid);
+        }
+        catch (NumberFormatException nfEx)
+        {
+            throw new IllegalArgumentException("Conversation id is corrupted");
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> List<ConversationalObject<T>> list(Class<T> type, String conversationName)
+    {
+        String fullPrefix = ConversationConstants.PREFIX + conversationName + ":";
+
+        List<ConversationalObject<T>> result = new ArrayList<ConversationalObject<T>>();
+
+        Session session = request.getSession(true);
+
+        for (String name : session.getAttributeNames(fullPrefix))
+        {
+            String[] chunks = name.split(":");
+
+            Object value = session.getAttribute(name);
+            if (type.isInstance(value))
+            {
+                result.add(new ConversationalObject<T>((T) value, new Long(chunks[2])));
+            }
+        }
+
+        return result;
+    }
 }

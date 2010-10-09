@@ -12,7 +12,7 @@ import org.apache.tapestry5.ioc.annotations.UseWith;
 
 /**
  * Mark your pages with this annotation to turn your page persistence scope into a conversation.
- *
+ * 
  * @author ccordenier
  */
 @Target(ElementType.TYPE)
@@ -22,5 +22,5 @@ import org.apache.tapestry5.ioc.annotations.UseWith;
 { PAGE })
 public @interface Conversation
 {
-
+    String value() default "default_conversation";
 }
