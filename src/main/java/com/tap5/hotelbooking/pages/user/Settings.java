@@ -9,6 +9,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import com.tap5.hotelbooking.annotations.RequiresLogin;
 import com.tap5.hotelbooking.domain.CrudServiceDAO;
 import com.tap5.hotelbooking.domain.entities.User;
+import com.tap5.hotelbooking.pages.Index;
 import com.tap5.hotelbooking.services.Authenticator;
 
 /**
@@ -38,7 +39,7 @@ public class Settings
     @Inject
     private Authenticator authenticator;
 
-    public Object onSubmitFromSettingsForm()
+    public Object onSuccess()
     {
 
         if (!verifyPassword.equals(password))
@@ -52,7 +53,9 @@ public class Settings
         authenticator.logout();
 
         user.setPassword(password);
+
         crudServiceDAO.update(user);
-        return null;
+
+        return Index.class;
     }
 }

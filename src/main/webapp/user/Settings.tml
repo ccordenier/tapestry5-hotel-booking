@@ -28,12 +28,10 @@
 		</table>
 		
 		<div class="form-submit">
-			<input type="submit" value="Change" />
-			
+			<input type="submit" value="Change" /> or 
+			<t:pageLink page="booking/search">Cancel</t:pageLink>
 		</div>
-		
-		
-	 
+	
 	</form>
 </fieldset>
   
