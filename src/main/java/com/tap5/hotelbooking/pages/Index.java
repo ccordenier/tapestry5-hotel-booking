@@ -2,7 +2,6 @@ package com.tap5.hotelbooking.pages;
 
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import com.tap5.hotelbooking.pages.booking.Search;
 import com.tap5.hotelbooking.services.Authenticator;
 
 /**

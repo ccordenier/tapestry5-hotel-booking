@@ -256,13 +256,9 @@ public class Booking implements Serializable
     public void setReservationDates(int daysFromNow, int nights)
     {
         Calendar refDate = Calendar.getInstance();
-        refDate.set(
-                refDate.get(Calendar.YEAR),
-                refDate.get(Calendar.MONTH),
-                refDate.get(Calendar.DAY_OF_MONTH) + daysFromNow,
-                0,
-                0,
-                0);
+        refDate.set(refDate.get(Calendar.YEAR), refDate.get(Calendar.MONTH), refDate
+                .get(Calendar.DAY_OF_MONTH)
+                + daysFromNow, 0, 0, 0);
         setCheckinDate(refDate.getTime());
         refDate.add(Calendar.DAY_OF_MONTH, nights);
         setCheckoutDate(refDate.getTime());

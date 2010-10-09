@@ -4,7 +4,6 @@
 <title>Tapestry website - redesign</title>
 
 <link rel="stylesheet" type="text/css" href="default.css" />
-<link rel="stylesheet" type="text/css" href="reset.css" />
 <link rel="stylesheet" type="text/css" href="style.css" />
 
 </head>
@@ -41,6 +40,14 @@
 			<h2>Create your account</h2>
 			
 			<form class="full-form">
+
+				<div class="t-error">
+					<div>You must correct the following errors before you may continue.</div>
+					<ul>
+						<li>Wrong username and password combination</li>
+					</ul>
+				</div>
+
 				<table>
 					<tr>
 						<th>
@@ -180,7 +187,19 @@
 				</div>
 			</div>
 
-		</div>		
+			<dl class="t-beandisplay">
+				<dt class="name">Name</dt><dd class="name">Marriott Courtyard</dd>
+				<dt class="address">Address</dt><dd class="address">Tower Place, Buckhead</dd>
+				<dt class="city">City</dt><dd class="city">Atlanta</dd>
+				<dt class="zip">Zip</dt><dd class="zip">30305</dd>
+				<dt class="state">State</dt><dd class="state">GA</dd>
+				<dt class="country">Country</dt><dd class="country">USA</dd>
+				<dt class="stars">Stars</dt><dd class="stars">3</dd>
+				<dt class="price">Price</dt><dd class="price">129.00</dd>
+				<dt class="location">Location</dt><dd class="location">Atlanta, GA, USA</dd>
+			</dl>
+
+		</div>
 		
 		<div class="clearer"></div>
 		<div id="footer">&copy; 2006-2010 Apache Software Foundation</div>

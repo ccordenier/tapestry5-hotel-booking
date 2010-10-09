@@ -29,7 +29,7 @@
 		
 		<div class="form-submit">
 			<input type="submit" value="Change" /> or 
-			<t:pageLink page="booking/search">Cancel</t:pageLink>
+			<t:pageLink page="search">Cancel</t:pageLink>
 		</div>
 	
 	</form>

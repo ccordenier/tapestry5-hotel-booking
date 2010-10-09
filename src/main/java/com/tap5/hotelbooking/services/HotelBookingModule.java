@@ -9,6 +9,7 @@ import org.apache.tapestry5.ioc.annotations.SubModule;
 import org.apache.tapestry5.services.ComponentRequestHandler;
 import org.apache.tapestry5.validator.ValidatorMacro;
 
+import com.tap5.conversation.services.ConversationModule;
 import com.tap5.hotelbooking.domain.HibernateModule;
 import com.tap5.hotelbooking.security.RequiresLoginFilter;
 
@@ -17,12 +18,11 @@ import com.tap5.hotelbooking.security.RequiresLoginFilter;
  * configure and extend Tapestry, or to place your own service definitions.
  */
 @SubModule(
-{ HibernateModule.class, DemoDataModule.class })
+{ HibernateModule.class, DemoDataModule.class, ConversationModule.class })
 public class HotelBookingModule
 {
     public static void bind(ServiceBinder binder)
     {
-
         binder.bind(Authenticator.class, BasicAuthenticator.class);
     }
 
@@ -49,5 +49,4 @@ public class HotelBookingModule
     {
         configuration.addInstance("RequiresLogin", RequiresLoginFilter.class);
     }
-
 }

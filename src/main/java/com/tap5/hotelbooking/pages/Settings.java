@@ -1,4 +1,4 @@
-package com.tap5.hotelbooking.pages.user;
+package com.tap5.hotelbooking.pages;
 
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
@@ -9,7 +9,6 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import com.tap5.hotelbooking.annotations.RequiresLogin;
 import com.tap5.hotelbooking.domain.CrudServiceDAO;
 import com.tap5.hotelbooking.domain.entities.User;
-import com.tap5.hotelbooking.pages.Index;
 import com.tap5.hotelbooking.services.Authenticator;
 
 /**

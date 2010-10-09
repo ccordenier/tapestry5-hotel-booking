@@ -7,16 +7,14 @@
 	<div class="wrapper bs">
 		<ul class="nav">
 			<t:security.authenticated>
+				<li><span>Welcome ${user?.fullName}</span></li>
 				<li>
-					Welcome ${user?.fullname}
+					<a href="#" t:type="pageLink" t:page="search">Search</a>
 				</li>
 				<li>
-					<a href="#" t:type="pageLink" t:page="booking/search">Search</a>
+					<a href="#" t:type="pageLink" t:page="settings">Settings</a>
 				</li>
-				<li>
-					<a href="#" t:type="pageLink" t:page="user/settings">Settings</a>
-				</li>
-				<li>
+				<li class="last">
 					<a href="#" t:type="actionlink" t:id="logout">Log out</a>
 				</li>
 			</t:security.authenticated>
@@ -24,7 +22,7 @@
 
 		<div id="top">
 
-			<h1><img src="${context:/static/tapestry.png}" alt="Tapestry" id="tapestry" /></h1>
+			<h1><img src="${context:/static/tapestry_s.png}" alt="Tapestry" id="tapestry" /></h1>
 
 			<div id="aside">Welcome to Tapestry 5 Hotel Booking demonstration application !</div>
 			
@@ -37,8 +35,10 @@
 		</div>
 		
 		<div class="col">
-			<h3 class="first">Why you should chose Tapestry 5 ?</h3>
-			<p></p>
+			<h3 class="first">Why you should choose Tapestry 5 ?</h3>
+			<p>
+				<t:delegate to="sidebar" />
+			</p>
 		</div>
 		
 		<div id="content" class="big-col">
@@ -50,7 +50,7 @@
 		
 		<div class="clearer"></div>
 
-		<div id="footer">&copy; 2006-2010 Apache Software Foundation</div>
+		<div id="footer">Created with Apache Tapestry 5, Hibernate 3 and Tapx components</div>
 
 	</div>
 </body>

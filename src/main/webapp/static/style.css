@@ -1,3 +1,5 @@
+@IMPORT url("reset.css");
+
 /* 
 #569D2F
 #ffffff
@@ -29,6 +31,7 @@ p { margin-bottom:10px; line-height:1.3em; }
 .nav li { color:#FFFFFF; font-weight: normal; display:inline; padding:0px 5px; margin:0px; white-space: nowrap; border-right: 1px solid #ccc;  line-height:30px; }
 .nav li.last { border-right:0px;  }
 .nav a { color: #ffffff; text-decoration: none;}
+.nav span { color: #ffffff; }
 
 .bs {   	   box-shadow:0px 0px 20px rgba(0,0,0,0.3);
 		  -moz-box-shadow:0px 0px 20px rgba(0,0,0,0.3);
@@ -42,10 +45,10 @@ p { margin-bottom:10px; line-height:1.3em; }
 
 #top { background: #ffffff url('bg.png') repeat-x top right; }
 #content { padding:0px 15px;  margin:0px 15px; }
-#footer { font-size:10px; color:#999999; text-align:right; padding:10px 15px;}
+#footer { font-size:12px; color:#999999; text-align: left; padding:10px 15px;}
 
 /* homepage */
-#homepage #aside { float:right; width: 280px; padding:70px 30px 0px 0px; font-family: Georgia, serif; font-size:18px; font-style:italic; line-height:1.3em;}
+#homepage #aside { float:right; width: 280px; padding:70px 30px 0px 0px; font-family: Georgia, serif; font-size:18px; font-style:italic; line-height:1.3em; vertical-align: text-top;}
 
 #homepage h2 { margin-bottom:10px; margin-top:20px;  }
 #homepage h2.first { margin-top: 0px; }
@@ -126,6 +129,7 @@ TABLE.t-data-grid TH a {
 
 TABLE.t-data-grid {
 	border: none;
+	width: 100%;
 }
 
 TABLE.t-data-grid TBODY TR TD {
@@ -167,4 +171,80 @@ TABLE.t-data-grid TR TH A {
 IMG.t-sort-icon {
 	background-color: #569D2F;
     margin-left: 4px;
+}
+
+DIV.t-error {
+    border: none;
+    padding: 0px;
+    margin: 10px 0px;
+}
+
+DIV.t-error DIV {
+    padding: 10px;
+    display: block;
+    margin: 0px;
+    background-color: #E93D00;
+    color: white;
+    font-weight: bold;
+}
+
+DIV.t-error UL {
+    margin: 10px 0px;
+    background-color: white;
+    color: #E93D00;
+}
+
+
+DIV.t-error-single {
+    padding: 10px;
+    display: block;
+    margin: 0px;
+    background-color: red;
+    color: white;
+}
+
+HTML>BODY DIV.t-error LI {
+    margin-left: 30px;
+}
+
+DIV.t-error LI {
+    margin-left: 30px;
+    list-style: square;
+}
+
+LABEL.t-error {
+    color: #E93D00;
+}
+
+INPUT.t-error, TEXTAREA.t-error, SELECT.t-error {
+    border-color: #E93D00;
+    font-style: italic;
+    color: #E93D00;
+}
+
+DL.t-beandisplay {
+    display: block;
+    padding: 15px 15px 0;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 16px;
+    background: white;
+    border: none;
+    width: auto;
+    color: #2F2F32;
+}
+
+DL.t-beandisplay DT {
+    width: 250px;
+    display: inline;
+    float: left;
+    clear: left;
+    padding-right: 10px;
+    vertical-align: middle;
+    text-align: right;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+DL.t-beandisplay DT:after {
+    content: ":";
 }

@@ -6,7 +6,7 @@
 
 	<h2>Search an Hotel</h2>
 			
-	<form class="full-form" t:type="form" t:zone="result" t:id="searchForm">
+	<form t:type="form" t:zone="result" t:id="searchForm" class="full-form" >
 		<table>
 			<tr>
 				<th>
@@ -16,18 +16,18 @@
 			</tr>
 			<tr>
 				<th><label t:type="label" t:for="rowsPerPage">Results</label></th>
-				<td><select t:type="select" t:id="rowsPerPage" t:value="criteria.rowsPerPage" t:model="literal:5,10,15"></select></td>
+				<td><select t:type="select" t:id="rowsPerPage" t:value="criteria.rowsPerPage" t:model="literal:5,10,15,20"></select></td>
 			</tr>
 		</table>
 		<div class="form-submit">
 			<input type="submit" class="btn-active" value="Search" /> or <a href="#">cancel</a>
-			<span t:type="ajaxloader" t:trigger="searchForm" t:zone="result"/>
+			<span t:type="ajaxloader" t:trigger="searchForm" t:zone="result"></span>
 		</div>
 	</form>
 
 	<div t:type="zone" t:id="result" id="result" class="section result">
 		<table t:type="grid" t:source="source" t:inPlace="true" t:rowsPerPage="criteria.rowsPerPage" t:include="name,address,zip" t:add="cityState,action" t:row="currentHotel">
-			<p:actionCell><a href="#">Details</a></p:actionCell>
+			<p:actionCell><a href="#" t:type="pagelink" t:context="currentHotel" t:page="view">Details</a></p:actionCell>
 			<p:cityStateCell>${currentHotel.city}, ${currentHotel.state}</p:cityStateCell>
 			<p:empty>
 				<p class="empty-result">${message:no-result}</p>
@@ -37,7 +37,15 @@
 
 	<p:sidebar>
         <p>
-            Search hotels
+            Tapestry has a powerful Grid component that allows you to easily display and navigate
+            throught tabular datas. The built-in hibernate module comes with an Optimized version
+            of GridDataSource to create efficient database request and obtain only the data to display.
+        </p>
+        <p>
+        	The form component can be linked to a Zone that will be refreshed on form submit.
+        	On the other side, the Grid component can be refreshed partially by simply activating the 'inPlace' mode.
+        	All this feature makes it possible to have quick fancies interface with a good user
+        	experience rate.
         </p>
 	</p:sidebar>    
 

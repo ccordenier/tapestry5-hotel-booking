@@ -43,7 +43,6 @@ public class Signin
         try
         {
             authenticator.login(username, password);
-
         }
         catch (AuthenticationException ex)
         {

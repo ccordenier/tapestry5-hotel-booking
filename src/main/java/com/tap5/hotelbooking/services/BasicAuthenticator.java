@@ -55,6 +55,10 @@ public class BasicAuthenticator implements Authenticator
         {
             user = (User) request.getSession(true).getAttribute(AUTH_TOKEN);
         }
+        else
+        {
+            throw new IllegalStateException("The user is not logged ! ");
+        }
         return user;
     }
 

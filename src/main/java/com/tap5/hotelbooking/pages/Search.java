@@ -1,4 +1,4 @@
-package com.tap5.hotelbooking.pages.booking;
+package com.tap5.hotelbooking.pages;
 
 import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.annotations.InjectComponent;
