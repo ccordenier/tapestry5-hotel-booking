@@ -1,7 +1,38 @@
-<html t:type="layout" title="Contact com.tap5.hotelbooking"
+<html t:type="layout" title="Tapestry5-hotel-booking Settings"
+      t:sidebarTitle="Current Time"
+      t:pageTitle="Change your password"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
       xmlns:p="tapestry:parameter">
 
-    <p>Settings com.tap5.hotelbooking ...</p>
 
+<fieldset id ="settings">
+	<form class="full-form" t:id="settingsForm">
+		<t:errors/>
+		<table>
+			<tr>
+				<th>
+					<label t:type="label" t:for="password">Password:*</label>
+				</th>
+				<td>
+					<input t:type="passwordField" t:id="password" t:validate="password"/>
+				</td>	
+			</tr>
+			<tr>
+				<th>
+					<label t:type="label" t:for="verifyPassword">Verify password:*</label>
+				</th>
+				<td>
+					<input t:type="passwordField" t:id="verifyPassword" t:validate="password"/>
+				</td>	
+			</tr>
+		</table>
+		
+		<div class="form-submit">
+			<input type="submit" value="Change" /> or 
+			<t:pageLink page="search">Cancel</t:pageLink>
+		</div>
+	
+	</form>
+</fieldset>
+  
 </html>

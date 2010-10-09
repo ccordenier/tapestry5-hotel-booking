@@ -1,9 +1,8 @@
 package com.tap5.hotelbooking.pages;
 
-import org.apache.shiro.subject.Subject;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.tynamo.security.services.SecurityService;
 
+import com.tap5.hotelbooking.services.Authenticator;
 
 /**
  * Start page of application tapestry5-hotel-booking.
@@ -11,13 +10,11 @@ import org.tynamo.security.services.SecurityService;
 public class Index
 {
     @Inject
-    private SecurityService securityService;
+    private Authenticator authenticator;
 
     public Object onActivate()
     {
-
-        Subject subject = securityService.getSubject();
-        if (subject.isAuthenticated())
+        if (authenticator.isLoggedIn())
         {
             return Search.class;
         }

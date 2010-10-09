@@ -1,8 +1,6 @@
 package com.tap5.hotelbooking.pages;
 
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.apache.tapestry5.Block;
 import org.apache.tapestry5.EventConstants;
@@ -14,7 +12,6 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.BeanEditForm;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.tynamo.security.services.SecurityService;
 
 import com.tap5.conversation.Conversation;
 import com.tap5.conversation.End;
@@ -22,6 +19,7 @@ import com.tap5.hotelbooking.domain.CrudServiceDAO;
 import com.tap5.hotelbooking.domain.entities.Booking;
 import com.tap5.hotelbooking.domain.entities.Hotel;
 import com.tap5.hotelbooking.domain.entities.User;
+import com.tap5.hotelbooking.services.Authenticator;
 
 /**
  * This page implements booking process for a give hotel.
@@ -47,9 +45,6 @@ public class Book
     @Inject
     private CrudServiceDAO dao;
 
-    @Inject
-    private SecurityService securityService;
-
     @InjectComponent
     private BeanEditForm bookingForm;
 
@@ -59,6 +54,9 @@ public class Book
 
     @Persist
     private boolean confirm;
+
+    @Inject
+    private Authenticator authenticator;
 
     /**
      * Get the current step
@@ -73,12 +71,10 @@ public class Book
     @OnEvent(value = EventConstants.ACTIVATE)
     public void setupBooking()
     {
+
         if (booking == null)
         {
-            Map<String, Object> params = new HashMap<String, Object>();
-            params.put("username", securityService.getSubject().getPrincipal());
-            params.put("email", null);
-            User user = (User) dao.findUniqueWithNamedQuery(User.BY_USERNAME_OR_EMAIL, params);
+            User user = (User) dao.find(User.class, authenticator.getLoggedUser().getId());
             booking = new Booking(hotel, user, 1, 1);
         }
 
