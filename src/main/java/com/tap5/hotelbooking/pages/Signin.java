@@ -1,8 +1,5 @@
 package com.tap5.hotelbooking.pages;
 
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.subject.Subject;
 import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Log;
@@ -11,13 +8,16 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.tynamo.security.services.PageService;
-import org.tynamo.security.services.SecurityService;
+
+import com.tap5.hotelbooking.pages.booking.Search;
+import com.tap5.hotelbooking.security.AuthenticationException;
+import com.tap5.hotelbooking.services.Authenticator;
 
 /**
  * User can sign up on the
  * 
  * @author karesti
+ * @version 1.0
  */
 public class Signin
 {
@@ -33,10 +33,7 @@ public class Signin
     private boolean rememberMe;
 
     @Inject
-    private SecurityService securityService;
-
-    @Inject
-    private PageService pageService;
+    private Authenticator authenticator;
 
     @Component
     private Form loginForm;
@@ -49,15 +46,7 @@ public class Signin
     {
         try
         {
-            Subject currentUser = securityService.getSubject();
-
-            if (currentUser == null) { throw new IllegalStateException("Subject can`t be null"); }
-
-            UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-
-            token.setRememberMe(rememberMe);
-
-            currentUser.login(token);
+            authenticator.login(username, password);
 
         }
         catch (AuthenticationException ex)
@@ -66,6 +55,6 @@ public class Signin
             return null;
         }
 
-        return pageService.getSuccessPage();
+        return Search.class;
     }
 }

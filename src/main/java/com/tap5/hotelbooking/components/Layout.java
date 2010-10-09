@@ -1,6 +1,5 @@
 package com.tap5.hotelbooking.components;
 
-import org.apache.shiro.subject.Subject;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.Block;
 import org.apache.tapestry5.ComponentResources;
@@ -9,10 +8,10 @@ import org.apache.tapestry5.annotations.Log;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.tynamo.security.services.SecurityService;
 
 import com.tap5.hotelbooking.domain.entities.User;
 import com.tap5.hotelbooking.pages.Index;
+import com.tap5.hotelbooking.services.Authenticator;
 
 /**
  * Layout component for pages of application tapestry5-hotel-booking.
@@ -50,7 +49,7 @@ public class Layout
     private ComponentResources resources;
 
     @Inject
-    private SecurityService securityService;
+    private Authenticator authenticator;
 
     public String getClassForPageName()
     {
@@ -59,22 +58,13 @@ public class Layout
 
     public User getUser()
     {
-        Subject subject = securityService.getSubject();
-
-        // subject.getPrincipal();
-
-        return null;
+        return authenticator.getLoggedUser();
     }
 
     @Log
     public Object onActionFromLogout()
     {
-        Subject currentUser = securityService.getSubject();
-
-        if (currentUser == null) { throw new IllegalStateException("Subject can`t be null"); }
-
-        currentUser.logout();
-
+        authenticator.logout();
         return Index.class;
     }
 }

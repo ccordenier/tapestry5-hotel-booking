@@ -2,6 +2,7 @@ package com.tap5.hotelbooking.pages;
 
 import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.annotations.Component;
+import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.beaneditor.Validate;
@@ -51,6 +52,9 @@ public class Signup
     @Inject
     private Messages messages;
 
+    @InjectPage
+    private Signin signin;
+
     public Object onSubmitFromRegisterForm()
     {
 
@@ -76,9 +80,6 @@ public class Signup
 
         crudServiceDAO.create(user);
 
-        // redirect with a message parameter
-
-        return Index.class;
-
+        return signin;
     }
 }
