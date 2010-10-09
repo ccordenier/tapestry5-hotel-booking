@@ -26,7 +26,7 @@ p { margin-bottom:10px; line-height:1.3em; }
 .clearer { clear:both; }
 
 .nav { list-style: none; margin: 0 auto; text-align:center; height:30px; background:#1B181C url('top-bg.png') repeat-x top right; border-bottom:1px solid #999999;}
-.nav li { display:inline; padding:0px 5px; margin:0px; white-space: nowrap; border-right: 1px solid #ccc;  line-height:30px; }
+.nav li { color:#FFFFFF; font-weight: normal; display:inline; padding:0px 5px; margin:0px; white-space: nowrap; border-right: 1px solid #ccc;  line-height:30px; }
 .nav li.last { border-right:0px;  }
 .nav a { color: #ffffff; text-decoration: none;}
 
