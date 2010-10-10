@@ -3,6 +3,8 @@ package com.tap5.conversation.services;
 import java.io.IOException;
 
 import org.apache.tapestry5.Link;
+import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.ioc.annotations.Symbol;
 import org.apache.tapestry5.services.ComponentEventRequestParameters;
 import org.apache.tapestry5.services.ComponentRequestFilter;
 import org.apache.tapestry5.services.ComponentRequestHandler;
@@ -26,13 +28,17 @@ public class ConversationRequestFilter implements ComponentRequestFilter
 
     private final ConversationManager conversationManager;
 
+    private final String defaultRedirect;
+
     public ConversationRequestFilter(Response response, PageRenderLinkSource linkSource,
-            ConversationManager conversationManager)
+            ConversationManager conversationManager,
+            @Inject @Symbol(ConversationConstants.DEFAULT_REDIRECT) String defaultRedirect)
     {
         super();
         this.response = response;
         this.linkSource = linkSource;
         this.conversationManager = conversationManager;
+        this.defaultRedirect = defaultRedirect;
     }
 
     /**
@@ -77,7 +83,8 @@ public class ConversationRequestFilter implements ComponentRequestFilter
         // Check validity
         if (conversation && !conversationManager.isValid())
         {
-            response.sendError(400, "Conversation is not valid anymore");
+            Link redirect = linkSource.createPageRenderLink(defaultRedirect);
+            response.sendRedirect(redirect);
         }
 
         handler.handlePageRender(parameters);

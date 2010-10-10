@@ -106,10 +106,6 @@ public class Book
         // Create
         dao.create(booking);
 
-        // Clean
-        confirm = false;
-        booking = null;
-
         // Return to search
         return Search.class;
     }

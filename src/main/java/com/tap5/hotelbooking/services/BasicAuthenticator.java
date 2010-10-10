@@ -2,6 +2,7 @@ package com.tap5.hotelbooking.services;
 
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
+import org.apache.tapestry5.services.Session;
 
 import com.tap5.hotelbooking.domain.CrudServiceDAO;
 import com.tap5.hotelbooking.domain.QueryParameters;
@@ -28,9 +29,9 @@ public class BasicAuthenticator implements Authenticator
     public void login(String username, String password) throws AuthenticationException
     {
 
-        User user = crudService.findUniqueWithNamedQuery(
-                User.BY_CREDENTIALS,
-                QueryParameters.with("username", username).and("password", password).parameters());
+        User user = crudService.findUniqueWithNamedQuery(User.BY_CREDENTIALS, QueryParameters.with(
+                "username",
+                username).and("password", password).parameters());
 
         if (user == null) { throw new AuthenticationException("The user doesn't exist"); }
 
@@ -39,12 +40,19 @@ public class BasicAuthenticator implements Authenticator
 
     public boolean isLoggedIn()
     {
-        return request.getSession(true).getAttribute(AUTH_TOKEN) != null;
+        Session session = request.getSession(false);
+        if (session != null) { return session.getAttribute(AUTH_TOKEN) != null; }
+        return false;
     }
 
     public void logout()
     {
-        request.getSession(true).setAttribute(AUTH_TOKEN, null);
+        Session session = request.getSession(false);
+        if (session != null)
+        {
+            session.setAttribute(AUTH_TOKEN, null);
+            session.invalidate();
+        }
     }
 
     public User getLoggedUser()
