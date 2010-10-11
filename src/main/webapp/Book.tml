@@ -1,4 +1,5 @@
-<html t:type="layout" title="tapestry5-hotel-booking Search"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html t:type="layout" t:title="Book your room"
       t:sidebarTitle="Current Time"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
       xmlns:p="tapestry:parameter">
@@ -15,13 +16,98 @@
 	<t:delegate to="step" />
 	
 	<t:block t:id="bookBlock">
-		<form t:type="beaneditform" t:id="bookingForm" t:object="booking" t:exclude="id">
+		<form class="full-form" t:type="form" t:id="bookingForm" t:validate="booking">
+			<t:errors />
+			<table>
+				<tr>
+					<th>
+						<label t:type="label" t:for="checkinDate">Check In Date</label>
+					</th>
+					<td>
+						<input t:type="datefield" t:id="checkinDate" t:value="booking.checkinDate"/>
+					</td>	
+				</tr>
+				<tr>
+					<th>
+						<label t:type="label" t:for="checkoutDate">Check Out Date</label>
+					</th>
+					<td>
+						<input t:type="datefield" t:id="checkoutDate" t:value="booking.checkoutDate"/>
+					</td>	
+				</tr>
+				<tr>
+					<th>
+						<label t:type="label" t:for="roomPreference">Room Preference</label>
+					</th>
+					<td>
+						<select t:type="select" t:id="roomPreference" t:value="booking.beds" t:model="bedType">
+						</select>
+					</td>	
+				</tr>
+				<tr>
+					<th>
+						<label t:type="label" t:for="smoking">Smoking</label>
+					</th>
+					<td class="inline">
+						<t:radiogroup t:id="smoking" t:value="booking.smoking">
+							<t:radio t:id="smoke" t:value="literal:true"/>
+                			<t:label for="smoke"/>
+                			<t:radio t:id="nosmoke" t:value="literal:false"/>
+                			<t:label for="nosmoke"/>
+                		</t:radiogroup>
+					</td>	
+				</tr>
+				<tr>
+					<th>
+						<label t:type="label" t:for="creditCardNumber">Credit Card Number</label>
+					</th>
+					<td>
+						<input t:type="textfield" t:id="creditCardNumber" t:value="booking.creditCardNumber"/>
+					</td>	
+				</tr>
+				<tr>
+					<th>
+						<label t:type="label" t:for="creditCardType">Credit Card Type</label>
+					</th>
+					<td>
+						<select t:type="select" t:id="creditCardType" t:value="booking.creditCardType">
+						</select>
+					</td>	
+				</tr>
+				<tr>
+					<th>
+						<label t:type="label" t:for="creditCardName">Credit Card Name</label>
+					</th>
+					<td>
+						<input t:type="textfield" t:id="creditCardName" t:value="booking.creditCardName"/>
+					</td>	
+				</tr>
+				<tr>
+					<th>
+						<label t:type="label" t:for="creditCardExpiryYear">Expiracy</label>
+					</th>
+					<td class="inline">
+						<select t:type="select" t:id="creditCardExpiryYear" t:value="booking.creditCardExpiryYear" t:model="years"></select>
+						&nbsp;
+						<select t:type="select" t:id="creditCardExpiryMonth" t:value="booking.creditCardExpiryMonth" t:model="months"></select>
+					</td>	
+				</tr>				
+			</table>
+			<div class="form-submit">
+				<input type="submit" class="btn-active" value="Book" /> or <a href="#" t:type="eventlink" t:event="cancelBooking">Cancel</a>
+			</div>
 		</form>
 	</t:block>
 	
 	<t:block t:id="confirmBlock">
+		<div class="booking-details" t:type="beandisplay" t:object="booking" t:include="checkinDate,checkoutDate,creditCardNumber,total">
+			<p:creditCardNumber>
+				#### #### #### ${securedCardNumber}
+			</p:creditCardNumber>
+		</div>
+	
 		<div class="action-bar">
-			<a href="#" t:type="eventlink" t:event="confirm">Confirm</a> or <a href="#" t:type="eventlink" t:event="cancel">Cancel</a> 
+			<a href="#" t:type="eventlink" t:event="confirm">Confirm</a> or <a href="#" t:type="eventlink" t:event="cancelConfirm">Cancel</a> 
 		</div>	
 	</t:block>
 	
