@@ -13,7 +13,6 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-import com.tap5.hotelbooking.annotations.RequiresLogin;
 import com.tap5.hotelbooking.data.SearchCriteria;
 import com.tap5.hotelbooking.domain.entities.Hotel;
 
@@ -22,7 +21,6 @@ import com.tap5.hotelbooking.domain.entities.Hotel;
  * 
  * @author ccordenier
  */
-@RequiresLogin
 public class Search
 {
 

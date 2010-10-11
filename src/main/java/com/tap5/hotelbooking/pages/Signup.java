@@ -10,6 +10,7 @@ import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
+import com.tap5.hotelbooking.annotations.AnonymousAccess;
 import com.tap5.hotelbooking.domain.CrudServiceDAO;
 import com.tap5.hotelbooking.domain.QueryParameters;
 import com.tap5.hotelbooking.domain.entities.User;
@@ -20,6 +21,7 @@ import com.tap5.hotelbooking.domain.entities.User;
  * @author karesti
  * @version 1.0
  */
+@AnonymousAccess
 public class Signup
 {
 

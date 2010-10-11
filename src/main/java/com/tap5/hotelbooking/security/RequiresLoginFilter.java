@@ -12,7 +12,7 @@ import org.apache.tapestry5.services.PageRenderLinkSource;
 import org.apache.tapestry5.services.PageRenderRequestParameters;
 import org.apache.tapestry5.services.Response;
 
-import com.tap5.hotelbooking.annotations.RequiresLogin;
+import com.tap5.hotelbooking.annotations.AnonymousAccess;
 import com.tap5.hotelbooking.services.Authenticator;
 
 /**
@@ -70,7 +70,7 @@ public class RequiresLoginFilter implements ComponentRequestFilter
 
         Component page = componentSource.getPage(pageName);
 
-        if (!page.getClass().isAnnotationPresent(RequiresLogin.class)) { return false; }
+        if (page.getClass().isAnnotationPresent(AnonymousAccess.class)) { return false; }
 
         Link link = renderLinkSource.createPageRenderLink("Signin");
 

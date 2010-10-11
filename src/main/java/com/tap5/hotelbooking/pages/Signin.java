@@ -9,6 +9,7 @@ import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
+import com.tap5.hotelbooking.annotations.AnonymousAccess;
 import com.tap5.hotelbooking.security.AuthenticationException;
 import com.tap5.hotelbooking.services.Authenticator;
 
@@ -18,6 +19,7 @@ import com.tap5.hotelbooking.services.Authenticator;
  * @author karesti
  * @version 1.0
  */
+@AnonymousAccess
 public class Signin
 {
 
