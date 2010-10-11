@@ -57,7 +57,7 @@ public class Search
         @Override
         protected void applyAdditionalConstraints(Criteria crit)
         {
-            crit.add(Restrictions.like("name", criteria.getSearchPattern()));
+            crit.add(Restrictions.ilike("name", criteria.getSearchPattern()));
         }
     }
 

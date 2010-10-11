@@ -4,17 +4,21 @@ import java.util.Calendar;
 
 import org.apache.tapestry5.Block;
 import org.apache.tapestry5.EventConstants;
+import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.corelib.components.BeanEditForm;
+import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 import com.tap5.conversation.Conversation;
 import com.tap5.conversation.End;
+import com.tap5.hotelbooking.data.BedType;
+import com.tap5.hotelbooking.data.Months;
+import com.tap5.hotelbooking.data.Years;
 import com.tap5.hotelbooking.domain.CrudServiceDAO;
 import com.tap5.hotelbooking.domain.entities.Booking;
 import com.tap5.hotelbooking.domain.entities.Hotel;
@@ -29,6 +33,7 @@ import com.tap5.hotelbooking.services.Authenticator;
 @Conversation("book")
 public class Book
 {
+
     @Property
     @PageActivationContext
     private Hotel hotel;
@@ -45,8 +50,11 @@ public class Book
     @Inject
     private CrudServiceDAO dao;
 
+    @Inject
+    private Authenticator authenticator;
+
     @InjectComponent
-    private BeanEditForm bookingForm;
+    private Form bookingForm;
 
     @Property
     @Persist
@@ -55,8 +63,17 @@ public class Book
     @Persist
     private boolean confirm;
 
-    @Inject
-    private Authenticator authenticator;
+    @SuppressWarnings("unused")
+    @Property
+    private SelectModel bedType = new BedType();
+
+    @SuppressWarnings("unused")
+    @Property
+    private SelectModel years = new Years();
+
+    @SuppressWarnings("unused")
+    @Property
+    private SelectModel months = new Months();
 
     /**
      * Get the current step
@@ -66,6 +83,11 @@ public class Book
     public Block getStep()
     {
         return confirm ? confirmBlock : bookBlock;
+    }
+
+    public String getSecuredCardNumber()
+    {
+        return booking.getCreditCardNumber().substring(12);
     }
 
     @OnEvent(value = EventConstants.ACTIVATE)
@@ -99,8 +121,8 @@ public class Book
         confirm = true;
     }
 
-    @OnEvent(value = "confirm")
     @End
+    @OnEvent(value = "confirm")
     public Object confirm()
     {
         // Create
@@ -110,10 +132,17 @@ public class Book
         return Search.class;
     }
 
-    @OnEvent(value = "cancel")
-    public void cancel()
+    @OnEvent(value = "cancelConfirm")
+    public void cancelConfim()
     {
         confirm = false;
+    }
+
+    @End
+    @OnEvent(value = "cancelBooking")
+    public Object cancelBooking()
+    {
+        return Search.class;
     }
 
 }

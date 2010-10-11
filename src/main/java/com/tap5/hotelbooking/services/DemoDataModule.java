@@ -81,7 +81,7 @@ public class DemoDataModule
         hotels.add(new Hotel(242, 5, "InterContinental Hotel Tokyo Bay", "1-15-2 Kaigan", "Tokyo",
                 "Minato", "105", "JP"));
 
-        hotels.add(new Hotel(130, 4, "Hotel Beaulac", " Esplanade Léopold-Robert 2", "Neuchatel",
+        hotels.add(new Hotel(130, 4, "Hotel Beaulac", " Esplanade L√©opold-Robert 2", "Neuchatel",
                 null, "2000", "CH"));
 
         hotels.add(new Hotel(266, 5, "Conrad Treasury Place", "130 William Street", "Brisbane",
@@ -96,7 +96,7 @@ public class DemoDataModule
         hotels.add(new Hotel(145, 4, "Swissotel Sydney", "68 Market Street", "Sydney", "NSW",
                 "2000", "AU"));
 
-        hotels.add(new Hotel(178, 4, "Meliá White House", "Albany Street Regents Park", "London",
+        hotels.add(new Hotel(178, 4, "Meli√© White House", "Albany Street Regents Park", "London",
                 null, "NW13UP", "GB"));
 
         hotels.add(new Hotel(159, 3, "Hotel Allegro", "171 W Randolph Street", "Chicago", "IL",
