@@ -3,6 +3,8 @@ package com.tap5.hotelbooking.security;
 import java.io.IOException;
 
 import org.apache.tapestry5.Link;
+import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.ioc.annotations.Symbol;
 import org.apache.tapestry5.runtime.Component;
 import org.apache.tapestry5.services.ComponentEventRequestParameters;
 import org.apache.tapestry5.services.ComponentRequestFilter;
@@ -13,6 +15,7 @@ import org.apache.tapestry5.services.PageRenderRequestParameters;
 import org.apache.tapestry5.services.Response;
 
 import com.tap5.hotelbooking.annotations.AnonymousAccess;
+import com.tap5.hotelbooking.annotations.HotelBookingConstants;
 import com.tap5.hotelbooking.services.Authenticator;
 
 /**
@@ -24,7 +27,7 @@ import com.tap5.hotelbooking.services.Authenticator;
  * @author karesti
  * @version 1.0
  */
-public class RequiresLoginFilter implements ComponentRequestFilter
+public class AuthenticationFilter implements ComponentRequestFilter
 {
 
     private final PageRenderLinkSource renderLinkSource;
@@ -35,7 +38,19 @@ public class RequiresLoginFilter implements ComponentRequestFilter
 
     private final Authenticator authenticator;
 
-    public RequiresLoginFilter(PageRenderLinkSource renderLinkSource,
+    @Inject
+    @Symbol(HotelBookingConstants.DEFAULT_PAGE)
+    private String defaultPage;
+
+    @Inject
+    @Symbol(HotelBookingConstants.SIGNIN_PAGE)
+    private String signinPage;
+
+    @Inject
+    @Symbol(HotelBookingConstants.SIGNUP_PAGE)
+    private String signupPage;
+
+    public AuthenticationFilter(PageRenderLinkSource renderLinkSource,
             ComponentSource componentSource, Response response, Authenticator authenticator)
     {
         this.renderLinkSource = renderLinkSource;
@@ -66,7 +81,17 @@ public class RequiresLoginFilter implements ComponentRequestFilter
     private boolean dispatchedToLoginPage(String pageName) throws IOException
     {
 
-        if (authenticator.isLoggedIn()) { return false; }
+        if (authenticator.isLoggedIn())
+        {
+            // Logged user should not go back to Signin or Signup
+            if (signinPage.equalsIgnoreCase(pageName) || signupPage.equalsIgnoreCase(pageName))
+            {
+                Link link = renderLinkSource.createPageRenderLink(defaultPage);
+                response.sendRedirect(link);
+                return true;
+            }
+            return false;
+        }
 
         Component page = componentSource.getPage(pageName);
 
