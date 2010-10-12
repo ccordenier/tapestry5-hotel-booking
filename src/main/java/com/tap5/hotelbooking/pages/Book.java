@@ -122,7 +122,7 @@ public class Book
     }
 
     @End
-    @OnEvent(value = "confirm")
+    @OnEvent(value = EventConstants.SUCCESS, component = "confirmForm")
     public Object confirm()
     {
         // Create

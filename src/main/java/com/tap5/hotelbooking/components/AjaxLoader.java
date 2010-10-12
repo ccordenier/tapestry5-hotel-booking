@@ -12,7 +12,7 @@ import org.apache.tapestry5.services.javascript.InitializationPriority;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 
 /**
- * Append a loader icon to wait zone update completes.
+ * Append a loader icon to wait for zone update completion.
  * 
  * @author ccordenier
  */

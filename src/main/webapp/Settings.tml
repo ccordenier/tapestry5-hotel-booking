@@ -4,8 +4,8 @@
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
       xmlns:p="tapestry:parameter">
 
+	<h2>User's setting : Change your password</h2>
 
-<fieldset id ="settings">
 	<form class="full-form" t:id="settingsForm">
 		<t:errors/>
 		<table>
@@ -33,6 +33,5 @@
 		</div>
 	
 	</form>
-</fieldset>
   
 </html>
