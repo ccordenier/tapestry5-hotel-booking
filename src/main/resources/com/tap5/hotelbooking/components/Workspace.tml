@@ -1,7 +1,12 @@
-<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<t:container xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
 	
-	<ul t:type="loop" t:source="bookings" t:value="current">
-		<li>${currentBooking?.hotel?.name} conversation ${current.cid}</li>
+	<h2>Booking in progress</h2>
+	<ul id="workspace" xml:space="preserve">
+		<li t:type="loop" t:source="bookings" t:value="current"><a href="${bookLink}" title="${currentBooking?.hotel?.name}">${currentBooking?.hotel?.name}</a>
+		from <t:output value="currentBooking?.checkinDate" format="format"/> to <t:output value="currentBooking?.checkoutDate" format="format"/> 
+		<t:if test="isCurrent">[current]</t:if>
+		</li>
 	</ul>
-	
+
 </t:container>

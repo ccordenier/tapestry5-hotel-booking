@@ -15,7 +15,7 @@
 					<a href="#" t:type="pageLink" t:page="settings">Settings</a>
 				</li>
 				<li class="last">
-					<a href="#" t:type="actionlink" t:id="logout">Log out</a>
+					<a href="#" t:type="actionlink" t:id="logout" id="logout">Log out</a>
 				</li>
 			</t:security.authenticated>
 		</ul>

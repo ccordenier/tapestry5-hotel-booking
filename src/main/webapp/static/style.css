@@ -104,13 +104,11 @@ p { margin-bottom:10px; line-height:1.3em; }
 .full-form .form-submit {text-align:center; padding:10px 0px}
 
 /* Ajax loading features */
-.loading {
-    display: inline;
-    width: auto;
-    font-weight: bold;
-    padding-right: 20px;
-    background: transparent url(ajax-loader.gif) no-repeat right top;
-}
+.loading { display: inline; width: auto; font-weight: bold; padding-right: 20px; background: transparent url(ajax-loader.gif) no-repeat right top;}
+
+/* Workspace component */
+#workspace a {float: left; overflow: hidden; margin-right: 5px; width: 250px; text-align: right;}
+#workspace li {padding: 5px 0}
 
 /* Tapestry overrides */
 TABLE.t-data-grid THEAD TR {
