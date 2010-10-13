@@ -12,6 +12,7 @@ import com.tap5.hotelbooking.domain.entities.Hotel;
  */
 public class View
 {
+    @SuppressWarnings("unused")
     @Property
     @PageActivationContext
     private Hotel hotel;
