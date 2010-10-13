@@ -85,6 +85,7 @@ public class ConversationRequestFilter implements ComponentRequestFilter
         {
             Link redirect = linkSource.createPageRenderLink(defaultRedirect);
             response.sendRedirect(redirect);
+            return;
         }
 
         handler.handlePageRender(parameters);

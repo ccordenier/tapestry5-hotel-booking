@@ -17,8 +17,8 @@ import com.tap5.conversation.services.ConversationManager;
 import com.tap5.hotelbooking.domain.entities.Booking;
 
 /**
- * Display the list of current booking that has not been confirmed yet.
- * You can click on displayed link to continue 
+ * Display the list of current booking that has not been confirmed yet. You can click on displayed
+ * link to continue
  * 
  * @author ccordenier
  */
@@ -29,7 +29,7 @@ public class Workspace
 
     @Inject
     private PageRenderLinkSource linkSource;
-    
+
     @Property
     private List<ConversationalObject<Booking>> bookings;
 
@@ -38,25 +38,29 @@ public class Workspace
 
     @Property
     private DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-    
+
     @SetupRender
-    void listBookings()
+    boolean listBookings()
     {
         bookings = new ArrayList<ConversationalObject<Booking>>(manager.list(Booking.class, "book"));
+        return bookings.size() > 0 ? true : false;
     }
 
     public Booking getCurrentBooking()
     {
         return current.getObject();
     }
-    
-    public Link getBookLink() {
-        Link result = linkSource.createPageRenderLinkWithContext("book", current.getObject().getHotel());
+
+    public Link getBookLink()
+    {
+        Link result = linkSource.createPageRenderLinkWithContext("book", current.getObject()
+                .getHotel());
         result.addParameter(ConversationConstants.CID, current.getCid().toString());
         return result;
     }
-    
-    public boolean getIsCurrent() {
+
+    public boolean getIsCurrent()
+    {
         return current.getCid().equals(manager.getActiveConversation());
     }
 }

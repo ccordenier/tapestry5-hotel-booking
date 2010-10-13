@@ -48,6 +48,7 @@ public class ConversationManagerImpl implements ConversationManager
             session.setAttribute(name, null);
         }
 
+        created.remove(cid);
         ended.add(cid);
     }
 

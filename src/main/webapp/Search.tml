@@ -35,6 +35,10 @@
 		</table>
 	</div>
 
+	<t:yourBookings />
+
+	<t:workspace />
+
 	<p:sidebar>
         <p>
             Tapestry's Grid component that allows you to easily and efficiently display and navigate

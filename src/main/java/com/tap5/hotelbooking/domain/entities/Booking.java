@@ -14,6 +14,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -30,12 +33,17 @@ import javax.validation.constraints.Size;
  * @author Dan Allen
  */
 @Entity
+@NamedQueries(
+{ @NamedQuery(name = Booking.BY_USERNAME, query = "Select b from Booking b where b.user.username = :username") })
+@Table(name = "bookings")
 public class Booking implements Serializable
 {
     /**
      * 
      */
     private static final long serialVersionUID = -6176295317720795275L;
+
+    public static final String BY_USERNAME = "Booking.byUsername";
 
     private Long id;
 
