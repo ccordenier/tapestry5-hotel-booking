@@ -1,6 +1,7 @@
 package com.tap5.hotelbooking.pages;
 
 import org.apache.tapestry5.annotations.Component;
+import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.Messages;
@@ -17,18 +18,8 @@ import com.tap5.hotelbooking.services.Authenticator;
  */
 public class Settings
 {
-
-    @Property
-    private String password;
-
-    @Property
-    private String verifyPassword;
-
     @Inject
     private CrudServiceDAO crudServiceDAO;
-
-    @Component
-    private Form settingsForm;
 
     @Inject
     private Messages messages;
@@ -36,9 +27,20 @@ public class Settings
     @Inject
     private Authenticator authenticator;
 
+    @InjectPage
+    private Signin signin;
+    
+    @Property
+    private String password;
+
+    @Property
+    private String verifyPassword;
+
+    @Component
+    private Form settingsForm;
+
     public Object onSuccess()
     {
-
         if (!verifyPassword.equals(password))
         {
             settingsForm.recordError(messages.get("error.verifypassword"));
@@ -53,6 +55,8 @@ public class Settings
 
         crudServiceDAO.update(user);
 
-        return Index.class;
+        signin.setFlashMessage(messages.get("settings.password-changed"));
+        
+        return signin;
     }
 }

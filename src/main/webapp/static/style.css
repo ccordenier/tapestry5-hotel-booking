@@ -94,7 +94,7 @@ p { margin-bottom:10px; line-height:1.3em; }
 
 .full-form, .small-form { padding:10px 0px;}
 .full-form table th, .full-form table td { padding: 5px 5px;}
-.full-form table th { width: 180px; text-align:right; font-weight:normal; color: #6E6D65; }
+.full-form table th { width: 220px; text-align:right; font-weight:normal; color: #6E6D65; }
 .full-form table th h3 { text-align:left;}
 .full-form table label {  display:block; color: #2F2F32; font-size:16px;}
 .full-form input { font-size:16px;  }
@@ -104,13 +104,11 @@ p { margin-bottom:10px; line-height:1.3em; }
 .full-form .form-submit {text-align:center; padding:10px 0px}
 
 /* Ajax loading features */
-.loading {
-    display: inline;
-    width: auto;
-    font-weight: bold;
-    padding-right: 20px;
-    background: transparent url(ajax-loader.gif) no-repeat right top;
-}
+.loading { display: inline; width: auto; font-weight: bold; padding-right: 20px; background: transparent url(ajax-loader.gif) no-repeat right top;}
+
+/* Workspace component */
+#workspace a {float: left; overflow: hidden; margin-right: 5px; width: 220px; text-align: left;}
+#workspace li {padding: 5px 0}
 
 /* Tapestry overrides */
 TABLE.t-data-grid THEAD TR {
@@ -236,7 +234,7 @@ DL.t-beandisplay {
 }
 
 DL.t-beandisplay DT {
-    width: 175px;
+    width: 220px;
     display: inline;
     float: left;
     clear: left;

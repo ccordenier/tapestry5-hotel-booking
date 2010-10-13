@@ -1,8 +1,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="tapestry5-hotel-booking Application Test Suite" annotations="1.5">
-    <test name="Unit Tests">
-        <packages>
-            <package name="com.tap5.hotelbooking"/>
-        </packages>
-    </test>
+<suite name="tapestry5-hotel-booking Application Test Suite"
+	annotations="1.5">
+	<test name="Unit Tests">
+		<packages>
+			<package name="com.tap5.hotelbooking.test.unit" />
+		</packages>
+	</test>
+	<test name="Integration Tests" parallel="false">
+		<packages>
+			<package name="com.tap5.hotelbooking.test.integration" />
+		</packages>
+		<classes>
+			<class name="org.apache.tapestry5.test.SeleniumLauncher" />
+		</classes>
+	</test>
 </suite>

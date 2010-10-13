@@ -22,7 +22,9 @@ import com.tap5.hotelbooking.services.Authenticator;
 @AnonymousAccess
 public class Signin
 {
-
+    @Property
+    private String flashmessage;
+    
     @Property
     @Persist(PersistenceConstants.FLASH)
     private String username;
@@ -54,4 +56,15 @@ public class Signin
 
         return Index.class;
     }
+
+    public String getFlashMessage()
+    {
+        return flashmessage;
+    }
+
+    public void setFlashMessage(String flashmessage)
+    {
+        this.flashmessage = flashmessage;
+    }
+    
 }

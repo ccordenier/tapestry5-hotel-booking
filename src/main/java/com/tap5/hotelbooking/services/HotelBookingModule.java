@@ -11,8 +11,9 @@ import org.apache.tapestry5.validator.ValidatorMacro;
 
 import com.tap5.conversation.ConversationConstants;
 import com.tap5.conversation.services.ConversationModule;
+import com.tap5.hotelbooking.annotations.HotelBookingConstants;
 import com.tap5.hotelbooking.domain.HibernateModule;
-import com.tap5.hotelbooking.security.RequiresLoginFilter;
+import com.tap5.hotelbooking.security.AuthenticationFilter;
 
 /**
  * This module is automatically included as part of the Tapestry IoC Registry, it's a good place to
@@ -34,6 +35,9 @@ public class HotelBookingModule
         configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
         configuration.add(SymbolConstants.APPLICATION_VERSION, "1.0-SNAPSHOT");
         configuration.add(ConversationConstants.DEFAULT_REDIRECT, "Search");
+        configuration.add(HotelBookingConstants.DEFAULT_PAGE, "Search");
+        configuration.add(HotelBookingConstants.SIGNIN_PAGE, "Signin");
+        configuration.add(HotelBookingConstants.SIGNUP_PAGE, "Signup");
     }
 
     @Contribute(ValidatorMacro.class)
@@ -48,6 +52,6 @@ public class HotelBookingModule
     @Contribute(ComponentRequestHandler.class)
     public static void contributeComponentRequestHandler(OrderedConfiguration configuration)
     {
-        configuration.addInstance("RequiresLogin", RequiresLoginFilter.class);
+        configuration.addInstance("RequiresLogin", AuthenticationFilter.class);
     }
 }

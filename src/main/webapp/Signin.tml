@@ -3,6 +3,10 @@
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
       xmlns:p="tapestry:parameter">
 
+	<t:ifNotNull object="flashMessage">
+		<div class="flashMessage">${flashMessage}</div>
+	</t:ifNotNull>
+
 	<form t:type="form" class="full-form" t:id="loginForm">
 		<t:errors/>
 		<table>
