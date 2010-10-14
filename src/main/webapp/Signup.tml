@@ -4,7 +4,6 @@
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
       xmlns:p="tapestry:parameter">
 
-<fieldset id ="register">
 	<form class="full-form" t:id="registerForm" >
 		<t:errors/>
 		<table>
@@ -67,5 +66,5 @@
 		</div>
 		<div class="member">Already a member ? <t:pagelink page="SignIn">Login now!</t:pagelink></div>
 	</form>
-</fieldset>
+
 </html>

@@ -50,7 +50,8 @@
 		
 		<div class="clearer"></div>
 
-		<div id="footer">Created with Apache Tapestry 5, Hibernate 3 and Tapx components</div>
+		<div id="footer">Created with Apache Tapestry 5, Hibernate 3 and Tapx components. 
+		Get the source code of Hotel Booking at <a href="http://github.com/ccordenier/tapestry5-hotel-booking/">Github</a></div>
 
 	</div>
 </body>

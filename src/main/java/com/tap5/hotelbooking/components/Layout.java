@@ -21,16 +21,11 @@ import com.tap5.hotelbooking.services.Authenticator;
 { "context:/static/hotel-booking.js" })
 public class Layout
 {
-    /** The page title, for the <title> element and the <h1>element. */
-    @Property
-    @Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
-    private String title;
-
     @Property
     private String pageName;
 
     @Property
-    @Parameter(defaultPrefix = BindingConstants.LITERAL)
+    @Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
     private String pageTitle;
 
     @Property
