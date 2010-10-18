@@ -36,10 +36,27 @@ public class SearchPageTest extends BaseIntegrationTestSuite
         waitForPageToLoad();
 
         type("query", "*");
+        select("id=rowsPerPage", "value=10");
+
         click("//form[@id='searchForm']//input[@type='submit']");
         waitForCondition("selenium.getXpathCount(\"//div[@class='t-data-grid-pager']/a\") == 2", "15000");
     }
+    
+    /**
+     * Check wildcards with 20 results per page
+     */
+    @Test(testName = "changePagePerResult", dependsOnMethods = "signin")
+    public void changePagePerResult()
+    {
+        open("/search");
+        waitForPageToLoad();
 
+        type("query", "*");
+        select("id=rowsPerPage", "value=20");
+        click("//form[@id='searchForm']//input[@type='submit']");
+        waitForCondition("selenium.getXpathCount(\"//div[@class='t-data-grid-pager']/a\") == 1", "15000");
+    }
+    
     @AfterClass(alwaysRun = true)
     @Override
     public void cleanup()

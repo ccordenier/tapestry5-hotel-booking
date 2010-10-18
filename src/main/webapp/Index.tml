@@ -1,4 +1,4 @@
-<html t:type="layout" title="tapestry5-hotel-booking Index"
+<html t:type="layout" t:pageTitle="tapestry5-hotel-booking Index"
       t:sidebarTitle="Current Time"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
       xmlns:p="tapestry:parameter">
