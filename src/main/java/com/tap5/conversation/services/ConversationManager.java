@@ -2,6 +2,8 @@ package com.tap5.conversation.services;
 
 import java.util.List;
 
+import org.apache.tapestry5.Link;
+
 import com.tap5.conversation.ConversationalObject;
 
 /**
@@ -26,6 +28,15 @@ public interface ConversationManager
      * @return
      */
     boolean isConversational(String pageName);
+
+    /**
+     * Create a link on the page, and create a new conversation if it does not already exist.
+     * 
+     * @param pageName
+     * @param context
+     * @return
+     */
+    Link createLink(String pageName, Object... context);
 
     /**
      * Returs false if the conversation does not exist or has ended.

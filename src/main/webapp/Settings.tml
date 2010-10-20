@@ -33,5 +33,12 @@
 		</div>
 	
 	</form>
+	
+	<p:sidebar>
+        <p>
+        	Tapestry supports has built-in support JSR-303 beanvalidator API. But you can still
+        	use the @Validate annotation that was previously designed to server the same purpose.
+        </p>
+	</p:sidebar>
   
 </html>

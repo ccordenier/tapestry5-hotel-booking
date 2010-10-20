@@ -125,10 +125,11 @@
         </p>
         <p>
         	Currently, Tapestry does not define a conversation scope for page variable persistences.
-        	So to implement a fully conversational page like the one provided by Seam's application
-        	you will have to handle this on your own whether by using the SessionState scope and handling
-        	the conversation id on page activation or better generalize it in the shape of a module
-        	contribution.
+        	So to implement a full conversational state (like the one provided by Seam's application)
+        	you will have to handle this on your own. First solution solution is to use the SessionState
+        	scope and handle the conversation id on page activation. The second that is better,
+        	generalize it in the shape of a module contribution by extending the list of existing
+        	persistence strategies.
         </p>
         <p>
         	Actually, most of the Tapestry services are extensible or can be overriden, this let you

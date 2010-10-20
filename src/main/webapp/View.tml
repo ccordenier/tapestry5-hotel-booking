@@ -9,9 +9,21 @@
 	<div class="hotel-details" t:type="beandisplay" t:object="hotel" t:exclude="id" t:include="name,address,city,state,zip,country,stars">
 	</div>
 	
-	<div class="form-submit">
-		<a href="#" t:type="pagelink" t:page="book" t:context="hotel">Book this Hotel</a> or 
-		<a href="#" t:type="pagelink" t:page="search">Back to search</a>
-	</div>
+	<form t:type="form" class="full-form" t:id="startBookingForm" t:context="hotel">
+   		
+		<div class="form-submit">
+			<input type="submit" class="btn-active" value="Book this Hotel" /> or 
+			<a href="#" t:type="pagelink" t:page="search">Back to search</a>
+		</div>
+
+   	</form>
+
+	<p:sidebar>
+        <p>
+        	Tapestry has an existing set of components that will help you to quickly
+        	handle common stuff. Displaying Javabean properties, generate form from Javabean, 
+        	display tabular datas... All of these to get a clean and efficient template's code.
+        </p>
+	</p:sidebar>
 
 </html>

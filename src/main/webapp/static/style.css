@@ -45,7 +45,7 @@ p { margin-bottom:10px; line-height:1.3em; }
 
 #top { background: #ffffff url('bg.png') repeat-x top right; }
 #content { padding:0px 15px;  margin:0px 15px; }
-#footer { font-size:12px; color:#999999; text-align: left; padding:10px 15px;}
+#footer { font-size:12px; color:#999999; text-align: center; padding: 15px 15px;}
 
 /* homepage */
 #homepage #aside { float:right; width: 280px; padding:70px 30px 0px 0px; font-family: Georgia, serif; font-size:18px; font-style:italic; line-height:1.3em; vertical-align: text-top;}

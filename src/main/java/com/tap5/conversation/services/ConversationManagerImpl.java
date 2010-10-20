@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.apache.tapestry5.Link;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.internal.util.InternalUtils;
 import org.apache.tapestry5.services.MetaDataLocator;
+import org.apache.tapestry5.services.PageRenderLinkSource;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.Session;
 
@@ -19,15 +21,19 @@ public class ConversationManagerImpl implements ConversationManager
 
     private final MetaDataLocator locator;
 
+    private final PageRenderLinkSource linkSource;
+
     private final List<Long> created = new ArrayList<Long>();
 
     private final List<Long> ended = new ArrayList<Long>();
 
-    public ConversationManagerImpl(Request request, MetaDataLocator locator)
+    public ConversationManagerImpl(Request request, MetaDataLocator locator,
+            PageRenderLinkSource linkSource)
     {
         super();
         this.request = request;
         this.locator = locator;
+        this.linkSource = linkSource;
     }
 
     public Long createConversation()
@@ -118,4 +124,21 @@ public class ConversationManagerImpl implements ConversationManager
 
         return result;
     }
+
+    public Link createLink(String pageName, Object... context)
+    {
+        Link result = linkSource.createPageRenderLinkWithContext(pageName, context);
+
+        if (getActiveConversation() != null)
+        {
+            result.addParameter(ConversationConstants.CID, getActiveConversation().toString());
+        }
+        else
+        {
+            result.addParameter(ConversationConstants.CID, createConversation().toString());
+        }
+
+        return result;
+    }
+
 }
