@@ -14,6 +14,8 @@ import com.tap5.hotelbooking.annotations.AnonymousAccess;
 import com.tap5.hotelbooking.domain.CrudServiceDAO;
 import com.tap5.hotelbooking.domain.QueryParameters;
 import com.tap5.hotelbooking.domain.entities.User;
+import com.tap5.hotelbooking.security.AuthenticationException;
+import com.tap5.hotelbooking.services.Authenticator;
 
 /**
  * This page the user can create an account
@@ -54,12 +56,14 @@ public class Signup
     @Inject
     private Messages messages;
 
+    @Inject
+    private Authenticator authenticator;
+
     @InjectPage
     private Signin signin;
 
     public Object onSubmitFromRegisterForm()
     {
-
         if (!verifyPassword.equals(password))
         {
             registerForm.recordError(messages.get("error.verifypassword"));
@@ -82,6 +86,16 @@ public class Signup
 
         crudServiceDAO.create(user);
 
-        return signin;
+        try
+        {
+            authenticator.login(username, password);
+        }
+        catch (AuthenticationException ex)
+        {
+            registerForm.recordError("Authentication process has failed");
+            return this;
+        }
+
+        return Search.class;
     }
 }
