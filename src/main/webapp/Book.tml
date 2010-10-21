@@ -120,18 +120,18 @@
 	<p:sidebar>
         <p>
             Tapestry's block provides an efficient way to display different content in function
-            of the context. This technic allows for example to have a wizard's style form in a single
+            of the context. This technique allows for example to have a wizard's style form in a single
             page. And then keeping the state object on a single page.
         </p>
         <p>
-        	Currently, Tapestry does not define a conversation scope for page variable persistences.
+        	Currently, Tapestry does not define a conversation scope.
         	So to implement a fully conversational page like the one provided by Seam's application
         	you will have to handle this on your own whether by using the SessionState scope and handling
         	the conversation id on page activation or better generalize it in the shape of a module
         	contribution.
         </p>
         <p>
-        	Actually, most of the Tapestry services are extensible or can be overriden, this let you
+        	Actually, most of the Tapestry services are extensible or can be overridden, this let you
         	imagine whatever you want for your company. Implement it and re-use it ! Also, Tapestry comes with
         	an elegant meta-programming API that will avoid to have boilerplate code inside application's
         	page.
