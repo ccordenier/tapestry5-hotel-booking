@@ -42,7 +42,7 @@
 	<p:sidebar>
         <p>
             Tapestry's Grid component that allows you to easily and efficiently display and navigate
-            throught tabular datas. The built-in hibernate module comes with an Optimized version
+            through tabular data. The built-in Hsibernate module comes with an Optimized version
             of GridDataSource to create efficient database request and obtain only the data to display.
         </p>
         <p>
