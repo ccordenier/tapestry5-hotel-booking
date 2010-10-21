@@ -17,15 +17,15 @@ import com.tap5.conversation.ConversationalObject;
 
 public class ConversationManagerImpl implements ConversationManager
 {
+    private static final String ENDED = "conversation_ended";
+
+    private static final String CREATED = "conversation_created";
+
     private final Request request;
 
     private final MetaDataLocator locator;
 
     private final PageRenderLinkSource linkSource;
-
-    private final List<Long> created = new ArrayList<Long>();
-
-    private final List<Long> ended = new ArrayList<Long>();
 
     public ConversationManagerImpl(Request request, MetaDataLocator locator,
             PageRenderLinkSource linkSource)
@@ -39,7 +39,7 @@ public class ConversationManagerImpl implements ConversationManager
     public Long createConversation()
     {
         Long cid = getIncrement().getAndIncrement();
-        created.add(cid);
+        getList(CREATED).add(cid);
         return cid;
     }
 
@@ -54,31 +54,19 @@ public class ConversationManagerImpl implements ConversationManager
             session.setAttribute(name, null);
         }
 
-        created.remove(cid);
-        ended.add(cid);
+        getList(CREATED).remove(cid);
+        getList(ENDED).add(cid);
     }
 
     public boolean isValid()
     {
-        return created.contains(getActiveConversation())
-                && !ended.contains(getActiveConversation());
+        return getList(CREATED).contains(getActiveConversation())
+                && !getList(ENDED).contains(getActiveConversation());
     }
 
     public String getConversationName(String pageName)
     {
         return locator.findMeta(ConversationConstants.CONVERSATION_NAME, pageName, String.class);
-    }
-
-    private AtomicLong getIncrement()
-    {
-        Session session = request.getSession(true);
-        AtomicLong increment = (AtomicLong) session.getAttribute("conversation_increment");
-        if (increment == null)
-        {
-            increment = new AtomicLong();
-            session.setAttribute("conversation_increment", increment);
-        }
-        return increment;
     }
 
     public boolean isConversational(String pageName)
@@ -141,4 +129,27 @@ public class ConversationManagerImpl implements ConversationManager
         return result;
     }
 
+    private AtomicLong getIncrement()
+    {
+        Session session = request.getSession(true);
+        AtomicLong increment = (AtomicLong) session.getAttribute("conversation_increment");
+        if (increment == null)
+        {
+            increment = new AtomicLong();
+            session.setAttribute("conversation_increment", increment);
+        }
+        return increment;
+    }
+
+    private List<Long> getList(String list)
+    {
+        Session session = request.getSession(true);
+        List<Long> result = (List<Long>) session.getAttribute(list);
+        if (result == null)
+        {
+            result = new ArrayList<Long>();
+            session.setAttribute(list, result);
+        }
+        return result;
+    }
 }

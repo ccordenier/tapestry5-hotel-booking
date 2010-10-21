@@ -1,9 +1,9 @@
 package com.tap5.hotelbooking.pages;
 
-import org.apache.tapestry5.PersistenceConstants;
+import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectPage;
-import org.apache.tapestry5.annotations.Persist;
+import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.beaneditor.Validate;
 import org.apache.tapestry5.corelib.components.Form;
@@ -28,17 +28,15 @@ public class Signup
 {
 
     @Property
-    @Persist(PersistenceConstants.FLASH)
+    @Validate("username")
     private String username;
 
     @Property
-    @Persist(PersistenceConstants.FLASH)
     @Validate("required, minlength=3, maxlength=50")
     private String fullName;
 
     @Property
-    @Persist(PersistenceConstants.FLASH)
-    @Validate("required, email")
+    @Validate("required,email")
     private String email;
 
     @Property
@@ -46,6 +44,9 @@ public class Signup
 
     @Property
     private String verifyPassword;
+
+    @Property
+    private String kaptcha;
 
     @Inject
     private CrudServiceDAO crudServiceDAO;
@@ -62,7 +63,8 @@ public class Signup
     @InjectPage
     private Signin signin;
 
-    public Object onSubmitFromRegisterForm()
+    @OnEvent(value = EventConstants.SUCCESS, component = "RegisterForm")
+    public Object proceedSignup()
     {
         if (!verifyPassword.equals(password))
         {

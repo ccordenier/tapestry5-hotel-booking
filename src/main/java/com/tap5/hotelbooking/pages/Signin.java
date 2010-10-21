@@ -26,7 +26,6 @@ public class Signin
     private String flashmessage;
     
     @Property
-    @Persist(PersistenceConstants.FLASH)
     private String username;
 
     @Property
