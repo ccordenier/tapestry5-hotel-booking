@@ -11,7 +11,6 @@ import com.tap5.conversation.ConversationalObject;
 import com.tap5.hotelbooking.domain.CrudServiceDAO;
 import com.tap5.hotelbooking.domain.QueryParameters;
 import com.tap5.hotelbooking.domain.entities.Booking;
-import com.tap5.hotelbooking.pages.Book;
 import com.tap5.hotelbooking.services.Authenticator;
 
 /**
@@ -30,6 +29,7 @@ public class YourBookings
     @Property
     private List<ConversationalObject<Booking>> bookings;
 
+    @SuppressWarnings("unused")
     @Property
     private Booking current;
 
@@ -42,9 +42,10 @@ public class YourBookings
     @SetupRender
     boolean listBookings()
     {
-        bookings = crudDao.findWithNamedQuery(Booking.BY_USERNAME, QueryParameters.with(
-                "username",
-                authenticator.getLoggedUser().getUsername()).parameters());
+        bookings = crudDao.findWithNamedQuery(
+                Booking.BY_USERNAME,
+                QueryParameters.with("username", authenticator.getLoggedUser().getUsername())
+                        .parameters());
         return bookings.size() > 0 ? true : false;
     }
 
