@@ -92,6 +92,11 @@
 			<artifactId>tapx-core</artifactId>
 			<version>${tapx-release-version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.0.Final</version>
+		</dependency>
 
 	</dependencies>
 	<build>
