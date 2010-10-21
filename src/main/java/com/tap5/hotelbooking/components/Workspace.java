@@ -36,6 +36,7 @@ public class Workspace
     @Property
     private ConversationalObject<Booking> current;
 
+    @SuppressWarnings("unused")
     @Property
     private DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 
