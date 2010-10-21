@@ -14,43 +14,54 @@ import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 public interface CrudServiceDAO
 {
     /**
+     * Creates a new object
+     * 
      * @param <T>
      * @param t
-     * @return
+     * @return persisted Object
      */
     @CommitAfter
     <T> T create(T t);
 
     /**
+     * Updates the given object
+     * 
      * @param <T>
      * @param t
-     * @return
+     * @return persisted object
      */
     @CommitAfter
     <T> T update(T t);
 
     /**
+     * Deletes the given object by id
+     * 
      * @param <T>
      * @param <PK>
      * @param type
+     *            , entity class type
      * @param id
      */
     @CommitAfter
     <T, PK extends Serializable> void delete(Class<T> type, PK id);
 
     /**
+     * Finds an object by id
+     * 
      * @param <T>
      * @param <PK>
      * @param type
      * @param id
-     * @return
+     * @return the object
      */
     <T, PK extends Serializable> T find(Class<T> type, PK id);
 
     /**
+     * Finds a list of objects for the given query name
+     * 
      * @param <T>
      * @param queryName
-     * @return
+     * @return returns a list of objects
      */
     <T> List<T> findWithNamedQuery(String queryName);
 
@@ -65,17 +76,21 @@ public interface CrudServiceDAO
     <T> List<T> findWithNamedQuery(String queryName, Map<String, Object> params);
 
     /**
+     * Returns one result, query without parameters
+     * 
      * @param <T>
      * @param queryName
-     * @return
+     * @return T object
      */
     <T> T findUniqueWithNamedQuery(String queryName);
 
     /**
+     * Returns just one result with a named query and parameters
+     * 
      * @param <T>
      * @param queryName
      * @param params
-     * @return
+     * @return T object
      */
     <T> T findUniqueWithNamedQuery(String queryName, Map<String, Object> params);
 }
