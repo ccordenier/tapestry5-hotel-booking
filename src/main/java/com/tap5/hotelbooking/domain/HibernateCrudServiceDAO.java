@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.apache.tapestry5.ioc.annotations.Inject;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -19,11 +20,12 @@ import org.hibernate.Session;
 public class HibernateCrudServiceDAO implements CrudServiceDAO
 {
 
+    @Inject
     private Session session;
 
-    public <T> HibernateCrudServiceDAO(Class<T> type, Session session)
+    public <T> HibernateCrudServiceDAO(Class<T> type)
     {
-        this.session = session;
+
     }
 
     public <T> T create(T t)

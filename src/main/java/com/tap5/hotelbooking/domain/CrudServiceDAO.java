@@ -14,7 +14,7 @@ import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 public interface CrudServiceDAO
 {
     /**
-     * Creates a new object
+     * Creates a new object for the given type
      * 
      * @param <T>
      * @param t

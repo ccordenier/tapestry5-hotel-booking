@@ -1,9 +1,7 @@
 package com.tap5.hotelbooking.pages;
 
-import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Log;
-import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.Messages;
@@ -17,16 +15,14 @@ import com.tap5.hotelbooking.services.Authenticator;
  * User can sign up on the
  * 
  * @author karesti
- * @version 1.0
  */
 @AnonymousAccess
 public class Signin
 {
     @Property
     private String flashmessage;
-    
+
     @Property
-    @Persist(PersistenceConstants.FLASH)
     private String username;
 
     @Property
@@ -66,5 +62,5 @@ public class Signin
     {
         this.flashmessage = flashmessage;
     }
-    
+
 }

@@ -9,9 +9,7 @@ import org.apache.tapestry5.ioc.annotations.SubModule;
 import org.apache.tapestry5.services.ComponentRequestHandler;
 import org.apache.tapestry5.validator.ValidatorMacro;
 
-import com.tap5.conversation.ConversationConstants;
-import com.tap5.conversation.services.ConversationModule;
-import com.tap5.hotelbooking.annotations.HotelBookingConstants;
+import com.tap5.hotelbooking.data.HotelBookingConstants;
 import com.tap5.hotelbooking.domain.HibernateModule;
 import com.tap5.hotelbooking.security.AuthenticationFilter;
 
@@ -20,7 +18,7 @@ import com.tap5.hotelbooking.security.AuthenticationFilter;
  * configure and extend Tapestry, or to place your own service definitions.
  */
 @SubModule(
-{ HibernateModule.class, DemoDataModule.class, ConversationModule.class })
+{ HibernateModule.class, DemoDataModule.class })
 public class HotelBookingModule
 {
     public static void bind(ServiceBinder binder)
@@ -28,13 +26,14 @@ public class HotelBookingModule
         binder.bind(Authenticator.class, BasicAuthenticator.class);
     }
 
+    // @Contribute(SymbolProvider.class)
+    // @Marker(ApplicationDefaults.class)
     public static void contributeApplicationDefaults(
             MappedConfiguration<String, String> configuration)
     {
 
         configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
         configuration.add(SymbolConstants.APPLICATION_VERSION, "1.0-SNAPSHOT");
-        configuration.add(ConversationConstants.DEFAULT_REDIRECT, "Search");
         configuration.add(HotelBookingConstants.DEFAULT_PAGE, "Search");
         configuration.add(HotelBookingConstants.SIGNIN_PAGE, "Signin");
         configuration.add(HotelBookingConstants.SIGNUP_PAGE, "Signup");

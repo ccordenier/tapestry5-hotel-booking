@@ -1,4 +1,4 @@
-package com.tap5.hotelbooking.annotations;
+package com.tap5.hotelbooking.data;
 
 /**
  * Define the Hotel booking symbols constants.

@@ -7,7 +7,6 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import com.tap5.conversation.ConversationalObject;
 import com.tap5.hotelbooking.domain.CrudServiceDAO;
 import com.tap5.hotelbooking.domain.QueryParameters;
 import com.tap5.hotelbooking.domain.entities.Booking;
@@ -27,7 +26,7 @@ public class YourBookings
     private Authenticator authenticator;
 
     @Property
-    private List<ConversationalObject<Booking>> bookings;
+    private List<Booking> bookings;
 
     @SuppressWarnings("unused")
     @Property

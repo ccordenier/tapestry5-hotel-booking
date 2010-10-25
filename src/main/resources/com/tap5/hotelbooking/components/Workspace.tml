@@ -3,8 +3,8 @@
 	
 	<h2>Booking in progress</h2>
 	<ul id="workspace" xml:space="preserve">
-		<li t:type="loop" t:source="bookings" t:value="current"><a href="${bookLink}" title="${currentBooking?.hotel?.name}">${currentBooking?.hotel?.name}</a>
-		from <t:output value="currentBooking?.checkinDate" format="format"/> to <t:output value="currentBooking?.checkoutDate" format="format"/> 
+		<li t:type="loop" t:source="bookings" t:value="current"><a href="${bookLink}" title="${current?.hotel?.name}">${current?.hotel?.name}</a>
+		from <t:output value="current?.checkinDate" format="format"/> to <t:output value="current?.checkoutDate" format="format"/> 
 		<t:if test="isCurrent">[current]</t:if>
 		</li>
 	</ul>

@@ -9,7 +9,7 @@
 
 	<div class="hotel-details" t:type="beandisplay" t:object="booking.hotel" t:exclude="id" t:include="name,address,city,state,zip,country,price,stars">
 		<p:stars>
-			<t:hotelclass stars="hotel?.stars" />
+			<t:hotelclass stars="booking?.hotel?.stars" />
 		</p:stars>
 	</div>
 
@@ -124,11 +124,8 @@
             page. And then keeping the state object on a single page.
         </p>
         <p>
-        	Currently, Tapestry does not define a conversation scope.
-        	So to implement a fully conversational page like the one provided by Seam's application
-        	you will have to handle this on your own whether by using the SessionState scope and handling
-        	the conversation id on page activation or better generalize it in the shape of a module
-        	contribution.
+
+        	Even if other frameworks provide conversation scope ... bla bla bla
         </p>
         <p>
         	Actually, most of the Tapestry services are extensible or can be overridden, this let you

@@ -15,7 +15,7 @@ import org.apache.tapestry5.services.PageRenderRequestParameters;
 import org.apache.tapestry5.services.Response;
 
 import com.tap5.hotelbooking.annotations.AnonymousAccess;
-import com.tap5.hotelbooking.annotations.HotelBookingConstants;
+import com.tap5.hotelbooking.data.HotelBookingConstants;
 import com.tap5.hotelbooking.services.Authenticator;
 
 /**

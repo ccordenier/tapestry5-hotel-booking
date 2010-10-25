@@ -48,7 +48,7 @@
 				</td>	
 			</tr>
 			<tr>
-    			<th><label t:type="label" t:for="fcaptcha"></label></th>
+    			<th><label t:type="label" t:for="fcaptcha">Enter text displayed below</label></th>
     			<td>
     				<t:tapx.kaptchafield image="kaptcha" t:id="fcaptcha" />
     			</td>  			

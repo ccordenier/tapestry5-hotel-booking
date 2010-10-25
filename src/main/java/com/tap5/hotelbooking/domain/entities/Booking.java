@@ -69,6 +69,8 @@ public class Booking implements Serializable
 
     private int beds;
 
+    private Date creationDate;
+
     public Booking()
     {
     }
@@ -82,6 +84,7 @@ public class Booking implements Serializable
         this.beds = 1;
         setReservationDates(daysFromNow, nights);
         creditCardExpiryMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
+        this.creationDate = new Date();
     }
 
     @Id
@@ -264,12 +267,26 @@ public class Booking implements Serializable
     public void setReservationDates(int daysFromNow, int nights)
     {
         Calendar refDate = Calendar.getInstance();
-        refDate.set(refDate.get(Calendar.YEAR), refDate.get(Calendar.MONTH), refDate
-                .get(Calendar.DAY_OF_MONTH)
-                + daysFromNow, 0, 0, 0);
+        refDate.set(
+                refDate.get(Calendar.YEAR),
+                refDate.get(Calendar.MONTH),
+                refDate.get(Calendar.DAY_OF_MONTH) + daysFromNow,
+                0,
+                0,
+                0);
         setCheckinDate(refDate.getTime());
         refDate.add(Calendar.DAY_OF_MONTH, nights);
         setCheckoutDate(refDate.getTime());
+    }
+
+    public Date getCreationDate()
+    {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate)
+    {
+        this.creationDate = creationDate;
     }
 
     @Override

@@ -7,8 +7,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Security annotation for Tapestry Pages. Prevents anonymous access to pages. The current user must
- * be logged in.
+ * Security annotation for Tapestry Pages. Enables anonymous access to pages, so the user does not
+ * have to be logged in
  * 
  * @author karesti
  * @version 1.0

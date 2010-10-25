@@ -1,9 +1,8 @@
-package com.tap5.hotelbooking.app0.services;
+package com.tap5.hotelbooking.test.services;
 
 import org.apache.tapestry5.hibernate.HibernateSymbols;
 import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
-import org.apache.tapestry5.ioc.annotations.SubModule;
 import org.apache.tapestry5.services.LibraryMapping;
 
 /**
@@ -11,13 +10,12 @@ import org.apache.tapestry5.services.LibraryMapping;
  * 
  * @author karesti
  */
-@SubModule(TestModule.class)
-public class AppModule
+public class TestModule
 {
 
     public static void contributeComponentClassResolver(Configuration<LibraryMapping> configuration)
     {
-        configuration.add(new LibraryMapping("app0", "com.tap5.hotelbooking.app0"));
+        configuration.add(new LibraryMapping("test", "com.tap5.hotelbooking.test"));
     }
 
     public static void contributeApplicationDefauls(

@@ -3,7 +3,6 @@ package com.tap5.hotelbooking.components;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.MarkupWriter;
-import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.BeginRender;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -41,9 +40,9 @@ public class AjaxLoader
      */
     @Parameter(required = true, allowNull = false, defaultPrefix = BindingConstants.LITERAL)
     private String trigger;
-    
+
     @Inject
-    private JavaScriptSupport renderSupport;
+    private JavaScriptSupport javascriptSupport;
 
     @Inject
     private ComponentResources resources;
@@ -58,16 +57,15 @@ public class AjaxLoader
     @BeginRender
     void initMoreLink(MarkupWriter writer)
     {
-        loader = renderSupport.allocateClientId("loader");
+        loader = javascriptSupport.allocateClientId("loader");
 
         JSONObject data = new JSONObject();
         data.put("zone", zone);
         data.put("trigger", trigger);
         data.put("loader", loader);
-        renderSupport.addInitializerCall(InitializationPriority.LATE, "initAjaxLoader", data);
+        javascriptSupport.addInitializerCall(InitializationPriority.LATE, "initAjaxLoader", data);
     }
 
-    @AfterRender
     void afterRender(MarkupWriter writer)
     {
         writer.element(element, "id", loader, "class", this.loaderClass, "style", "display:none;");

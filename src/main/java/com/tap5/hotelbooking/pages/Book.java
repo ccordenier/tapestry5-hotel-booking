@@ -10,30 +10,31 @@ import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import com.tap5.conversation.Conversation;
-import com.tap5.conversation.End;
 import com.tap5.hotelbooking.data.BedType;
 import com.tap5.hotelbooking.data.Months;
+import com.tap5.hotelbooking.data.UserWorkspace;
 import com.tap5.hotelbooking.data.Years;
 import com.tap5.hotelbooking.domain.CrudServiceDAO;
 import com.tap5.hotelbooking.domain.entities.Booking;
 import com.tap5.hotelbooking.domain.entities.Hotel;
-import com.tap5.hotelbooking.domain.entities.User;
-import com.tap5.hotelbooking.services.Authenticator;
 
 /**
  * This page implements booking process for a give hotel.
  * 
  * @author ccordenier
  */
-@Conversation("book")
 public class Book
 {
+    @SessionState
+    @Property
+    private UserWorkspace userWorkspace;
 
+    @SuppressWarnings("unused")
     @Property
     @PageActivationContext
     private Hotel hotel;
@@ -49,9 +50,6 @@ public class Book
 
     @Inject
     private CrudServiceDAO dao;
-
-    @Inject
-    private Authenticator authenticator;
 
     @InjectComponent
     private Form bookingForm;
@@ -93,11 +91,9 @@ public class Book
     @OnEvent(value = EventConstants.ACTIVATE)
     public void setupBooking()
     {
-
         if (booking == null)
         {
-            User user = (User) dao.find(User.class, authenticator.getLoggedUser().getId());
-            booking = new Booking(hotel, user, 1, 1);
+            booking = userWorkspace.getCurrent();
         }
 
     }
@@ -121,12 +117,13 @@ public class Book
         confirm = true;
     }
 
-    @End
     @OnEvent(value = EventConstants.SUCCESS, component = "confirmForm")
     public Object confirm()
     {
         // Create
         dao.create(booking);
+
+        userWorkspace.confirmCurrentBooking(booking);
 
         // Return to search
         return Search.class;
@@ -138,7 +135,6 @@ public class Book
         confirm = false;
     }
 
-    @End
     @OnEvent(value = "cancelBooking")
     public Object cancelBooking()
     {
