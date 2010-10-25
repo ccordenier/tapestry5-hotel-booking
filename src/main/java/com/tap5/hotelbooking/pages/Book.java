@@ -76,7 +76,7 @@ public class Book
     /**
      * Get the current step
      * 
-     * @return
+     * @return confirmation or booking bloc
      */
     public Block getStep()
     {
@@ -85,6 +85,7 @@ public class Book
 
     public String getSecuredCardNumber()
     {
+
         return booking.getCreditCardNumber().substring(12);
     }
 
@@ -95,7 +96,6 @@ public class Book
         {
             booking = userWorkspace.getCurrent();
         }
-
     }
 
     @OnEvent(value = EventConstants.VALIDATE, component = "bookingForm")
@@ -113,7 +113,7 @@ public class Book
             bookingForm.recordError(messages.get("booking_checkOutBeforeCheckIn"));
             return;
         }
-
+        userWorkspace.updateCurrentBooking(booking);
         confirm = true;
     }
 
@@ -125,6 +125,10 @@ public class Book
 
         userWorkspace.confirmCurrentBooking(booking);
 
+        booking = null;
+
+        confirm = false;
+
         // Return to search
         return Search.class;
     }
@@ -132,12 +136,18 @@ public class Book
     @OnEvent(value = "cancelConfirm")
     public void cancelConfim()
     {
+        userWorkspace.confirmCurrentBooking(booking);
+
+        booking = null;
+
         confirm = false;
     }
 
     @OnEvent(value = "cancelBooking")
     public Object cancelBooking()
     {
+        booking = null;
+
         return Search.class;
     }
 
