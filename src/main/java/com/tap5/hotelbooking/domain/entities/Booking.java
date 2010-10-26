@@ -71,6 +71,9 @@ public class Booking implements Serializable
 
     private Date creationDate;
 
+    @Transient
+    private boolean status;
+
     public Booking()
     {
     }
@@ -85,6 +88,7 @@ public class Booking implements Serializable
         setReservationDates(daysFromNow, nights);
         creditCardExpiryMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
         this.creationDate = new Date();
+        this.status = false;
     }
 
     @Id
@@ -287,6 +291,16 @@ public class Booking implements Serializable
     public void setCreationDate(Date creationDate)
     {
         this.creationDate = creationDate;
+    }
+
+    public Boolean getStatus()
+    {
+        return status;
+    }
+
+    public void setStatus(Boolean status)
+    {
+        this.status = status;
     }
 
     @Override

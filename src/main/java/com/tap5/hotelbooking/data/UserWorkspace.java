@@ -28,11 +28,6 @@ public class UserWorkspace
         return notConfirmed;
     }
 
-    public void setNotConfirmed(List<Booking> confirmed)
-    {
-        this.notConfirmed = confirmed;
-    }
-
     public Booking getCurrent()
     {
         return current;
@@ -46,13 +41,43 @@ public class UserWorkspace
     public void startBooking(Hotel hotel, User user)
     {
         Booking booking = new Booking(hotel, user, 1, 1);
-        this.setCurrent(booking);
+        this.current = booking;
         notConfirmed.add(booking);
     }
 
-    public void confirmCurrentBooking(Booking booking)
+    private void removeCurrentBooking(Booking booking)
     {
         notConfirmed.remove(booking);
         this.current = null;
     }
+
+    public Booking restoreBooking(Long bookId)
+    {
+        Booking restoredBooking = null;
+
+        for (Booking booking : notConfirmed)
+        {
+            if (bookId.equals(booking.getHotel().getId()))
+            {
+                restoredBooking = booking;
+                break;
+            }
+        }
+        
+        this.current = restoredBooking;
+
+        return restoredBooking;
+    }
+
+    public void cancelCurrentBooking(Booking booking)
+    {
+        removeCurrentBooking(booking);
+
+    }
+
+    public void confirmCurrentBooking(Booking booking)
+    {
+        removeCurrentBooking(booking);
+    }
+
 }

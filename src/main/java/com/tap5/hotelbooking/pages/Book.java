@@ -4,8 +4,10 @@ import java.util.Calendar;
 
 import org.apache.tapestry5.Block;
 import org.apache.tapestry5.EventConstants;
+import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.InjectComponent;
+import org.apache.tapestry5.annotations.Log;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.PageActivationContext;
 import org.apache.tapestry5.annotations.Persist;
@@ -55,11 +57,11 @@ public class Book
     private Form bookingForm;
 
     @Property
-    @Persist
+    @Persist(PersistenceConstants.FLASH)
     private Booking booking;
 
     @Persist
-    private boolean confirm;
+    private boolean confirmationStep;
 
     @SuppressWarnings("unused")
     @Property
@@ -80,7 +82,7 @@ public class Book
      */
     public Block getStep()
     {
-        return confirm ? confirmBlock : bookBlock;
+        return confirmationStep ? confirmBlock : bookBlock;
     }
 
     public String getSecuredCardNumber()
@@ -89,13 +91,28 @@ public class Book
         return booking.getCreditCardNumber().substring(12);
     }
 
-    @OnEvent(value = EventConstants.ACTIVATE)
-    public void setupBooking()
+    @Log
+    public Object onActivate(Long bookId, String context)
     {
+        booking = userWorkspace.restoreBooking(bookId);
+
         if (booking == null)
         {
-            booking = userWorkspace.getCurrent();
+            return Search.class;
         }
+        else
+        {
+            confirmationStep = booking.getStatus();
+            return null;
+        }
+    }
+
+    @OnEvent(value = EventConstants.ACTIVATE)
+    @Log
+    public void setupBooking()
+    {
+        booking = userWorkspace.getCurrent();
+        confirmationStep = booking.getStatus();
     }
 
     @OnEvent(value = EventConstants.VALIDATE, component = "bookingForm")
@@ -113,8 +130,8 @@ public class Book
             bookingForm.recordError(messages.get("booking_checkOutBeforeCheckIn"));
             return;
         }
-        userWorkspace.updateCurrentBooking(booking);
-        confirm = true;
+
+        userWorkspace.getCurrent().setStatus(true);
     }
 
     @OnEvent(value = EventConstants.SUCCESS, component = "confirmForm")
@@ -127,25 +144,23 @@ public class Book
 
         booking = null;
 
-        confirm = false;
-
         // Return to search
         return Search.class;
     }
 
     @OnEvent(value = "cancelConfirm")
+    @Log
     public void cancelConfim()
     {
-        userWorkspace.confirmCurrentBooking(booking);
-
-        booking = null;
-
-        confirm = false;
+        booking.setStatus(false);
     }
 
     @OnEvent(value = "cancelBooking")
+    @Log
     public Object cancelBooking()
     {
+        userWorkspace.cancelCurrentBooking(booking);
+
         booking = null;
 
         return Search.class;

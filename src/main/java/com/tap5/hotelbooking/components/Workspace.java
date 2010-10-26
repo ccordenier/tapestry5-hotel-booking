@@ -44,12 +44,16 @@ public class Workspace
 
     public Link getBookLink()
     {
-        Link result = linkSource.createPageRenderLinkWithContext("book", current.getHotel());
+        Link result = linkSource.createPageRenderLinkWithContext(
+                "book",
+                current.getHotel(),
+                "restore");
         return result;
     }
 
     public boolean getIsCurrent()
     {
-        return userWorkspace.getCurrent().equals(current);
+
+        return userWorkspace.getCurrent() != null && userWorkspace.getCurrent().equals(current);
     }
 }
