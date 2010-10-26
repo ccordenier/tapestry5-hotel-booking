@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html t:type="layout" t:pageTitle="Book your room"
-      t:sidebarTitle="Current Time"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
       xmlns:p="tapestry:parameter">
         <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
@@ -123,10 +122,7 @@
             of the context. This technique allows for example to have a wizard's style form in a single
             page. And then keeping the state object on a single page.
         </p>
-        <p>
-
-        	Even if other frameworks provide conversation scope ... bla bla bla
-        </p>
+        
         <p>
         	Actually, most of the Tapestry services are extensible or can be overridden, this let you
         	imagine whatever you want for your company. Implement it and re-use it ! Also, Tapestry comes with

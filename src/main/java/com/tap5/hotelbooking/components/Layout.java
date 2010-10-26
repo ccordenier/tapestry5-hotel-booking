@@ -32,11 +32,6 @@ public class Layout
     @SuppressWarnings("unused")
     @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
-    private String sidebarTitle;
-
-    @SuppressWarnings("unused")
-    @Property
-    @Parameter(defaultPrefix = BindingConstants.LITERAL)
     private Block sidebar;
 
     @Inject
