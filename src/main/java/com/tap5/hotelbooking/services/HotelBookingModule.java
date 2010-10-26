@@ -26,8 +26,6 @@ public class HotelBookingModule
         binder.bind(Authenticator.class, BasicAuthenticator.class);
     }
 
-    // @Contribute(SymbolProvider.class)
-    // @Marker(ApplicationDefaults.class)
     public static void contributeApplicationDefaults(
             MappedConfiguration<String, String> configuration)
     {
