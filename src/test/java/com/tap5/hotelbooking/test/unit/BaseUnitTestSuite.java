@@ -6,8 +6,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.tap5.hotelbooking.services.HotelBookingModule;
-
 /**
  * Base test case class that provides the necessary to load tapestry services
  * 
@@ -30,8 +28,7 @@ public abstract class BaseUnitTestSuite
     @BeforeClass
     public void setup()
     {
-        pageTester = new PageTester("com.tap5.hotelbooking", "hotel-booking", "src/main/webapp",
-                HotelBookingModule.class);
+        pageTester = new PageTester("com.tap5.hotelbooking", "hotel-booking", "src/main/webapp");
 
         registry = pageTester.getRegistry();
     }

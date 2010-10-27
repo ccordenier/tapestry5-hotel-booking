@@ -7,9 +7,9 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import com.tap5.hotelbooking.domain.CrudServiceDAO;
-import com.tap5.hotelbooking.domain.QueryParameters;
-import com.tap5.hotelbooking.domain.entities.Booking;
+import com.tap5.hotelbooking.dal.CrudServiceDAO;
+import com.tap5.hotelbooking.dal.QueryParameters;
+import com.tap5.hotelbooking.entities.Booking;
 import com.tap5.hotelbooking.services.Authenticator;
 
 /**
@@ -34,7 +34,7 @@ public class YourBookings
 
     /**
      * Prepare the list of booking to display, extract all the booking associated to the current
-     * user.
+     * logged user.
      * 
      * @return
      */

@@ -3,9 +3,9 @@ package com.tap5.hotelbooking.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tap5.hotelbooking.domain.entities.Booking;
-import com.tap5.hotelbooking.domain.entities.Hotel;
-import com.tap5.hotelbooking.domain.entities.User;
+import com.tap5.hotelbooking.entities.Booking;
+import com.tap5.hotelbooking.entities.Hotel;
+import com.tap5.hotelbooking.entities.User;
 
 /**
  * Use this object to store user's booking
@@ -72,7 +72,6 @@ public class UserWorkspace
     public void cancelCurrentBooking(Booking booking)
     {
         removeCurrentBooking(booking);
-
     }
 
     public void confirmCurrentBooking(Booking booking)

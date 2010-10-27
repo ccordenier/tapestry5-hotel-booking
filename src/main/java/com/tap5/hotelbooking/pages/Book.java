@@ -17,13 +17,13 @@ import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
+import com.tap5.hotelbooking.dal.CrudServiceDAO;
 import com.tap5.hotelbooking.data.BedType;
 import com.tap5.hotelbooking.data.Months;
 import com.tap5.hotelbooking.data.UserWorkspace;
 import com.tap5.hotelbooking.data.Years;
-import com.tap5.hotelbooking.domain.CrudServiceDAO;
-import com.tap5.hotelbooking.domain.entities.Booking;
-import com.tap5.hotelbooking.domain.entities.Hotel;
+import com.tap5.hotelbooking.entities.Booking;
+import com.tap5.hotelbooking.entities.Hotel;
 
 /**
  * This page implements booking process for a give hotel.

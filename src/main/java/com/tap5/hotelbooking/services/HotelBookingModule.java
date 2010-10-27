@@ -6,11 +6,14 @@ import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.SubModule;
+import org.apache.tapestry5.ioc.services.ApplicationDefaults;
+import org.apache.tapestry5.ioc.services.SymbolProvider;
+import org.apache.tapestry5.services.ComponentRequestFilter;
 import org.apache.tapestry5.services.ComponentRequestHandler;
 import org.apache.tapestry5.validator.ValidatorMacro;
 
-import com.tap5.hotelbooking.data.HotelBookingConstants;
-import com.tap5.hotelbooking.domain.HibernateModule;
+import com.tap5.hotelbooking.dal.DataModule;
+import com.tap5.hotelbooking.dal.HibernateModule;
 import com.tap5.hotelbooking.security.AuthenticationFilter;
 
 /**
@@ -18,7 +21,7 @@ import com.tap5.hotelbooking.security.AuthenticationFilter;
  * configure and extend Tapestry, or to place your own service definitions.
  */
 @SubModule(
-{ HibernateModule.class, DemoDataModule.class })
+{ HibernateModule.class, DataModule.class })
 public class HotelBookingModule
 {
     public static void bind(ServiceBinder binder)
@@ -26,15 +29,14 @@ public class HotelBookingModule
         binder.bind(Authenticator.class, BasicAuthenticator.class);
     }
 
-    public static void contributeApplicationDefaults(
+    @ApplicationDefaults
+    @Contribute(SymbolProvider.class)
+    public static void configureTapestryHotelBooking(
             MappedConfiguration<String, String> configuration)
     {
 
         configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
         configuration.add(SymbolConstants.APPLICATION_VERSION, "1.0-SNAPSHOT");
-        configuration.add(HotelBookingConstants.DEFAULT_PAGE, "Search");
-        configuration.add(HotelBookingConstants.SIGNIN_PAGE, "Signin");
-        configuration.add(HotelBookingConstants.SIGNUP_PAGE, "Signup");
     }
 
     @Contribute(ValidatorMacro.class)
@@ -44,10 +46,9 @@ public class HotelBookingModule
         configuration.add("password", "required, minlength=6, maxlength=12");
     }
 
-    @SuppressWarnings(
-    { "rawtypes", "unchecked" })
     @Contribute(ComponentRequestHandler.class)
-    public static void contributeComponentRequestHandler(OrderedConfiguration configuration)
+    public static void contributeComponentRequestHandler(
+            OrderedConfiguration<ComponentRequestFilter> configuration)
     {
         configuration.addInstance("RequiresLogin", AuthenticationFilter.class);
     }

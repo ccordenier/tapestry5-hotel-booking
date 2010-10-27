@@ -1,7 +1,6 @@
 package com.tap5.hotelbooking.test.integration;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 /**
@@ -11,7 +10,7 @@ import org.testng.annotations.Test;
  */
 public class SearchPageTest extends BaseIntegrationTestSuite
 {
-    @Test(testName = "signin")
+    @Test(priority = 10, groups="search")
     public void signin()
     {
         open("/signin");
@@ -29,7 +28,7 @@ public class SearchPageTest extends BaseIntegrationTestSuite
     /**
      * Check wildcards
      */
-    @Test(testName = "wildcardSearch", dependsOnMethods = "signin")
+    @Test(priority = 11, groups="search")
     public void wildcardSearch()
     {
         open("/search");
@@ -39,13 +38,15 @@ public class SearchPageTest extends BaseIntegrationTestSuite
         select("id=rowsPerPage", "value=10");
 
         click("//form[@id='searchForm']//input[@type='submit']");
-        waitForCondition("selenium.getXpathCount(\"//div[@class='t-data-grid-pager']/a\") == 2", "15000");
+        waitForCondition(
+                "selenium.getXpathCount(\"//div[@class='t-data-grid-pager']/a\") == 2",
+                "15000");
     }
-    
+
     /**
      * Check wildcards with 20 results per page
      */
-    @Test(testName = "changePagePerResult", dependsOnMethods = "signin")
+    @Test(priority = 12, groups="search")
     public void changePagePerResult()
     {
         open("/search");
@@ -54,21 +55,22 @@ public class SearchPageTest extends BaseIntegrationTestSuite
         type("query", "*");
         select("id=rowsPerPage", "value=20");
         click("//form[@id='searchForm']//input[@type='submit']");
-        waitForCondition("selenium.getXpathCount(\"//div[@class='t-data-grid-pager']/a\") == 1", "15000");
+        waitForCondition(
+                "selenium.getXpathCount(\"//div[@class='t-data-grid-pager']/a\") == 1",
+                "15000");
     }
-    
-    @AfterClass(alwaysRun = true)
-    @Override
-    public void cleanup()
+
+    @Test(priority = 13, groups="search")
+    public void logout()
     {
         open("/search");
         waitForPageToLoad();
-        
+
         Assert.assertTrue(
                 isElementPresent("id=logout"),
                 "Authenticated user should be able to logout");
         click("id=logout");
-        super.cleanup();
+        waitForPageToLoad();
     }
 
 }

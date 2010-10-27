@@ -4,9 +4,9 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.Session;
 
-import com.tap5.hotelbooking.domain.CrudServiceDAO;
-import com.tap5.hotelbooking.domain.QueryParameters;
-import com.tap5.hotelbooking.domain.entities.User;
+import com.tap5.hotelbooking.dal.CrudServiceDAO;
+import com.tap5.hotelbooking.dal.QueryParameters;
+import com.tap5.hotelbooking.entities.User;
 import com.tap5.hotelbooking.security.AuthenticationException;
 
 /**

@@ -9,7 +9,7 @@ import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import com.tap5.hotelbooking.domain.entities.User;
+import com.tap5.hotelbooking.entities.User;
 import com.tap5.hotelbooking.pages.Index;
 import com.tap5.hotelbooking.services.Authenticator;
 
@@ -47,14 +47,7 @@ public class Layout
 
     public User getUser()
     {
-        User user = null;
-
-        if (authenticator.isLoggedIn())
-        {
-            user = authenticator.getLoggedUser();
-        }
-
-        return user;
+        return authenticator.isLoggedIn() ? authenticator.getLoggedUser() : null;
     }
 
     @Log

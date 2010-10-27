@@ -7,16 +7,16 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.AssetSource;
 
 /**
- * Use this component with beandisplay to display an images for hotel's class.
- * It will display the image that corresponds to the number of stars of the hotel.
- *
+ * Use this component with beandisplay to display an images for hotel's class. It will display the
+ * image that corresponds to the number of stars of the hotel.
+ * 
  * @author ccordenier
  */
 public class HotelClass
 {
     @Parameter(required = true)
     @Property
-    private Long stars;
+    private long stars;
 
     @Inject
     private AssetSource assetSource;

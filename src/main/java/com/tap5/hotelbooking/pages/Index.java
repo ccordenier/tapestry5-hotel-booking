@@ -16,13 +16,6 @@ public class Index
 
     public Object onActivate()
     {
-        if (authenticator.isLoggedIn())
-        {
-            return Search.class;
-        }
-        else
-        {
-            return Signin.class;
-        }
+        return authenticator.isLoggedIn() ? Search.class : Signin.class;
     }
 }

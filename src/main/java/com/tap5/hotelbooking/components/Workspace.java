@@ -11,7 +11,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.PageRenderLinkSource;
 
 import com.tap5.hotelbooking.data.UserWorkspace;
-import com.tap5.hotelbooking.domain.entities.Booking;
+import com.tap5.hotelbooking.entities.Booking;
 
 /**
  * Display the list of current booking that has not been confirmed yet. You can click on displayed
@@ -22,7 +22,6 @@ import com.tap5.hotelbooking.domain.entities.Booking;
  */
 public class Workspace
 {
-
     @SessionState
     @Property
     private UserWorkspace userWorkspace;

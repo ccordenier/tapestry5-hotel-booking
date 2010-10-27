@@ -1,6 +1,6 @@
 package com.tap5.hotelbooking.services;
 
-import com.tap5.hotelbooking.domain.entities.User;
+import com.tap5.hotelbooking.entities.User;
 import com.tap5.hotelbooking.security.AuthenticationException;
 
 /**

@@ -3,8 +3,6 @@ package com.tap5.hotelbooking.security;
 import java.io.IOException;
 
 import org.apache.tapestry5.Link;
-import org.apache.tapestry5.ioc.annotations.Inject;
-import org.apache.tapestry5.ioc.annotations.Symbol;
 import org.apache.tapestry5.runtime.Component;
 import org.apache.tapestry5.services.ComponentEventRequestParameters;
 import org.apache.tapestry5.services.ComponentRequestFilter;
@@ -15,7 +13,9 @@ import org.apache.tapestry5.services.PageRenderRequestParameters;
 import org.apache.tapestry5.services.Response;
 
 import com.tap5.hotelbooking.annotations.AnonymousAccess;
-import com.tap5.hotelbooking.data.HotelBookingConstants;
+import com.tap5.hotelbooking.pages.Search;
+import com.tap5.hotelbooking.pages.Signin;
+import com.tap5.hotelbooking.pages.Signup;
 import com.tap5.hotelbooking.services.Authenticator;
 
 /**
@@ -38,17 +38,11 @@ public class AuthenticationFilter implements ComponentRequestFilter
 
     private final Authenticator authenticator;
 
-    @Inject
-    @Symbol(HotelBookingConstants.DEFAULT_PAGE)
-    private String defaultPage;
+    private String defaultPage = Search.class.getSimpleName();
 
-    @Inject
-    @Symbol(HotelBookingConstants.SIGNIN_PAGE)
-    private String signinPage;
+    private String signinPage = Signin.class.getSimpleName();
 
-    @Inject
-    @Symbol(HotelBookingConstants.SIGNUP_PAGE)
-    private String signupPage;
+    private String signupPage = Signup.class.getSimpleName();
 
     public AuthenticationFilter(PageRenderLinkSource renderLinkSource,
             ComponentSource componentSource, Response response, Authenticator authenticator)

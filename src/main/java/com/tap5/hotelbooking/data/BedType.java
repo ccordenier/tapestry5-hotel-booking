@@ -28,7 +28,6 @@ public class BedType extends AbstractSelectModel
 
     public List<OptionGroupModel> getOptionGroups()
     {
-        // TODO Auto-generated method stub
         return null;
     }
 

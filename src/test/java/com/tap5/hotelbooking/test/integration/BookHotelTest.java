@@ -1,7 +1,6 @@
 package com.tap5.hotelbooking.test.integration;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 /**
@@ -11,7 +10,7 @@ import org.testng.annotations.Test;
  */
 public class BookHotelTest extends BaseIntegrationTestSuite
 {
-    @Test(testName = "signin")
+    @Test(priority = 1, groups="booking")
     public void signin()
     {
         open("/signin");
@@ -29,7 +28,7 @@ public class BookHotelTest extends BaseIntegrationTestSuite
     /**
      * Check wildcards
      */
-    @Test(testName = "bookProcess", dependsOnMethods = "signin")
+    @Test(priority = 2, groups="booking")
     public void bookProcess()
     {
         open("/view/1");
@@ -39,8 +38,11 @@ public class BookHotelTest extends BaseIntegrationTestSuite
 
         click("//form[@id='startBookingForm']//input[@type='submit']");
         waitForPageToLoad();
-        assertEquals(getXpathCount("//ul[@id='workspace']/li"), 1, "There is only one booking in progress");        
-        
+        assertEquals(
+                getXpathCount("//ul[@id='workspace']/li"),
+                1,
+                "There is only one booking in progress");
+
         // Set user information
         type("id=creditCardNumber", "1234567812345678");
         select("id=creditCardType", "value=MasterCard");
@@ -51,7 +53,7 @@ public class BookHotelTest extends BaseIntegrationTestSuite
         assertTrue(isTextPresent("129"));
         click("//form[@id='confirmForm']//input[@type='submit']");
         waitForPageToLoad();
-        
+
         // Cancel confirmation
         assertEquals(getXpathCount("//ul[@id='your-bookings']/li"), 1);
         click("//ul[@id='your-bookings']/li/a");
@@ -59,9 +61,8 @@ public class BookHotelTest extends BaseIntegrationTestSuite
         assertFalse(isElementPresent("id=your-bookings"));
     }
 
-    @AfterClass(alwaysRun = true)
-    @Override
-    public void cleanup()
+    @Test(priority = 3, groups="booking")
+    public void logout()
     {
         open("/search");
         waitForPageToLoad();
@@ -70,7 +71,7 @@ public class BookHotelTest extends BaseIntegrationTestSuite
                 isElementPresent("id=logout"),
                 "Authenticated user should be able to logout");
         click("id=logout");
-        super.cleanup();
+        waitForPageToLoad();
     }
 
 }

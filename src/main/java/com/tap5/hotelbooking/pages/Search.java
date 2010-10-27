@@ -14,7 +14,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import com.tap5.hotelbooking.data.SearchCriteria;
-import com.tap5.hotelbooking.domain.entities.Hotel;
+import com.tap5.hotelbooking.entities.Hotel;
 
 /**
  * Lookup for Hotels.
@@ -23,7 +23,6 @@ import com.tap5.hotelbooking.domain.entities.Hotel;
  */
 public class Search
 {
-
     @Inject
     private Session session;
 
