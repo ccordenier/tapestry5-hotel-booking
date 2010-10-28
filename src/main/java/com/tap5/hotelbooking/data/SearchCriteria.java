@@ -23,7 +23,7 @@ public class SearchCriteria implements Serializable
     
     public String getSearchPattern()
     {
-        if (query == null || query.length() == 0) { return null; }
+        if (query == null || query.trim().length() == 0) { return null; }
 
         StringBuilder pattern = new StringBuilder();
         pattern.append(query.toLowerCase().replace(HUMAN_WILDCARD_CHAR, SQL_WILDCARD_CHAR)

@@ -22,17 +22,16 @@ import com.tap5.hotelbooking.entities.Booking;
  */
 public class Workspace
 {
+    @Property
+    private DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+
     @SessionState
     @Property
     private UserWorkspace userWorkspace;
 
     @Inject
     private PageRenderLinkSource linkSource;
-
-    @SuppressWarnings("unused")
-    @Property
-    private DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-
+    
     @Property
     private Booking current;
 
@@ -45,14 +44,12 @@ public class Workspace
     {
         Link result = linkSource.createPageRenderLinkWithContext(
                 "book",
-                current.getHotel(),
-                "restore");
+                current.getHotel());
         return result;
     }
 
     public boolean getIsCurrent()
     {
-
-        return userWorkspace.getCurrent() != null && userWorkspace.getCurrent().equals(current);
+        return current.equals(userWorkspace.getCurrent().equals(current));
     }
 }

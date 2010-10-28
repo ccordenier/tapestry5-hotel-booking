@@ -92,9 +92,9 @@ public class Book
     }
 
     @Log
-    public Object onActivate(Long bookId, String context)
+    public Object onActivate(Long hotelId)
     {
-        booking = userWorkspace.restoreBooking(bookId);
+        booking = userWorkspace.restoreBooking(hotelId);
 
         if (booking == null)
         {

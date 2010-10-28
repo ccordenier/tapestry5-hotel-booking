@@ -8,7 +8,9 @@ import com.tap5.hotelbooking.entities.Hotel;
 import com.tap5.hotelbooking.entities.User;
 
 /**
- * Use this object to store user's booking
+ * Use this object to store user's booking. It also provides all the method to handle booking in
+ * progress for the current user. This object is stored in session when the user starts to book an
+ * hotel.
  * 
  * @author karesti
  */
@@ -16,12 +18,7 @@ public class UserWorkspace
 {
     private Booking current;
 
-    private List<Booking> notConfirmed;
-
-    public UserWorkspace()
-    {
-        this.notConfirmed = new ArrayList<Booking>();
-    }
+    private List<Booking> notConfirmed = new ArrayList<Booking>();
 
     public List<Booking> getNotConfirmed()
     {
@@ -31,11 +28,6 @@ public class UserWorkspace
     public Booking getCurrent()
     {
         return current;
-    }
-
-    public void setCurrent(Booking current)
-    {
-        this.current = current;
     }
 
     public void startBooking(Hotel hotel, User user)
@@ -63,7 +55,7 @@ public class UserWorkspace
                 break;
             }
         }
-        
+
         this.current = restoredBooking;
 
         return restoredBooking;

@@ -35,7 +35,7 @@ public class Search
 
     @SuppressWarnings("unused")
     @Property
-    private GridDataSource source;
+    private GridDataSource source = new HotelDataSource(session, Hotel.class);
 
     @SuppressWarnings("unused")
     @Property
@@ -54,21 +54,15 @@ public class Search
         }
 
         @Override
+        public int getAvailableRows()
+        {
+            return criteria.getSearchPattern() == null ? 0 : super.getAvailableRows();
+        }
+
+        @Override
         protected void applyAdditionalConstraints(Criteria crit)
         {
-            if (criteria.getSearchPattern() != null)
-            {
-                crit.add(Restrictions.ilike("name", criteria.getSearchPattern()));
-            }
-        }
-    }
-
-    @OnEvent(value = EventConstants.ACTIVATE)
-    void prepareDataSource()
-    {
-        if (criteria.getSearchPattern() != null)
-        {
-            source = new HotelDataSource(session, Hotel.class);
+            crit.add(Restrictions.ilike("name", criteria.getSearchPattern()));
         }
     }
 
@@ -78,7 +72,6 @@ public class Search
     @OnEvent(value = EventConstants.SUCCESS)
     Object searchHotels()
     {
-        prepareDataSource();
         return result;
     }
 
