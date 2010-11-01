@@ -36,7 +36,7 @@ public class HotelBookingModule
     {
 
         configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
-        configuration.add(SymbolConstants.APPLICATION_VERSION, "1.0-SNAPSHOT");
+        configuration.add(SymbolConstants.APPLICATION_VERSION, "1.2-SNAPSHOT");
     }
 
     @Contribute(ValidatorMacro.class)
