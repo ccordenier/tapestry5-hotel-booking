@@ -14,12 +14,12 @@ Tapestry.Initializer.initAjaxLoader = function(params) {
 	 */
 	var trigger = $(params.trigger);
 	if (trigger.tagName == "FORM") {
-		trigger.observeAction(Tapestry.FORM_PROCESS_SUBMIT_EVENT,
+		$(trigger).observe(Tapestry.FORM_PROCESS_SUBMIT_EVENT,
 				function() {
 					$(params.loader).show();
 				});
 	} else {
-		trigger.observeAction(Tapestry.TRIGGER_ZONE_UPDATE_EVENT,
+		$(trigger).observe(Tapestry.TRIGGER_ZONE_UPDATE_EVENT,
 				function() {
 					$(params.loader).show();
 		});

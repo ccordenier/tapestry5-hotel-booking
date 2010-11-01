@@ -64,7 +64,7 @@ public class AjaxLoader
         data.put("zone", zone);
         data.put("trigger", trigger);
         data.put("loader", loader);
-        javascriptSupport.addInitializerCall(InitializationPriority.LATE, "initAjaxLoader", data);
+        javascriptSupport.addInitializerCall(InitializationPriority.NORMAL, "initAjaxLoader", data);
     }
 
     @AfterRender
