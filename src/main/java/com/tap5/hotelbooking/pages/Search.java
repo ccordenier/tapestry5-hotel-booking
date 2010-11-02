@@ -72,13 +72,11 @@ public class Search
     @OnEvent(value = EventConstants.SUCCESS)
     Object searchHotels()
     {
-        System.out.println("....Search Success");
         return result.getBody();
     }
     
     Object onAction()
     {
-        System.out.println("....On Action");
         return result.getBody();
     }
 
