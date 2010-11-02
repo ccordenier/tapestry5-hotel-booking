@@ -11,11 +11,11 @@ of where to look for pages, components and mixins. -->
         <param-value>com.tap5.hotelbooking</param-value>
     </context-param>
     <filter>
-        <filter-name>HotelBooking</filter-name>
+        <filter-name>hotelBooking</filter-name>
         <filter-class>org.apache.tapestry5.TapestryFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>HotelBooking</filter-name>
+        <filter-name>hotelBooking</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 </web-app>
