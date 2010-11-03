@@ -64,15 +64,18 @@ public class Signup
     @InjectPage
     private Signin signin;
 
-    @OnEvent(value = EventConstants.SUCCESS, component = "RegisterForm")
-    public Object proceedSignup()
+    @OnEvent(value = EventConstants.VALIDATE, component = "RegisterForm")
+    public void checkForm()
     {
         if (!verifyPassword.equals(password))
         {
             registerForm.recordError(messages.get("error.verifypassword"));
-
-            return null;
         }
+    }
+
+    @OnEvent(value = EventConstants.SUCCESS, component = "RegisterForm")
+    public Object proceedSignup()
+    {
 
         User userVerif = crudServiceDAO.findUniqueWithNamedQuery(
                 User.BY_USERNAME_OR_EMAIL,
