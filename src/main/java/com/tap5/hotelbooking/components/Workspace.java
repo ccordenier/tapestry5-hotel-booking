@@ -22,6 +22,7 @@ import com.tap5.hotelbooking.entities.Booking;
  */
 public class Workspace
 {
+    @SuppressWarnings("unused")
     @Property
     private DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 
@@ -31,7 +32,7 @@ public class Workspace
 
     @Inject
     private PageRenderLinkSource linkSource;
-    
+
     @Property
     private Booking current;
 
@@ -42,9 +43,7 @@ public class Workspace
 
     public Link getBookLink()
     {
-        Link result = linkSource.createPageRenderLinkWithContext(
-                "book",
-                current.getHotel());
+        Link result = linkSource.createPageRenderLinkWithContext("book", current.getHotel());
         return result;
     }
 
