@@ -39,9 +39,11 @@ public class Signup
     private String email;
 
     @Property
+    @Validate("password")
     private String password;
 
     @Property
+    @Validate("password")
     private String verifyPassword;
 
     @SuppressWarnings("unused")

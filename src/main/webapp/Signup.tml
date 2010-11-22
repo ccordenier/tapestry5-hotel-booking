@@ -35,7 +35,7 @@
 					<label t:type="label" t:for="password">Password:</label>
 				</th>
 				<td>
-					<input t:type="passwordField" t:id="password" t:validate="password"/>
+					<input t:type="passwordField" t:id="password"/>
 				</td>	
 			</tr>
 			<tr>
@@ -43,7 +43,7 @@
 					<label t:type="label" t:for="verifyPassword">Verify password:</label>
 				</th>
 				<td>
-					<input t:type="passwordField" t:id="verifyPassword" t:validate="password"/>
+					<input t:type="passwordField" t:id="verifyPassword"/>
 				</td>	
 			</tr>
 			<tr>
