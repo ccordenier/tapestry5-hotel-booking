@@ -92,12 +92,19 @@
 			<artifactId>tapx-core</artifactId>
 			<version>${tapx-release-version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
 			<version>1.0.0.Final</version>
 		</dependency>
-
+		
+		<!-- SLF4J dependency -->
+		<dependency>
+  			<groupId>org.slf4j</groupId>
+  			<artifactId>slf4j-log4j12</artifactId>
+  			<version>1.5.6</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>tapestry5-hotel-booking</finalName>
@@ -196,7 +203,7 @@
 
 	<properties>
 		<tapx-release-version>1.1-SNAPSHOT</tapx-release-version>
-		<tapestry-release-version>5.2.2</tapestry-release-version>
+		<tapestry-release-version>5.2.4</tapestry-release-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 </project>
