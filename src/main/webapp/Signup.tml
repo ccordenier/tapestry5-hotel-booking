@@ -49,13 +49,13 @@
 			<tr>
     			<th><label t:type="label" t:for="fcaptcha">Enter text displayed below</label></th>
     			<td>
-    				<t:tapx.kaptchafield image="kaptcha" t:id="fcaptcha" />
+    				<t:kaptchafield image="kaptcha" t:id="fcaptcha" />
     			</td>  			
     		</tr>
     		<tr>
     			<th></th>
     			<td>
-    				<t:tapx.kaptchaimage t:id="kaptcha" style="float:left;"/>
+    				<t:kaptchaimage t:id="kaptcha" style="float:left;"/>
     			</td>  			
     		</tr>
 		</table>
