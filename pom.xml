@@ -14,13 +14,10 @@
 			<version>${tapestry-release-version}</version>
 		</dependency>
 
-		<!--
-			A dependency on either JUnit or TestNG is required, or the surefire
-			plugin (which runs the tests) will fail, preventing Maven from
-			packaging the WAR. Tapestry includes a large number of testing
-			facilities designed for use with TestNG (http://testng.org/), so it's
-			recommended.
-		-->
+		<!-- A dependency on either JUnit or TestNG is required, or the surefire 
+			plugin (which runs the tests) will fail, preventing Maven from packaging 
+			the WAR. Tapestry includes a large number of testing facilities designed 
+			for use with TestNG (http://testng.org/), so it's recommended. -->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -40,11 +37,17 @@
 			<artifactId>tapestry-hibernate</artifactId>
 			<version>${tapestry-release-version}</version>
 		</dependency>
-                <dependency>
-                        <groupId>org.apache.tapestry</groupId>
-                        <artifactId>tapestry-kaptcha</artifactId>
-                        <version>${tapestry-release-version}</version>
-                </dependency>
+		<dependency>
+			<groupId>org.apache.tapestry</groupId>
+			<artifactId>tapestry-kaptcha</artifactId>
+			<version>${tapestry-release-version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.google.code.kaptcha</groupId>
+					<artifactId>kaptcha</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -64,11 +67,8 @@
 			<version>${tapestry-release-version}</version>
 		</dependency>
 
-		<!--
-			tapestry-test will conflict with RunJettyRun inside Eclipse.
-			tapestry-test brings in Selenium, which is based on Jetty 5.1;
-			RunJettyRun uses Jetty 6.
-		-->
+		<!-- tapestry-test will conflict with RunJettyRun inside Eclipse. tapestry-test 
+			brings in Selenium, which is based on Jetty 5.1; RunJettyRun uses Jetty 6. -->
 		<dependency>
 			<groupId>org.apache.tapestry</groupId>
 			<artifactId>tapestry-test</artifactId>
@@ -77,10 +77,8 @@
 		</dependency>
 
 
-		<!--
-			Provided by the servlet container, but sometimes referenced in the
-			application code.
-		-->
+		<!-- Provided by the servlet container, but sometimes referenced in the 
+			application code. -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -93,13 +91,20 @@
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
 			<version>1.0.0.Final</version>
 		</dependency>
-		
+
 		<!-- SLF4J dependency -->
 		<dependency>
-  			<groupId>org.slf4j</groupId>
-  			<artifactId>slf4j-log4j12</artifactId>
-  			<version>1.5.6</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.6</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.google.code</groupId>
+			<artifactId>kaptcha</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>tapestry5-hotel-booking</finalName>
@@ -123,10 +128,8 @@
 				<configuration>
 					<!-- Log to the console. -->
 					<requestLog implementation="org.mortbay.jetty.NCSARequestLog">
-						<!--
-							This doesn't do anything for Jetty, but is a workaround for a
-							Maven bug that prevents the requestLog from being set.
-						-->
+						<!-- This doesn't do anything for Jetty, but is a workaround for a 
+							Maven bug that prevents the requestLog from being set. -->
 						<append>true</append>
 					</requestLog>
 					<systemProperties>
@@ -155,10 +158,8 @@
 
 	<reporting>
 
-		<!--
-			Adds a report detailing the components, mixins and base classes
-			defined by this module.
-		-->
+		<!-- Adds a report detailing the components, mixins and base classes defined 
+			by this module. -->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.tapestry</groupId>
@@ -187,22 +188,15 @@
 			<url>https://repository.apache.org/content/groups/public/</url>
 		</repository>
 		<repository>
-			<id>tapestry360-stable</id>
-			<url>http://tapestry.formos.com/maven-repository</url>
+			<id>google-maven-snapshot-repository</id>
+			<name>Google Maven Snapshot Repository</name>
+			<url>https://m2repos.googlecode.com/svn/nexus</url>
 		</repository>
-		<repository>
-			<id>tapestry360-snapshot</id>
-			<url>http://tapestry.formos.com/maven-snapshot-repository</url>
-		</repository>
-                <repository>
-                        <id>jahia</id>
-                        <url>https://www.escidoc.org/artifactory/maven.jahia.org/</url>
-                </repository>
 	</repositories>
 
 	<properties>
 		<tapx-release-version>1.1-SNAPSHOT</tapx-release-version>
-		<tapestry-release-version>5.3.6</tapestry-release-version>
+		<tapestry-release-version>5.3.7</tapestry-release-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 </project>
