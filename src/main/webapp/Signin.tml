@@ -32,7 +32,7 @@
         <p>
             Welcome to Tapestry Hotel Booking, this application has been developed to
             demonstrate the Tapestry's development model. This version of the application
-            uses only Tapestry's core and tapx components, thus you will find here a *realistic*
+            uses only Tapestry's core components, thus you will find here a *realistic*
             demonstration of Tapestry's power.
         </p>
 	</p:sidebar>
