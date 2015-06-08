@@ -173,11 +173,6 @@
 	</reporting>
 
 	<repositories>
-		<!-- For snapshots of tynamo libraries -->
-		<repository>
-			<id>codehaus.snapshots</id>
-			<url>http://ci.repository.codehaus.org</url>
-		</repository>
 		<!-- For Shiro (and Tapestry) snapshots -->
 		<repository>
 			<id>apache-snapshots</id>
