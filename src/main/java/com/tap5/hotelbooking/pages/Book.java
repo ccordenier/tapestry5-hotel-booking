@@ -134,6 +134,11 @@ public class Book
         userWorkspace.getCurrent().setStatus(true);
     }
 
+    @OnEvent(value = EventConstants.FAILURE, component = "bookingForm")
+    public void onFailureFromBookingForm() {
+        booking.setStatus(false);
+    }
+
     @OnEvent(value = EventConstants.SUCCESS, component = "confirmForm")
     public Object confirm()
     {
