@@ -12,3 +12,5 @@ tidyErrors.txt
 *.origin
 *.orig
 bin/
+.idea
+*.iml
